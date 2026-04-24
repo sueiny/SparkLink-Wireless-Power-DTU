@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/drivers/hal/pinmux/common/hal_pinctrl.c,/home/sueiny/fbb_ws63/src/drivers/drivers/hal/pinmux/ws63/hal_pinctrl_ws63.c

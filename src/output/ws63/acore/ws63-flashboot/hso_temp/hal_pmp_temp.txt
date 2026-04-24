@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/drivers/hal/pmp/hal_pmp.c,/home/sueiny/fbb_ws63/src/drivers/drivers/hal/pmp/v31/hal_pmp_riscv31.c,/home/sueiny/fbb_ws63/src/drivers/drivers/hal/pmp/v31/hal_pmp_riscv31_regs_op.c

@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/pinctrl/pinctrl_porting_ws63.c

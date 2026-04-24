@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/arch/riscv/pmp_cfg.c

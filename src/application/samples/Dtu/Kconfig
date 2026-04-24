@@ -1,0 +1,34 @@
+#===============================================================================
+# @brief    Kconfig file.
+# Copyright (c) HiSilicon (Shanghai) Technologies Co., Ltd. 2023-2023. All rights reserved.
+#===============================================================================
+
+config DTU_TRACE_LOG
+    bool
+    prompt "Enable DTU trace log."
+    default n
+    depends on ENABLE_DTU_SAMPLE
+    help
+        Enable detailed DTU trace and RX performance logs.
+
+config DTU_DEVICE_NAME
+    string
+    prompt "DTU device name."
+    default "DTU_N01"
+    depends on ENABLE_DTU_SAMPLE
+    help
+        Configure the DTU device name used by BLE advertising and
+        READ_DEV_INFO response. If not configured, the DTU sample
+        falls back to "DTU_N01".
+
+config DTU_FIXED_MAC
+    string
+    prompt "DTU fixed MAC address."
+    default "A1:A2:A3:A4:A5:A6"
+    depends on ENABLE_DTU_SAMPLE
+    help
+        Configure a fixed DTU MAC address for BLE advertising and
+        READ_DEV_INFO response. Supported formats are
+        "AABBCCDDEEFF" and "AA:BB:CC:DD:EE:FF".
+        If not configured, the DTU sample falls back to
+        "A1:A2:A3:A4:A5:A6".

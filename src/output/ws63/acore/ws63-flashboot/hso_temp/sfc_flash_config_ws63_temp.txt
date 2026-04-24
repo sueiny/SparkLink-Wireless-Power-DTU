@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/sfc/flash_config/flash_config_info.c

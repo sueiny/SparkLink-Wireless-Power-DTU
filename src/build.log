@@ -1,0 +1,1905 @@
+Not searching for unused variables given on the command line.
+-- BUILD_PLATFORM: linux
+-- BUILD_PLATFORM: linux
+-- The C compiler identification is GNU 7.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl/bin/riscv32-linux-musl-gcc
+-- The CXX compiler identification is GNU 7.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+GEN_TARGET_SRC = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.c
+PRECOMPILE_TARGET = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.etypes
+TARGET_INCLUDE = /home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include;/home/sueiny/fbb_ws63/src/middleware/utils/common_headers/native
+BGTP_PROJECT=ws63
+BGTP_ROM_VERSION=false
+BGTP_DEVICE_ONLY=false
+BG COMMON BTH_ROM_LIST:__null__
+BTH_ROM_LIST:__null__
+-- project_name:
+-- project_name:
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-flashboot
+Scanning dependencies of target nonos_malloc
+Scanning dependencies of target common_boot_libc
+Scanning dependencies of target pmp
+Scanning dependencies of target osal
+Scanning dependencies of target common_boot
+Scanning dependencies of target non_os
+Scanning dependencies of target drv_timer
+Scanning dependencies of target systick
+Scanning dependencies of target hal_cpu_core
+Scanning dependencies of target tcxo
+Scanning dependencies of target pinctrl
+Scanning dependencies of target hal_efuse_v151
+Scanning dependencies of target hal_pinctrl
+Scanning dependencies of target hal_pmp
+Scanning dependencies of target hal_tcxo
+Scanning dependencies of target rtc_unified
+Scanning dependencies of target efuse
+Scanning dependencies of target watchdog
+Scanning dependencies of target hal_reg_config
+Scanning dependencies of target flashboot_common
+Scanning dependencies of target uart
+Scanning dependencies of target hal_timer
+Scanning dependencies of target hal_reboot
+[  0%] Building C object kernel/non_os/malloc/CMakeFiles/nonos_malloc.dir/malloc.c.obj
+[  0%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memcpy.c.obj
+Scanning dependencies of target hal_watchdog
+Scanning dependencies of target hal_sfc
+[  0%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_reset.c.obj
+[  1%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_atomic.c.obj
+[  1%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_utils.c.obj
+[  1%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memset.c.obj
+Scanning dependencies of target hal_rtc_unified
+Scanning dependencies of target hal_uart
+Scanning dependencies of target chip_ws63
+[  1%] Building C object driver/pinmux/CMakeFiles/pinctrl.dir/pinctrl.c.obj
+[  1%] Building C object driver/pmp/CMakeFiles/pmp.dir/pmp.c.obj
+[  3%] Building C object driver/tcxo/CMakeFiles/tcxo.dir/tcxo.c.obj
+[  3%] Building C object driver/systick/CMakeFiles/systick.dir/systick.c.obj
+[  5%] Building C object driver/timer/CMakeFiles/drv_timer.dir/timer.c.obj
+[  5%] Building C object driver/efuse/CMakeFiles/efuse.dir/efuse.c.obj
+Scanning dependencies of target libboundscheck
+[  6%] Building C object driver/rtc_unified/CMakeFiles/rtc_unified.dir/rtc.c.obj
+[  7%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/hal_efuse.c.obj
+[  8%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memcmp.c.obj
+[  8%] Building C object driver/watchdog/CMakeFiles/watchdog.dir/watchdog.c.obj
+[ 10%] Building C object driver/uart/CMakeFiles/uart.dir/uart.c.obj
+[ 10%] Building C object hal/cpu_core/CMakeFiles/hal_cpu_core.dir/hal_cpu_core.c.obj
+[ 11%] Building C object bootloader/flashboot_ws63/CMakeFiles/flashboot_common.dir/startup/main.c.obj
+[ 11%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/hal_pmp.c.obj
+[ 11%] Building C object hal/reg_config/CMakeFiles/hal_reg_config.dir/hal_reg_config.c.obj
+[ 11%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_debug.c.obj
+[ 11%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo.c.obj
+[ 11%] Linking C static library libnonos_malloc.a
+[ 11%] Building C object hal/pinmux/CMakeFiles/hal_pinctrl.dir/common/hal_pinctrl.c.obj
+[ 12%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_flash.c.obj
+[ 14%] Building C object hal/reboot/CMakeFiles/hal_reboot.dir/hal_reboot.c.obj
+[ 14%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_nmi.c.obj
+[ 15%] Building C object hal/uart/CMakeFiles/hal_uart.dir/hal_uart.c.obj
+[ 15%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/strcmp.c.obj
+[ 15%] Building C object hal/timer/CMakeFiles/hal_timer.dir/hal_drv_timer.c.obj
+[ 16%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc.c.obj
+[ 16%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt.c.obj
+[ 16%] Linking C static library libdrv_timer.a
+[ 16%] Linking C static library libpinctrl.a
+[ 17%] Linking C static library libefuse.a
+[ 17%] Linking C static library libtcxo.a
+[ 19%] Linking C static library libpmp.a
+[ 19%] Building C object hal/watchdog/CMakeFiles/hal_watchdog.dir/hal_watchdog.c.obj
+[ 19%] Linking C static library librtc_unified.a
+[ 20%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/v31/hal_pmp_riscv31.c.obj
+[ 20%] Linking C static library libuart.a
+Scanning dependencies of target hal_security_unified
+[ 20%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memcpy_s.c.obj
+[ 20%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_interrupt.c.obj
+[ 20%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/hal_rtc.c.obj
+[ 20%] Building ASM object bootloader/flashboot_ws63/CMakeFiles/flashboot_common.dir/startup/riscv_init.S.obj
+[ 21%] Linking C static library libhal_reg_config.a
+[ 23%] Linking C static library libwatchdog.a
+[ 23%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_debug.c.obj
+[ 23%] Linking C static library libsystick.a
+[ 23%] Linking C static library libhal_cpu_core.a
+[ 23%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo_v150.c.obj
+[ 23%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151.c.obj
+[ 23%] Building C object hal/pinmux/CMakeFiles/hal_pinctrl.dir/ws63/hal_pinctrl_ws63.c.obj
+Scanning dependencies of target pmp_cfg_ws63
+Scanning dependencies of target drv_security_unified
+[ 23%] Linking C static library libhal_reboot.a
+[ 24%] Linking C static library libnon_os.a
+[ 24%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt_handler.c.obj
+[ 24%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc_v150.c.obj
+[ 25%] Building C object hal/timer/CMakeFiles/hal_timer.dir/v150/hal_timer_v150.c.obj
+[ 25%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151.c.obj
+[ 25%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/strlen.c.obj
+[ 26%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_mutex.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_rkp.c.obj
+[ 26%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memmove_s.c.obj
+[ 26%] Building C object bootloader/flashboot_ws63/CMakeFiles/flashboot_common.dir/__/commonboot/src/secure_verify_boot.c.obj
+[ 26%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_jump.c.obj
+[ 26%] Building C object hal/watchdog/CMakeFiles/hal_watchdog.dir/v151/hal_watchdog_v151.c.obj
+[ 26%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/v100/hal_rtc_v100.c.obj
+[ 26%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/v31/hal_pmp_riscv31_regs_op.c.obj
+[ 26%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151_reg_op.c.obj
+[ 26%] Building C object hal/timer/CMakeFiles/hal_timer.dir/v150/hal_timer_v150_regs_op.c.obj
+[ 26%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151_regs_op.c.obj
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/romable/hash_romable.c.obj
+[ 28%] Linking C static library libhal_pinctrl.a
+[ 28%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc_v150_regs_op.c.obj
+[ 28%] Built target nonos_malloc
+[ 29%] Building ASM object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/vectors.s.obj
+[ 29%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_semaphore.c.obj
+[ 30%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo_v150_regs_op.c.obj
+[ 30%] Building C object drivers/chips/ws63/porting/arch/CMakeFiles/pmp_cfg_ws63.dir/riscv/pmp_cfg.c.obj
+[ 30%] Built target pinctrl
+[ 32%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memmove.c.obj
+[ 33%] Linking C static library libcommon_boot.a
+[ 34%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_keyslot.c.obj
+[ 35%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memset_s.c.obj
+[ 37%] Linking C static library libhal_watchdog.a
+[ 38%] Linking C static library libhal_uart.a
+[ 39%] Built target pmp
+[ 39%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/v100/hal_rtc_v100_op.c.obj
+[ 39%] Built target drv_timer
+[ 41%] Linking C static library libhal_sfc.a
+[ 42%] Linking C static library libflashboot_common.a
+[ 43%] Linking C static library libhal_efuse_v151.a
+[ 43%] Linking C static library libhal_pmp.a
+[ 43%] Linking C static library libhal_timer.a
+[ 43%] Linking C static library libpmp_cfg_ws63.a
+[ 43%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/securecutil.c.obj
+[ 43%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_spinlock.c.obj
+[ 43%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_klad.c.obj
+[ 43%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/flash_patch.c.obj
+[ 43%] Built target systick
+[ 43%] Built target hal_reg_config
+[ 43%] Built target uart
+[ 44%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_flashboot_cipher.c.obj
+[ 44%] Built target watchdog
+[ 44%] Built target efuse
+[ 44%] Built target non_os
+[ 44%] Linking C static library libcommon_boot_libc.a
+[ 44%] Linking C static library libhal_tcxo.a
+Scanning dependencies of target uart_port
+[ 44%] Built target rtc_unified
+[ 44%] Built target tcxo
+[ 44%] Linking C static library libhal_rtc_unified.a
+[ 46%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_wait.c.obj
+[ 46%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/interrupt/interrupt_adapter.c.obj
+[ 46%] Built target hal_cpu_core
+[ 46%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_fapc/hal_fapc.c.obj
+[ 47%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/vectors/vectors.c.obj
+[ 47%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_task.c.obj
+Scanning dependencies of target systick_port
+[ 48%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/boot/crypto_osal_lib.c.obj
+[ 50%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/snprintf_s.c.obj
+[ 50%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/secureprintoutput_a.c.obj
+Scanning dependencies of target watchdog_port
+[ 50%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/crypto_security.c.obj
+[ 50%] Building C object drivers/chips/ws63/porting/uart/CMakeFiles/uart_port.dir/uart_porting.c.obj
+Scanning dependencies of target tcxo_port
+Scanning dependencies of target timer_port
+[ 50%] Built target common_boot
+[ 50%] Built target hal_pinctrl
+[ 50%] Built target flashboot_common
+[ 50%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_flashboot_symc.c.obj
+[ 50%] Built target hal_reboot
+Scanning dependencies of target pinctrl_port_ws63
+[ 50%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/sprintf_s.c.obj
+[ 51%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strcat_s.c.obj
+[ 51%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/hal_systick.c.obj
+[ 51%] Built target pmp_cfg_ws63
+[ 52%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/hal_systick_ws63.c.obj
+[ 52%] Linking C static library libchip_ws63.a
+[ 52%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strncat_s.c.obj
+Scanning dependencies of target pmp_port
+Scanning dependencies of target sfc_flash_config_ws63
+[ 52%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strcpy_s.c.obj
+[ 53%] Linking C static library libuart_port.a
+[ 53%] Building C object drivers/chips/ws63/porting/tcxo/CMakeFiles/tcxo_port.dir/tcxo_porting.c.obj
+[ 53%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/crypto_drv_common.c.obj
+[ 53%] Building C object drivers/chips/ws63/porting/watchdog/CMakeFiles/watchdog_port.dir/watchdog_porting.c.obj
+[ 53%] Built target hal_uart
+[ 53%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/vsnprintf_s.c.obj
+[ 55%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strncpy_s.c.obj
+[ 55%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/drv_common_pke.c.obj
+[ 55%] Built target hal_sfc
+[ 55%] Linking C static library libosal.a
+[ 55%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/vsprintf_s.c.obj
+[ 55%] Building C object drivers/chips/ws63/porting/timer/CMakeFiles/timer_port.dir/timer_porting.c.obj
+[ 55%] Built target hal_efuse_v151
+[ 55%] Built target hal_pmp
+[ 56%] Building C object drivers/chips/ws63/porting/pmp/CMakeFiles/pmp_port.dir/pmp_porting.c.obj
+[ 56%] Built target hal_timer
+[ 56%] Built target hal_tcxo
+[ 57%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strtok_s.c.obj
+[ 57%] Built target hal_watchdog
+[ 58%] Building C object drivers/chips/ws63/porting/pinctrl/CMakeFiles/pinctrl_port_ws63.dir/pinctrl_porting_ws63.c.obj
+[ 60%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_keyslot.c.obj
+[ 60%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/systick_porting.c.obj
+Scanning dependencies of target sfc_boot
+Scanning dependencies of target sfc_port_ws63
+[ 60%] Built target common_boot_libc
+[ 61%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_sign_verify_common.c.obj
+[ 60%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_klad.c.obj
+[ 61%] Building C object drivers/chips/ws63/porting/sfc/flash_config/CMakeFiles/sfc_flash_config_ws63.dir/flash_config_info.c.obj
+[ 61%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/ecc_data_ram_addr.c.obj
+[ 62%] Linking C static library libwatchdog_port.a
+[ 62%] Linking C static library libtimer_port.a
+[ 62%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/sm2_ec_fp_sign_verify.c.obj
+[ 64%] Linking C static library libtcxo_port.a
+[ 64%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/sm2/drv_pke_sm2_verify.c.obj
+[ 65%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_verify_common.c.obj
+[ 65%] Built target hal_rtc_unified
+[ 65%] Linking C static library libpmp_port.a
+[ 66%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_pke_weak_func.c.obj
+[ 67%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/init/cfbb/crypto_curve_param.c.obj
+[ 67%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_fapc/drv_fapc.c.obj
+[ 67%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/rom_lib.c.obj
+[ 67%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/sm2/drv_pke_sm2_dsa_hash.c.obj
+Scanning dependencies of target nonos_malloc_port
+[ 67%] Linking C static library libsystick_port.a
+[ 67%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecdsa.c.obj
+[ 69%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_porting.c.obj
+Scanning dependencies of target efuse_port
+[ 70%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/rom_drv_api/drv_rom_table.c.obj
+[ 70%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/rom_drv_api/hal_rom_table.c.obj
+Scanning dependencies of target rtc_unified_port
+[ 70%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_rom_cipher.c.obj
+[ 70%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect.c.obj
+[ 70%] Linking C static library liblibboundscheck.a
+[ 70%] Linking C static library libsfc_flash_config_ws63.a
+[ 70%] Building C object drivers/chips/ws63/porting/sfc/driver/CMakeFiles/sfc_boot.dir/sfc.c.obj
+[ 70%] Linking C static library libpinctrl_port_ws63.a
+[ 70%] Linking C static library libhal_security_unified.a
+[ 70%] Built target chip_ws63
+[ 71%] Building C object drivers/chips/ws63/porting/mem/CMakeFiles/nonos_malloc_port.dir/malloc_porting.c.obj
+Scanning dependencies of target reboot_port
+Scanning dependencies of target soc_port
+[ 71%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect_gd25q32.c.obj
+[ 71%] Built target uart_port
+[ 71%] Building C object drivers/chips/ws63/porting/rtc_unified/CMakeFiles/rtc_unified_port.dir/rtc_porting.c.obj
+[ 71%] Building C object drivers/chips/ws63/porting/efuse/CMakeFiles/efuse_port.dir/efuse_porting.c.obj
+Scanning dependencies of target chip_boot_port
+[ 71%] Built target osal
+[ 71%] Linking C static library libdrv_security_unified.a
+[ 73%] Linking C static library libsfc_boot.a
+Scanning dependencies of target dfx_exception
+Scanning dependencies of target partition_ws63
+[ 73%] Building C object drivers/chips/ws63/porting/reboot/CMakeFiles/reboot_port.dir/reboot_porting.c.obj
+[ 73%] Linking C static library libnonos_malloc_port.a
+[ 73%] Built target timer_port
+Scanning dependencies of target update_ab_ws63
+Scanning dependencies of target factory_ws63
+[ 73%] Building C object drivers/chips/ws63/porting/soc/CMakeFiles/soc_port.dir/soc_porting.c.obj
+Scanning dependencies of target update_common_ws63
+Scanning dependencies of target update_local_ws63
+[ 74%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/delay/delay.c.obj
+[ 74%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/watchdog/boot_watchdog.c.obj
+[ 75%] Built target tcxo_port
+[ 76%] Built target watchdog_port
+[ 74%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/serial/serial.c.obj
+[ 75%] Linking C static library libsfc_port_ws63.a
+[ 76%] Linking C static library librtc_unified_port.a
+[ 74%] Linking C static library libefuse_port.a
+Scanning dependencies of target error_code
+Scanning dependencies of target dfx_panic
+[ 76%] Building C object middleware/chips/ws63/factory/CMakeFiles/factory_ws63.dir/factory.c.obj
+[ 76%] Built target pmp_port
+Scanning dependencies of target cpu_utils
+Scanning dependencies of target dfx_preserve
+[ 76%] Building ASM object middleware/chips/ws63/exception/CMakeFiles/dfx_exception.dir/exception_riscv.s.obj
+[ 76%] Building C object middleware/chips/ws63/update/ab_upg/CMakeFiles/update_ab_ws63.dir/upg_ab.c.obj
+[ 76%] Building C object middleware/chips/ws63/partition/CMakeFiles/partition_ws63.dir/partition_porting.c.obj
+[ 76%] Linking C static library libsoc_port.a
+[ 76%] Linking C static library libreboot_port.a
+Scanning dependencies of target reboot
+[ 76%] Built target sfc_flash_config_ws63
+[ 76%] Building C object middleware/chips/ws63/update/common/CMakeFiles/update_common_ws63.dir/upg_common_porting.c.obj
+[ 76%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/validate_chip/validate_chip.c.obj
+[ 76%] Built target systick_port
+[ 76%] Built target libboundscheck
+[ 76%] Building C object middleware/chips/ws63/update/local_update/CMakeFiles/update_local_ws63.dir/upg_encry_porting.c.obj
+Scanning dependencies of target partition
+[ 76%] Building C object middleware/chips/ws63/exception/CMakeFiles/dfx_exception.dir/exception_riscv.c.obj
+[ 78%] Building C object utils/error_code/CMakeFiles/error_code.dir/private/error_code.c.obj
+[ 78%] Built target pinctrl_port_ws63
+[ 78%] Built target hal_security_unified
+[ 78%] Building C object utils/dfx/CMakeFiles/dfx_panic.dir/panic/private/panic.c.obj
+[ 79%] Linking C static library libfactory_ws63.a
+[ 79%] Building C object utils/dfx/dfx_reboot/cpu_utils/CMakeFiles/cpu_utils.dir/private/cpu_utils.c.obj
+[ 80%] Building C object utils/dfx/CMakeFiles/dfx_panic.dir/panic/private/panic_rom.c.obj
+Scanning dependencies of target update_storage
+[ 80%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/reset/reset_porting.c.obj
+[ 80%] Linking C static library libupdate_ab_ws63.a
+[ 82%] Linking C static library libpartition_ws63.a
+[ 82%] Built target drv_security_unified
+[ 82%] Linking C static library libupdate_common_ws63.a
+[ 82%] Building C object utils/dfx/CMakeFiles/dfx_preserve.dir/preserve/private/preserve.c.obj
+[ 83%] Building C object utils/dfx/CMakeFiles/dfx_preserve.dir/preserve/private/crash_data.c.obj
+[ 83%] Building C object utils/dfx/dfx_reboot/reboot/CMakeFiles/reboot.dir/shared/non_os_reboot.c.obj
+[ 83%] Built target nonos_malloc_port
+Scanning dependencies of target lzma_22.00
+[ 84%] Linking C static library libdfx_exception.a
+[ 84%] Built target sfc_boot
+Scanning dependencies of target update_common
+[ 85%] Building C object utils/update/storage/CMakeFiles/update_storage.dir/upg_storage.c.obj
+[ 87%] Linking C static library libcpu_utils.a
+[ 88%] Building C object utils/partition/CMakeFiles/partition.dir/partition.c.obj
+[ 89%] Linking C static library libchip_boot_port.a
+[ 89%] Linking C static library libupdate_local_ws63.a
+[ 89%] Linking C static library libdfx_panic.a
+[ 89%] Linking C static library liberror_code.a
+Scanning dependencies of target nv_config_ws63
+[ 89%] Built target rtc_unified_port
+[ 89%] Built target efuse_port
+[ 89%] Building C object open_source/7-zip-lzma-sdk/CMakeFiles/lzma_22.00.dir/lzma_22.00/C/LzmaDec.c.obj
+[ 89%] Linking C static library libdfx_preserve.a
+[ 89%] Built target sfc_port_ws63
+[ 89%] Built target reboot_port
+[ 91%] Building C object utils/update/common/CMakeFiles/update_common.dir/upg_alloc.c.obj
+[ 92%] Linking C static library libreboot.a
+[ 92%] Building C object utils/update/common/CMakeFiles/update_common.dir/upg_verify.c.obj
+[ 92%] Linking C static library libpartition.a
+[ 92%] Building C object utils/update/common/CMakeFiles/update_common.dir/upg_common.c.obj
+[ 92%] Built target soc_port
+[ 92%] Linking C static library libupdate_storage.a
+[ 92%] Generating NV_SRC
+[ 92%] Built target factory_ws63
+Scanning dependencies of target update_local
+[ 93%] Linking C static library liblzma_22.00.a
+[ 94%] Linking C static library libupdate_common.a
+[ 94%] Built target partition_ws63
+[ 94%] Built target update_ab_ws63
+[ 94%] Built target dfx_exception
+[ 94%] Built target update_common_ws63
+[ 94%] Built target update_local_ws63
+[ 96%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_process.c.obj
+[ 97%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_encry.c.obj
+[ 97%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_resource.c.obj
+[ 97%] Built target chip_boot_port
+[ 97%] Built target error_code
+[ 97%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_upgrade.c.obj
+[ 97%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_lzmadec.c.obj
+[ 97%] Built target cpu_utils
+[ 97%] Building C object utils/update/local_update/CMakeFiles/update_local.dir/upg_patch.c.obj
+[ 97%] Built target dfx_panic
+[ 97%] Built target dfx_preserve
+[ 97%] Built target reboot
+[ 97%] Built target partition
+[ 98%] Linking C static library libupdate_local.a
+[ 98%] Built target update_storage
+[ 98%] Built target lzma_22.00
+[ 98%] Built target update_common
+[ 98%] Built target nv_config_ws63
+[ 98%] Built target update_local
+Scanning dependencies of target flashboot
+[ 98%] Building C object CMakeFiles/flashboot.dir/temp/__null___.c.obj
+[ 98%] Linking C executable flashboot.elf
+Generating /home/sueiny/fbb_ws63/src/drivers/boards/ws63/evb/linker/flashboot_linker/linker.prelds -> /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-flashboot/linker.lds
+Memory region         Used Size  Region Size  %age Used
+           STACK:          9 KB         9 KB    100.00%
+            SRAM:        1544 B       119 KB      1.27%
+FLASHBOOT_ROM_ADDR:       48704 B        64 KB     74.32%
+[ 98%] Built target flashboot
+Scanning dependencies of target GENERAT_NM
+Scanning dependencies of target GENERAT_LST
+Scanning dependencies of target GENERAT_BIN
+Scanning dependencies of target GENERAT_ASM
+[ 98%] post_build:gen bin file
+[ 98%] Built target GENERAT_NM
+[ 98%] Built target GENERAT_BIN
+[ 98%] Built target GENERAT_ASM
+Scanning dependencies of target WS63_GENERAT_SIGNBIN
+Scanning dependencies of target GENERAT_STD_HEX
+Scanning dependencies of target GENERAT_HEX
+[100%] ws63 image sign
+[100%] Built target GENERAT_STD_HEX
+[100%] Built target GENERAT_LST
+[100%] Built target GENERAT_HEX
+Scanning dependencies of target GENERAT_MEM_LIMIT
+Scanning dependencies of target GENERAT_MEM
+[100%] MEM_LIMIT
+[100%] Built target GENERAT_MEM_LIMIT
+generate params.bin...
+Build params success!
+params.bin size:  1024
+params.bin generate successfully!!!
+params_sign.bin generate successfully!!!
+generate fill root_pubk.bin
+merge out path:  /home/sueiny/fbb_ws63/src/build/config/target_config/ws63/sign_config
+root_params_sign.bin generate successfully!!!
+sign name:  ../../../../../output/ws63/acore/ws63-ssb/ssb.bin
+../../../../../output/ws63/acore/ws63-ssb/ssb.bin size:  20928
+../../../../../output/ws63/acore/ws63-ssb/ssb.bin  generated successfully!!!
+ssb_sign.bin generated successfully!!!
+../../../../../output/ws63/acore/ws63-flashboot/flashboot.bin size:  48704
+flash_sign.bin generated successfully!!!
+../../../../../output/ws63/acore/ws63-loaderboot/loaderboot.bin size:  30912
+loaderboot_sign.bin generated successfully!!!
+merge out path:  /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-loaderboot
+root_loaderboot_sign.bin generated successfully!!!
+sign name:  ../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin
+../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin size:  1262848
+../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin  generated successfully!!!
+[100%] Built target WS63_GENERAT_SIGNBIN
+[100%] Built target GENERAT_MEM
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/efuse_cfg.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-ssb/ssb.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-ssb/ssb_sign.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-hilink/ws63-liteos-hilink.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-hilink/ws63-liteos-hilink-sign.bin` not found, will skip it !
+current work direction:  /home/sueiny/fbb_ws63/src
+[!][nv handle]warning:  ./output/ws63/acore/nv_bin/temp/cfg/acore_nv.json  not found!
+[!][nv handle]warning:  ./output/ws63/acore/nv_bin/temp/acore.etypes  not found!
+struct writing in: ./output/ws63/database/cco/system/nv/nv_struct_def.txt
+[!][nv handle]warning:  ./output/ws63/database/cco/system/nv/nv_struct_def.txt  not found!
+python path:  /usr/bin/python3
+[ws63][acore] run custom cmd success!
+/home/sueiny/fbb_ws63/src/build/script/./../../config.in
+/home/sueiny/fbb_ws63/src
+Kconfig header saved to '/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-flashboot/mconfig.h'
+######### Build target:ws63_flashboot success
+ws63-flashboot takes 1.742370 s
+python path:  /usr/bin/python3
+copy_files_to_interim ing...
+['/usr/bin/python3', '/home/sueiny/fbb_ws63/src/build/config/target_config/ws63/script/copy_files_to_interim.py', '/home/sueiny/fbb_ws63/src']
+copy_files_to_interim done!
+['/usr/bin/python3', '/home/sueiny/fbb_ws63/src/build/config/target_config/ws63/script/nv_handle.py']
+[ws63][acore] run custom cmd success!
+Not searching for unused variables given on the command line.
+-- BUILD_PLATFORM: linux
+-- BUILD_PLATFORM: linux
+-- The C compiler identification is GNU 7.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl/bin/riscv32-linux-musl-gcc
+-- The CXX compiler identification is GNU 7.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+GEN_TARGET_SRC = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.c
+PRECOMPILE_TARGET = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.etypes
+TARGET_INCLUDE = /home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include;/home/sueiny/fbb_ws63/src/middleware/utils/common_headers/native
+BGTP_PROJECT=ws63
+BGTP_ROM_VERSION=false
+BGTP_DEVICE_ONLY=false
+BG COMMON BTH_ROM_LIST:__null__
+BTH_ROM_LIST:__null__
+-- project_name:
+-- project_name:
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-loaderboot
+Scanning dependencies of target common_boot_libc
+Scanning dependencies of target non_os
+Scanning dependencies of target nonos_malloc
+Scanning dependencies of target osal
+Scanning dependencies of target hal_cpu_core
+Scanning dependencies of target watchdog
+Scanning dependencies of target tcxo
+Scanning dependencies of target systick
+Scanning dependencies of target loaderboot_common
+Scanning dependencies of target drv_timer
+Scanning dependencies of target hal_pinctrl
+Scanning dependencies of target hal_tcxo
+Scanning dependencies of target uart
+Scanning dependencies of target pinctrl
+Scanning dependencies of target efuse
+Scanning dependencies of target rtc_unified
+Scanning dependencies of target hal_efuse_v151
+Scanning dependencies of target hal_reboot
+Scanning dependencies of target hal_timer
+Scanning dependencies of target hal_reg_config
+Scanning dependencies of target hal_rtc_unified
+Scanning dependencies of target hal_watchdog
+Scanning dependencies of target hal_uart
+[  0%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_utils.c.obj
+[  0%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memset.c.obj
+[  1%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_nmi.c.obj
+[  2%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_atomic.c.obj
+[  3%] Building C object kernel/non_os/malloc/CMakeFiles/nonos_malloc.dir/malloc.c.obj
+Scanning dependencies of target common_boot
+[  3%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memcpy.c.obj
+Scanning dependencies of target hal_sfc
+[  3%] Building C object driver/systick/CMakeFiles/systick.dir/systick.c.obj
+[  5%] Building C object hal/cpu_core/CMakeFiles/hal_cpu_core.dir/hal_cpu_core.c.obj
+Scanning dependencies of target libboundscheck
+[  6%] Building C object driver/watchdog/CMakeFiles/watchdog.dir/watchdog.c.obj
+[  6%] Building C object driver/uart/CMakeFiles/uart.dir/uart.c.obj
+[  6%] Building C object driver/tcxo/CMakeFiles/tcxo.dir/tcxo.c.obj
+[  6%] Building C object driver/timer/CMakeFiles/drv_timer.dir/timer.c.obj
+[  6%] Building C object bootloader/provision_ws63/CMakeFiles/loaderboot_common.dir/startup/main.c.obj
+[  6%] Building C object driver/rtc_unified/CMakeFiles/rtc_unified.dir/rtc.c.obj
+[  6%] Building C object driver/pinmux/CMakeFiles/pinctrl.dir/pinctrl.c.obj
+Scanning dependencies of target chip_ws63
+[  6%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/hal_efuse.c.obj
+[  6%] Building C object driver/efuse/CMakeFiles/efuse.dir/efuse.c.obj
+[  6%] Building C object hal/reboot/CMakeFiles/hal_reboot.dir/hal_reboot.c.obj
+[  6%] Building C object hal/pinmux/CMakeFiles/hal_pinctrl.dir/common/hal_pinctrl.c.obj
+[  7%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memcmp.c.obj
+[  7%] Linking C static library libnonos_malloc.a
+[  7%] Building C object hal/reg_config/CMakeFiles/hal_reg_config.dir/hal_reg_config.c.obj
+[  7%] Linking C static library libnon_os.a
+Scanning dependencies of target uart_port
+[  8%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo.c.obj
+[  8%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_flash.c.obj
+[  8%] Building C object hal/timer/CMakeFiles/hal_timer.dir/hal_drv_timer.c.obj
+[  8%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_reset.c.obj
+[  8%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc.c.obj
+[ 10%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memcpy_s.c.obj
+[ 11%] Building C object hal/uart/CMakeFiles/hal_uart.dir/hal_uart.c.obj
+[ 11%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/strcmp.c.obj
+[ 11%] Linking C static library libhal_cpu_core.a
+[ 11%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_debug.c.obj
+Scanning dependencies of target drv_security_unified
+[ 12%] Linking C static library libdrv_timer.a
+[ 13%] Linking C static library librtc_unified.a
+[ 13%] Linking C static library libsystick.a
+[ 15%] Linking C static library libwatchdog.a
+[ 16%] Building ASM object bootloader/provision_ws63/CMakeFiles/loaderboot_common.dir/startup/riscv_init.S.obj
+[ 16%] Building C object hal/watchdog/CMakeFiles/hal_watchdog.dir/hal_watchdog.c.obj
+Scanning dependencies of target hal_security_unified
+[ 17%] Linking C static library libtcxo.a
+[ 18%] Linking C static library libefuse.a
+[ 20%] Linking C static library libpinctrl.a
+[ 21%] Linking C static library libhal_reboot.a
+[ 22%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/hal_rtc.c.obj
+[ 22%] Linking C static library libuart.a
+[ 22%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt.c.obj
+[ 25%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151.c.obj
+[ 25%] Linking C static library libhal_reg_config.a
+[ 25%] Building C object drivers/chips/ws63/porting/uart/CMakeFiles/uart_port.dir/uart_porting.c.obj
+[ 25%] Building C object hal/pinmux/CMakeFiles/hal_pinctrl.dir/ws63/hal_pinctrl_ws63.c.obj
+[ 26%] Building C object hal/timer/CMakeFiles/hal_timer.dir/v150/hal_timer_v150.c.obj
+[ 26%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_interrupt.c.obj
+[ 26%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo_v150.c.obj
+[ 27%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/strlen.c.obj
+[ 29%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt_handler.c.obj
+[ 29%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151.c.obj
+[ 29%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/romable/hash_romable.c.obj
+[ 30%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_debug.c.obj
+[ 30%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memset_s.c.obj
+[ 31%] Building C object hal/watchdog/CMakeFiles/hal_watchdog.dir/v151/hal_watchdog_v151.c.obj
+[ 31%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/memmove_s.c.obj
+[ 31%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc_v150.c.obj
+[ 32%] Linking C static library libhal_pinctrl.a
+[ 32%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/v100/hal_rtc_v100.c.obj
+[ 32%] Linking C static library libuart_port.a
+[ 32%] Building C object bootloader/provision_ws63/CMakeFiles/loaderboot_common.dir/__/commonboot/src/boot_uart_auth.c.obj
+[ 32%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_rkp.c.obj
+[ 32%] Building C object bootloader/commonboot/libc/CMakeFiles/common_boot_libc.dir/src/string/memmove.c.obj
+[ 32%] Built target nonos_malloc
+[ 34%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_mutex.c.obj
+[ 35%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151_regs_op.c.obj
+[ 36%] Building C object bootloader/provision_ws63/CMakeFiles/loaderboot_common.dir/__/commonboot/src/boot_erase.c.obj
+[ 36%] Building ASM object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/vectors.s.obj
+[ 36%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151_reg_op.c.obj
+[ 37%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/securecutil.c.obj
+[ 37%] Built target non_os
+[ 37%] Building C object hal/timer/CMakeFiles/hal_timer.dir/v150/hal_timer_v150_regs_op.c.obj
+[ 39%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_keyslot.c.obj
+[ 39%] Building C object hal/tcxo/CMakeFiles/hal_tcxo.dir/hal_tcxo_v150_regs_op.c.obj
+[ 40%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_flashboot_cipher.c.obj
+[ 40%] Built target hal_cpu_core
+[ 40%] Linking C static library libhal_watchdog.a
+[ 41%] Building C object hal/sfc/CMakeFiles/hal_sfc.dir/hal_sfc_v150_regs_op.c.obj
+[ 41%] Linking C static library libcommon_boot_libc.a
+Scanning dependencies of target timer_port
+[ 41%] Built target hal_reboot
+[ 41%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_transfer.c.obj
+[ 41%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/crypto_drv_common.c.obj
+[ 41%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_semaphore.c.obj
+[ 41%] Built target drv_timer
+[ 41%] Built target uart
+[ 41%] Built target tcxo
+[ 41%] Built target watchdog
+[ 41%] Built target rtc_unified
+[ 43%] Building C object hal/rtc_unified/CMakeFiles/hal_rtc_unified.dir/v100/hal_rtc_v100_op.c.obj
+[ 43%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/secureprintoutput_a.c.obj
+[ 43%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/flash_patch.c.obj
+[ 43%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_klad.c.obj
+[ 43%] Built target systick
+[ 43%] Linking C static library libhal_timer.a
+[ 43%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_flashboot_symc.c.obj
+[ 44%] Linking C static library libhal_efuse_v151.a
+[ 44%] Built target pinctrl
+[ 45%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/snprintf_s.c.obj
+[ 45%] Linking C static library libhal_uart.a
+[ 45%] Built target efuse
+[ 46%] Linking C static library libhal_tcxo.a
+[ 46%] Linking C static library libloaderboot_common.a
+[ 48%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_spinlock.c.obj
+[ 48%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/sprintf_s.c.obj
+[ 48%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_wait.c.obj
+[ 49%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_keyslot.c.obj
+[ 49%] Built target hal_reg_config
+[ 49%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/boot/crypto_osal_lib.c.obj
+Scanning dependencies of target systick_port
+[ 49%] Building C object drivers/chips/ws63/porting/timer/CMakeFiles/timer_port.dir/timer_porting.c.obj
+[ 49%] Linking C static library libhal_sfc.a
+Scanning dependencies of target tcxo_port
+[ 49%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strcat_s.c.obj
+[ 49%] Built target uart_port
+[ 50%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_fapc/hal_fapc.c.obj
+[ 50%] Building C object kernel/osal/CMakeFiles/osal.dir/src/nonos/osal_task.c.obj
+[ 51%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strcpy_s.c.obj
+[ 51%] Linking C static library libhal_rtc_unified.a
+[ 51%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strncat_s.c.obj
+Scanning dependencies of target watchdog_port
+[ 51%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_klad.c.obj
+[ 53%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/interrupt/interrupt_adapter.c.obj
+[ 55%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_cmd_loop.c.obj
+[ 55%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_fapc/drv_fapc.c.obj
+[ 55%] Built target hal_pinctrl
+Scanning dependencies of target sfc_flash_config_ws63
+[ 55%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/init/cfbb/crypto_curve_param.c.obj
+Scanning dependencies of target pinctrl_port_ws63
+[ 56%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strncpy_s.c.obj
+[ 56%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/crypto_security.c.obj
+[ 56%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/sm2/drv_pke_sm2_verify.c.obj
+[ 56%] Built target hal_watchdog
+[ 56%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/vsprintf_s.c.obj
+[ 58%] Linking C static library libosal.a
+[ 58%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_sign_verify_common.c.obj
+[ 58%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/vsnprintf_s.c.obj
+[ 58%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/vectors/vectors.c.obj
+[ 60%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecdsa.c.obj
+[ 60%] Building C object open_source/libboundscheck/CMakeFiles/libboundscheck.dir/src/strtok_s.c.obj
+[ 62%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/drv_common_pke.c.obj
+[ 62%] Linking C static library libtimer_port.a
+[ 62%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_ymodem.c.obj
+[ 63%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/hal_systick.c.obj
+[ 63%] Building C object drivers/chips/ws63/porting/watchdog/CMakeFiles/watchdog_port.dir/watchdog_porting.c.obj
+[ 64%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_load.c.obj
+[ 64%] Built target common_boot_libc
+[ 64%] Building C object drivers/chips/ws63/porting/tcxo/CMakeFiles/tcxo_port.dir/tcxo_porting.c.obj
+[ 65%] Building C object drivers/chips/ws63/porting/sfc/flash_config/CMakeFiles/sfc_flash_config_ws63.dir/flash_config_info.c.obj
+[ 65%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_crc16.c.obj
+[ 65%] Building C object drivers/chips/ws63/porting/pinctrl/CMakeFiles/pinctrl_port_ws63.dir/pinctrl_porting_ws63.c.obj
+[ 67%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/systick_porting.c.obj
+[ 67%] Building C object drivers/chips/ws63/porting/systick/CMakeFiles/systick_port.dir/hal_systick_ws63.c.obj
+[ 68%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_rom_cipher.c.obj
+[ 68%] Building C object bootloader/commonboot/CMakeFiles/common_boot.dir/src/boot_efuse_opt.c.obj
+[ 68%] Built target hal_uart
+[ 68%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_pke_weak_func.c.obj
+[ 69%] Linking C static library libchip_ws63.a
+[ 68%] Built target loaderboot_common
+[ 69%] Built target hal_tcxo
+Scanning dependencies of target sfc_boot
+[ 69%] Built target hal_timer
+Scanning dependencies of target efuse_port
+Scanning dependencies of target sfc_port_ws63
+[ 70%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/ecc_data_ram_addr.c.obj
+[ 72%] Linking C static library libwatchdog_port.a
+[ 72%] Built target hal_efuse_v151
+[ 72%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/trng/hal_trng.c.obj
+[ 72%] Linking C static library liblibboundscheck.a
+[ 72%] Linking C static library libsfc_flash_config_ws63.a
+[ 73%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/spacc/hal_hash.c.obj
+[ 73%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/rom_lib.c.obj
+Scanning dependencies of target reboot_port
+Scanning dependencies of target nonos_malloc_port
+[ 73%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/hal_pke.c.obj
+Scanning dependencies of target rtc_unified_port
+[ 74%] Linking C static library libtcxo_port.a
+[ 75%] Linking C static library libcommon_boot.a
+[ 75%] Built target hal_rtc_unified
+[ 75%] Built target hal_sfc
+Scanning dependencies of target soc_port
+[ 75%] Linking C static library libdrv_security_unified.a
+[ 75%] Linking C static library libsystick_port.a
+[ 75%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect_gd25q32.c.obj
+[ 75%] Building C object drivers/chips/ws63/porting/efuse/CMakeFiles/efuse_port.dir/efuse_porting.c.obj
+[ 75%] Building C object drivers/chips/ws63/porting/sfc/driver/CMakeFiles/sfc_boot.dir/sfc.c.obj
+[ 75%] Linking C static library libpinctrl_port_ws63.a
+[ 77%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_porting.c.obj
+[ 77%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect.c.obj
+Scanning dependencies of target chip_boot_port
+Scanning dependencies of target boot_port_malloc
+[ 77%] Building C object drivers/chips/ws63/porting/rtc_unified/CMakeFiles/rtc_unified_port.dir/rtc_porting.c.obj
+[ 77%] Building C object drivers/chips/ws63/porting/mem/CMakeFiles/nonos_malloc_port.dir/malloc_porting.c.obj
+[ 77%] Building C object drivers/chips/ws63/porting/soc/CMakeFiles/soc_port.dir/soc_porting.c.obj
+[ 78%] Linking C static library libhal_security_unified.a
+[ 78%] Built target timer_port
+[ 79%] Building C object drivers/chips/ws63/porting/reboot/CMakeFiles/reboot_port.dir/reboot_porting.c.obj
+Scanning dependencies of target nv_config_ws63
+[ 79%] Built target chip_ws63
+[ 79%] Built target osal
+Scanning dependencies of target dfx_preserve
+[ 79%] Linking C static library libefuse_port.a
+Scanning dependencies of target dfx_panic
+Scanning dependencies of target dfx_exception
+Scanning dependencies of target reboot
+[ 81%] Linking C static library librtc_unified_port.a
+[ 82%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/watchdog/boot_watchdog.c.obj
+[ 82%] Linking C static library libsfc_boot.a
+[ 82%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/serial/serial.c.obj
+Scanning dependencies of target cpu_utils
+[ 83%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/delay/delay.c.obj
+[ 83%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/boot_port_malloc.dir/malloc/boot_malloc.c.obj
+Scanning dependencies of target error_code
+[ 84%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/reset/reset_porting.c.obj
+[ 84%] Linking C static library libsfc_port_ws63.a
+[ 84%] Generating NV_SRC
+[ 86%] Linking C static library libnonos_malloc_port.a
+[ 86%] Building C object drivers/chips/ws63/boot/boot_porting/CMakeFiles/chip_boot_port.dir/validate_chip/validate_chip.c.obj
+[ 88%] Linking C static library libsoc_port.a
+[ 88%] Building ASM object middleware/chips/ws63/exception/CMakeFiles/dfx_exception.dir/exception_riscv.s.obj
+[ 88%] Built target tcxo_port
+[ 88%] Built target common_boot
+[ 88%] Building C object middleware/chips/ws63/exception/CMakeFiles/dfx_exception.dir/exception_riscv.c.obj
+[ 88%] Building C object utils/dfx/CMakeFiles/dfx_preserve.dir/preserve/private/crash_data.c.obj
+[ 88%] Built target drv_security_unified
+[ 89%] Building C object utils/error_code/CMakeFiles/error_code.dir/private/error_code.c.obj
+[ 89%] Built target pinctrl_port_ws63
+[ 89%] Building C object utils/dfx/CMakeFiles/dfx_panic.dir/panic/private/panic_rom.c.obj
+[ 89%] Built target libboundscheck
+[ 91%] Building C object utils/dfx/dfx_reboot/cpu_utils/CMakeFiles/cpu_utils.dir/private/cpu_utils.c.obj
+[ 91%] Building C object utils/dfx/CMakeFiles/dfx_preserve.dir/preserve/private/preserve.c.obj
+[ 91%] Built target watchdog_port
+[ 91%] Built target sfc_flash_config_ws63
+[ 91%] Linking C static library libreboot_port.a
+[ 92%] Building C object utils/dfx/CMakeFiles/dfx_panic.dir/panic/private/panic.c.obj
+[ 92%] Linking C static library libboot_port_malloc.a
+[ 92%] Built target systick_port
+[ 93%] Linking C static library liberror_code.a
+[ 93%] Building C object utils/dfx/dfx_reboot/reboot/CMakeFiles/reboot.dir/shared/non_os_reboot.c.obj
+[ 94%] Linking C static library libchip_boot_port.a
+[ 94%] Linking C static library libdfx_exception.a
+[ 94%] Built target efuse_port
+[ 94%] Built target sfc_boot
+[ 96%] Linking C static library libdfx_preserve.a
+[ 96%] Built target hal_security_unified
+[ 97%] Linking C static library libdfx_panic.a
+[ 97%] Linking C static library libcpu_utils.a
+[ 97%] Built target rtc_unified_port
+[ 97%] Built target nonos_malloc_port
+[ 97%] Built target sfc_port_ws63
+[ 97%] Built target soc_port
+[ 97%] Linking C static library libreboot.a
+[ 97%] Built target nv_config_ws63
+[ 97%] Built target reboot_port
+[ 97%] Built target boot_port_malloc
+[ 97%] Built target chip_boot_port
+[ 97%] Built target error_code
+[ 97%] Built target dfx_exception
+[ 97%] Built target dfx_preserve
+[ 97%] Built target dfx_panic
+[ 97%] Built target cpu_utils
+[ 97%] Built target reboot
+Scanning dependencies of target loaderboot
+[ 98%] Building C object CMakeFiles/loaderboot.dir/temp/__null___.c.obj
+[ 98%] Linking C executable loaderboot.elf
+Generating /home/sueiny/fbb_ws63/src/drivers/boards/ws63/evb/linker/loaderboot_linker/linker.prelds -> /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-loaderboot/linker.lds
+Memory region         Used Size  Region Size  %age Used
+           STACK:          9 KB         9 KB    100.00%
+            SRAM:       18080 B       119 KB     14.84%
+LOADERBOOT_ROM_ADDR:       30860 B        40 KB     75.34%
+[ 98%] Built target loaderboot
+Scanning dependencies of target GENERAT_ASM
+Scanning dependencies of target GENERAT_LST
+Scanning dependencies of target GENERAT_BIN
+Scanning dependencies of target GENERAT_NM
+[ 98%] post_build:gen bin file
+[ 98%] Built target GENERAT_NM
+[ 98%] Built target GENERAT_BIN
+[ 98%] Built target GENERAT_ASM
+Scanning dependencies of target WS63_GENERAT_SIGNBIN
+Scanning dependencies of target GENERAT_HEX
+Scanning dependencies of target GENERAT_STD_HEX
+[100%] ws63 image sign
+[100%] Built target GENERAT_STD_HEX
+[100%] Built target GENERAT_LST
+Scanning dependencies of target GENERAT_MEM_LIMIT
+Scanning dependencies of target GENERAT_MEM
+[100%] Built target GENERAT_HEX
+[100%] MEM_LIMIT
+[100%] Built target GENERAT_MEM_LIMIT
+generate params.bin...
+Build params success!
+params.bin size:  1024
+params.bin generate successfully!!!
+params_sign.bin generate successfully!!!
+generate fill root_pubk.bin
+merge out path:  /home/sueiny/fbb_ws63/src/build/config/target_config/ws63/sign_config
+root_params_sign.bin generate successfully!!!
+sign name:  ../../../../../output/ws63/acore/ws63-ssb/ssb.bin
+../../../../../output/ws63/acore/ws63-ssb/ssb.bin size:  20928
+../../../../../output/ws63/acore/ws63-ssb/ssb.bin  generated successfully!!!
+ssb_sign.bin generated successfully!!!
+../../../../../output/ws63/acore/ws63-flashboot/flashboot.bin size:  48704
+flash_sign.bin generated successfully!!!
+../../../../../output/ws63/acore/ws63-loaderboot/loaderboot.bin size:  30860
+loaderboot_sign.bin generated successfully!!!
+merge out path:  /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-loaderboot
+root_loaderboot_sign.bin generated successfully!!!
+sign name:  ../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin
+../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin size:  1262848
+../../../../../output/ws63/acore/boot_bin/ws63-liteos-mfg.bin  generated successfully!!!
+[100%] Built target WS63_GENERAT_SIGNBIN
+[100%] Built target GENERAT_MEM
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/efuse_cfg.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-ssb/ssb.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-ssb/ssb_sign.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-hilink/ws63-liteos-hilink.bin` not found, will skip it !
+[!][copy_files_to_interim] File `/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-hilink/ws63-liteos-hilink-sign.bin` not found, will skip it !
+current work direction:  /home/sueiny/fbb_ws63/src
+[!][nv handle]warning:  ./output/ws63/acore/nv_bin/temp/cfg/acore_nv.json  not found!
+[!][nv handle]warning:  ./output/ws63/acore/nv_bin/temp/acore.etypes  not found!
+struct writing in: ./output/ws63/database/cco/system/nv/nv_struct_def.txt
+[!][nv handle]warning:  ./output/ws63/database/cco/system/nv/nv_struct_def.txt  not found!
+python path:  /usr/bin/python3
+[ws63][acore] run custom cmd success!
+/home/sueiny/fbb_ws63/src/build/script/./../../config.in
+/home/sueiny/fbb_ws63/src
+Kconfig header saved to '/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-loaderboot/mconfig.h'
+######### Build target:ws63_loaderboot success
+ws63-loaderboot takes 1.498156 s
+python path:  /usr/bin/python3
+copy_files_to_interim ing...
+['/usr/bin/python3', '/home/sueiny/fbb_ws63/src/build/config/target_config/ws63/script/copy_files_to_interim.py', '/home/sueiny/fbb_ws63/src']
+copy_files_to_interim done!
+['/usr/bin/python3', '/home/sueiny/fbb_ws63/src/build/config/target_config/ws63/script/nv_handle.py']
+[ws63][acore] run custom cmd success!
+Not searching for unused variables given on the command line.
+-- BUILD_PLATFORM: linux
+-- BUILD_PLATFORM: linux
+-- The C compiler identification is GNU 7.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc
+-- The CXX compiler identification is GNU 7.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+LOSCFG_PLATFORM is set to ws63
+LOSCFG_COMPILER_GNU_BINUTILS is set to y
+LOSCFG_COMPILER_GCC is set to y
+LOSCFG_COMPILER_TOOLCHAIN_MUSL is set to y
+LOSCFG_COMPILER_RISCV_GCC_MUSL is set to y
+LOSCFG_COMPILER_RISCV_UNKNOWN is set to y
+LOSCFG_RISCV_COMPILER_OPTIONS_USER_DEFINED is set to 
+LOSCFG_RISCV_COMPILER_OPTIONS_LDM_STM is set to y
+LOSCFG_RISCV_COMPILER_OPTIONS_EMIT_LLI is set to y
+LOSCFG_COMPILER_OPTIMIZE_SIZE is set to y
+LOSCFG_FAMILY_AIOT is set to y
+LOSCFG_FAMILY is set to aiot
+LOSCFG_PLATFORM is set to ws63
+LOSCFG_PLATFORM_WS63 is set to y
+LOSCFG_USING_BOARD_LD is set to y
+LOSCFG_USING_BOARD_RESET_VECTOR is set to y
+LOSCFG_ARCH_FPU_ENABLE is set to y
+LOSCFG_APC_ENABLE is set to y
+LOSCFG_ARCH_PMU is set to y
+LOSCFG_ARCH_RISCV32 is set to y
+LOSCFG_ARCH_RISCV_RV32IMC is set to y
+LOSCFG_ARCH_RISCV_RV32F is set to y
+LOSCFG_ARCH_LINXCORE_131 is set to y
+LOSCFG_KERNEL_MIN is set to y
+LOSCFG_SCHED is set to y
+LOSCFG_SCHED_SQ is set to y
+LOSCFG_BASE_CORE_TIMESLICE is set to y
+LOSCFG_BASE_CORE_TIMESLICE_TIMEOUT is set to 2
+LOSCFG_BASE_CORE_TSK_MONITOR is set to y
+LOSCFG_TASK_STACK_DYNAMIC_ALLOCATION is set to y
+LOSCFG_BASE_CORE_TSK_LIMIT is set to 28
+LOSCFG_BASE_CORE_TSK_MIN_STACK_SIZE is set to 1024
+LOSCFG_BASE_CORE_TSK_DEFAULT_STACK_SIZE is set to 2048
+LOSCFG_BASE_CORE_TSK_SWTMR_STACK_SIZE is set to 2048
+LOSCFG_BASE_CORE_TSK_IDLE_STACK_SIZE is set to 1024
+LOSCFG_BASE_CORE_TSK_DEFAULT_PRIO is set to 10
+LOSCFG_BASE_CORE_TICK_PER_SECOND is set to 100
+LOSCFG_BASE_CORE_USE_SINGLE_LIST is set to y
+LOSCFG_STARTUP_STACK_SIZE is set to 0x4000
+LOSCFG_KERNEL_MEM_ALLOC is set to y
+LOSCFG_KERNEL_MEM_BESTFIT is set to y
+LOSCFG_KERNEL_MEM_SLAB_EXTENTION is set to y
+LOSCFG_MEM_TASK_STAT is set to y
+LOSCFG_ARCH_INTERRUPT_TAKEOVER is set to y
+LOSCFG_ARCH_INTERRUPT_PREEMPTION is set to y
+LOSCFG_HWI_PRE_POST_PROCESS is set to y
+LOSCFG_HWI_WITH_ARG is set to y
+LOSCFG_IRQ_STACK_SIZE is set to 0x2000
+LOSCFG_NMI_STACK_SIZE is set to 0x800
+LOSCFG_PLATFORM_HWI_LIMIT is set to 96
+LOSCFG_HWI_PRIO_LIMIT is set to 7
+LOSCFG_EXC_STACK_SIZE is set to 0x800
+LOSCFG_BASE_CORE_SWTMR is set to y
+LOSCFG_BASE_CORE_SWTMR_LIMIT is set to 16
+LOSCFG_BASE_IPC_QUEUE is set to y
+LOSCFG_QUEUE_DYNAMIC_ALLOCATION is set to y
+LOSCFG_BASE_IPC_QUEUE_LIMIT is set to 16
+LOSCFG_BASE_IPC_EVENT is set to y
+LOSCFG_BASE_IPC_MUX is set to y
+LOSCFG_MUTEX_WAITMODE_PRIO is set to y
+LOSCFG_BASE_IPC_MUX_LIMIT is set to 60
+LOSCFG_BASE_IPC_SEM is set to y
+LOSCFG_BASE_IPC_SEM_LIMIT is set to 32
+LOSCFG_KERNEL_PRINTF is set to y
+LOSCFG_KERNEL_PRINTF_SIZE_EXTEND is set to y
+LOSCFG_KERNEL_RINGBUF is set to y
+LOSCFG_BASE_CORE_SYS_RES_CHECK is set to y
+LOSCFG_LIB_LIBC is set to y
+LOSCFG_LIB_LIBM is set to y
+LOSCFG_LIB_FORMAT is set to y
+LOSCFG_COMPAT_CMSIS is set to y
+LOSCFG_COMPAT_CMSIS_VER_2 is set to y
+LOSCFG_COMPAT_LINUX is set to y
+LOSCFG_COMPAT_LINUX_PENDLIST is set to y
+LOSCFG_COMPAT_LINUX_TIMER is set to y
+LOSCFG_COMPAT_LINUX_COMPLETION is set to y
+LOSCFG_COMPAT_LINUX_WAITQUEUE is set to y
+LOSCFG_COMPAT_LINUX_DRIVER_BASE is set to y
+LOSCFG_NET_IPERF is set to y
+LOSCFG_BACKTRACE is set to y
+LOSCFG_DEBUG_RESOURCE_INFO is set to y
+LOSCFG_SERIAL_OUTPUT_ENABLE is set to y
+LOSCFG_KERNEL_CPUP is set to y
+LOSCFG_DRIVERS_BASE is set to y
+LOSCFG_RISCV_HIMIDEERV200_PLIC is set to y
+LOSCFG_TIMER_VENDOR is set to y
+LOSCFG_DRIVERS_UART_VENDOR is set to y
+LOSCFG_DRIVERS_SIMPLE_UART is set to y
+LOSCFG_CC_NO_STACKPROTECTOR is set to y
+CMAKE_TOOLCHAIN_FILE is defined ahead, skip auto-config compiler
+CMAKE_TOOLCHAIN_FILE is defined ahead, skip auto-config compiler
+OUT:/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/kernel/liteos/liteos_v208.5.0
+LITEOS_MODULE_DEP_LIBS_PATH:
+LITEOS_DEP_LIBS_INT:
+LITEOS_DEP_LIBS_EXT:gcc;gcc_eh
+LITEOS_BASELIB:m;gcc;gcc_eh
+LOS_INTF_DEP_TARGETS:
+-- COM_HEADER-include/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/kernel/liteos/liteos_v208.5.0/menuconfig/include/menuconfig.h
+-- /home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/patch/sfc_patch.c is not found, finding libplat_patch.a in /home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/patch/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/drivers/chips/ws63/rom_config/acore/output/rom_callback.S is not found, finding librom_callback.a in /home/sueiny/fbb_ws63/src/drivers/chips/ws63/ws63-liteos-app
+GEN_TARGET_SRC = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.c
+PRECOMPILE_TARGET = /home/sueiny/fbb_ws63/src/output/ws63/acore/acore.etypes
+TARGET_INCLUDE = /home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include;/home/sueiny/fbb_ws63/src/middleware/utils/common_headers/native
+-- /home/sueiny/fbb_ws63/src/middleware/utils/at/at_bt_cmd/src/at_bt_cmd_register.c is not found, finding libbt_at.a in /home/sueiny/fbb_ws63/src/middleware/utils/at/at_bt_cmd/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/middleware/utils/at/at_radar_cmd/at/at_radar.c is not found, finding libradar_at.a in /home/sueiny/fbb_ws63/src/middleware/utils/at/at_radar_cmd/ws63-liteos-app
+Build wifi device with rom repo!
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/rom_code/ws63/source/alg/iot_alg/device/alg_main.c is not found, finding libwifi_driver_dmac.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/rom_code/ws63/source/common/romable/wifi_rom_data.c is not found, finding libwifi_rom_data.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/host/feature/interface/hmac_feature_interface.c is not found, finding libwifi_driver_hmac.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/host/forward/hmac_rx_data.c is not found, finding libwifi_driver_tcm.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/alg/iot_alg/host/alg_txbf.c is not found, finding libwifi_alg_txbf.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/alg/iot_alg/host/alg_temp_protect.c is not found, finding libwifi_alg_temp_protect.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/alg/iot_alg/host/alg_anti_interference.c is not found, finding libwifi_alg_anti_interference.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/alg/iot_alg/host/alg_edca_opt.c is not found, finding libwifi_alg_edca_opt.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/wifi/source/alg/iot_alg/host/alg_cca_intrf_mode.c is not found, finding libwifi_alg_cca_opt.a in /home/sueiny/fbb_ws63/src/protocol/wifi/ws63-liteos-app
+BGTP_PROJECT=ws63
+BGTP_ROM_VERSION=true
+BGTP_DEVICE_ONLY=false
+-- /home/sueiny/fbb_ws63/src/protocol/bt/controller/bgtp/__null__ is not found, finding libbgtp.a in /home/sueiny/fbb_ws63/src/protocol/bt/controller/bgtp/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/bt/controller/bgtp/__null__ is not found, finding libbgtp_rom_data.a in /home/sueiny/fbb_ws63/src/protocol/bt/controller/bgtp/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/bt/host/bg_common/__null__ is not found, finding libbg_common.a in /home/sueiny/fbb_ws63/src/protocol/bt/host/bg_common/ws63-liteos-app
+BG COMMON BTH_ROM_LIST:__null__
+BTH_ROM_LIST:__null__
+-- /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/__null__ is not found, finding libbt_app.a in /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/sdk/__null__ is not found, finding libbth_sdk.a in /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/sdk/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/__null__ is not found, finding libbt_host.a in /home/sueiny/fbb_ws63/src/protocol/bt/host/bt/ws63-liteos-app
+BTH_ROM_LIST:__null__
+BTH_PUBLIC_HEADER_LIST=
+-- /home/sueiny/fbb_ws63/src/protocol/bt/host/gle/__null__ is not found, finding libbth_gle.a in /home/sueiny/fbb_ws63/src/protocol/bt/host/gle/ws63-liteos-app
+-- /home/sueiny/fbb_ws63/src/protocol/radar/alg_ai/radar_ai_attention_layer.c is not found, finding libradar_ai.a in /home/sueiny/fbb_ws63/src/protocol/radar/alg_ai/ws63-liteos-app
+-- project_name:
+-- /home/sueiny/fbb_ws63/src/protocol/radar/plat/utils/radar_fft.c is not found, finding libradar_sensing.a in /home/sueiny/fbb_ws63/src/protocol/radar/plat/ws63-liteos-app
+-- project_name:
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app
+Scanning dependencies of target adc
+Scanning dependencies of target pmp
+Scanning dependencies of target dma
+Scanning dependencies of target non_os
+Scanning dependencies of target hal_pmp
+Scanning dependencies of target tsensor
+Scanning dependencies of target pwm
+Scanning dependencies of target i2s
+Scanning dependencies of target hal_cpu_core
+[  0%] Building C object driver/adc/CMakeFiles/adc.dir/adc.c.obj
+[  0%] Building C object driver/i2s/CMakeFiles/i2s.dir/i2s.c.obj
+[  0%] Building C object driver/pwm/CMakeFiles/pwm.dir/pwm.c.obj
+Scanning dependencies of target hal_pwm
+[  0%] Building C object driver/tsensor/CMakeFiles/tsensor.dir/tsensor.c.obj
+Scanning dependencies of target hal_mips
+Scanning dependencies of target i2c
+[  1%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/hal_pmp.c.obj
+Scanning dependencies of target osal_adapt
+Scanning dependencies of target hal_efuse_v151
+[  1%] Linking C static library libadc.a
+Scanning dependencies of target hal_dma_v151
+Scanning dependencies of target lpm
+Scanning dependencies of target efuse
+[  1%] Building C object driver/pmp/CMakeFiles/pmp.dir/pmp.c.obj
+[  1%] Building C object driver/dma/CMakeFiles/dma.dir/dma.c.obj
+Scanning dependencies of target hal_adc
+Scanning dependencies of target hal_gpio_v150
+Scanning dependencies of target spi
+Scanning dependencies of target gpio
+[  1%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_utils.c.obj
+Scanning dependencies of target uart
+[  1%] Building C object hal/cpu_core/CMakeFiles/hal_cpu_core.dir/hal_cpu_core.c.obj
+Scanning dependencies of target hal_reboot
+[  1%] Building C object hal/mips/CMakeFiles/hal_mips.dir/hal_mips.c.obj
+[  1%] Building C object driver/i2c/CMakeFiles/i2c.dir/i2c.c.obj
+[  1%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/v31/hal_pmp_riscv31.c.obj
+[  1%] Linking C static library libtsensor.a
+[  1%] Linking C static library libi2s.a
+[  1%] Linking C static library libdma.a
+[  1%] Linking C static library libpmp.a
+[  2%] Building C object driver/spi/CMakeFiles/spi.dir/spi.c.obj
+[  2%] Linking C static library libpwm.a
+[  2%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_atomic.c.obj
+[  2%] Building C object kernel/non_os/non_os/CMakeFiles/non_os.dir/non_os_nmi.c.obj
+[  2%] Building C object driver/efuse/CMakeFiles/efuse.dir/efuse.c.obj
+Scanning dependencies of target hal_i2c
+[  2%] Linking C static library libhal_cpu_core.a
+[  2%] Building C object driver/gpio/CMakeFiles/gpio.dir/gpio.c.obj
+[  2%] Building C object hal/adc/CMakeFiles/hal_adc.dir/hal_adc.c.obj
+[  3%] Building C object driver/lpm/CMakeFiles/lpm.dir/lpm_dev_ops.c.obj
+[  3%] Linking C static library libhal_mips.a
+[  3%] Building C object hal/pmp/CMakeFiles/hal_pmp.dir/v31/hal_pmp_riscv31_regs_op.c.obj
+Scanning dependencies of target samples
+[  3%] Building C object hal/dma/CMakeFiles/hal_dma_v151.dir/hal_dma.c.obj
+[  3%] Building C object driver/uart/CMakeFiles/uart.dir/uart.c.obj
+[  3%] Linking C static library libi2c.a
+[  3%] Linking C static library libspi.a
+[  3%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/hal_efuse.c.obj
+[  4%] Linking C static library libnon_os.a
+[  4%] Building C object hal/i2c/CMakeFiles/hal_i2c.dir/hal_i2c.c.obj
+[  4%] Building C object hal/gpio/CMakeFiles/hal_gpio_v150.dir/hal_gpio.c.obj
+[  5%] Building C object hal/pwm/CMakeFiles/hal_pwm.dir/hal_pwm.c.obj
+[  5%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_event.c.obj
+[  5%] Linking C static library libefuse.a
+[  5%] Linking C static library libgpio.a
+[  5%] Linking C static library liblpm.a
+[  5%] Built target adc
+[  5%] Building C object hal/dma/CMakeFiles/hal_dma_v151.dir/hal_dma_mem.c.obj
+[  6%] Building C object hal/adc/CMakeFiles/hal_adc.dir/v154/hal_adc_v154.c.obj
+[  6%] Linking C static library libhal_pmp.a
+Scanning dependencies of target ws63_liteos_app
+[  6%] Built target tsensor
+[  6%] Building C object hal/reboot/CMakeFiles/hal_reboot.dir/hal_reboot.c.obj
+[  6%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151.c.obj
+[  6%] Building C object hal/i2c/CMakeFiles/hal_i2c.dir/v150/hal_i2c_v150_master.c.obj
+[  6%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_service.c.obj
+[  6%] Linking C static library libuart.a
+[  6%] Building C object hal/pwm/CMakeFiles/hal_pwm.dir/v151/hal_pwm_v151.c.obj
+[  6%] Built target pwm
+[  6%] Built target hal_cpu_core
+[  6%] Building C object hal/gpio/CMakeFiles/hal_gpio_v150.dir/v150/hal_gpio_v150.c.obj
+[  6%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_string.c.obj
+[  6%] Built target dma
+[  6%] Building C object hal/dma/CMakeFiles/hal_dma_v151.dir/v151/hal_dmac_v151.c.obj
+[  6%] Building C object hal/adc/CMakeFiles/hal_adc.dir/v154/hal_adc_v154_regs_op.c.obj
+[  6%] Built target i2s
+[  6%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_parser.c.obj
+[  6%] Built target pmp
+[  6%] Building C object hal/pwm/CMakeFiles/hal_pwm.dir/v151/hal_pwm_v151_regs_op.c.obj
+[  6%] Building C object hal/i2c/CMakeFiles/hal_i2c.dir/v150/hal_i2c_v150.c.obj
+[  6%] Built target hal_mips
+[  6%] Building C object hal/efuse/CMakeFiles/hal_efuse_v151.dir/v151/hal_efuse_v151_reg_op.c.obj
+Scanning dependencies of target osal
+[  6%] Building C object application/ws63/ws63_liteos_application/CMakeFiles/ws63_liteos_app.dir/main.c.obj
+[  6%] Building C object hal/gpio/CMakeFiles/hal_gpio_v150.dir/v150/hal_gpio_v150_regs_op.c.obj
+[  6%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_router.c.obj
+[  6%] Building C object hal/dma/CMakeFiles/hal_dma_v151.dir/v151/hal_dmac_v151_regs_op.c.obj
+[  6%] Linking C static library libhal_adc.a
+[  6%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_task.c.obj
+[  6%] Building ASM object application/ws63/ws63_liteos_application/CMakeFiles/ws63_liteos_app.dir/reset_vector.S.obj
+[  6%] Built target spi
+[  6%] Building C object hal/i2c/CMakeFiles/hal_i2c.dir/v150/hal_i2c_v150_comm.c.obj
+[  7%] Linking C static library libhal_reboot.a
+[  7%] Built target non_os
+[  7%] Built target efuse
+[  7%] Built target i2c
+[  7%] Building C object hal/gpio/CMakeFiles/hal_gpio_v150.dir/v150/hal_gpio_v150_comm.c.obj
+[  7%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_sender.c.obj
+[  7%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_protocol.c.obj
+[  7%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_timer.c.obj
+[  7%] Built target uart
+[  7%] Built target gpio
+[  7%] Linking C static library libhal_pwm.a
+[  7%] Building C object hal/i2c/CMakeFiles/hal_i2c.dir/v150/hal_i2c_v150_regs_op.c.obj
+[  7%] Building C object application/ws63/ws63_liteos_application/CMakeFiles/ws63_liteos_app.dir/clock_init.c.obj
+[  8%] Linking C static library libhal_dma_v151.a
+[  8%] Building C object kernel/osal_adapt/CMakeFiles/osal_adapt.dir/src/osal_adapt_debug.c.obj
+[  8%] Built target hal_pmp
+[  8%] Building C object kernel/osal/CMakeFiles/osal.dir/adapt/liteos/osal_debug_adapt.c.obj
+[  8%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/storage/dtu_storage.c.obj
+[  8%] Built target lpm
+[  8%] Linking C static library libhal_efuse_v151.a
+[ 10%] Linking C static library libhal_gpio_v150.a
+Scanning dependencies of target hal_tsensor
+[ 10%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_mode_config.c.obj
+[ 11%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj
+Scanning dependencies of target hal_spi
+[ 11%] Building C object kernel/osal/CMakeFiles/osal.dir/adapt/liteos/oal_onetrack.c.obj
+[ 11%] Linking C static library libhal_i2c.a
+[ 11%] Linking C static library libws63_liteos_app.a
+Scanning dependencies of target pmp_cfg_ws63
+[ 11%] Linking C static library libosal_adapt.a
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_parser.c: In function ‘dtu_service_on_bytes’:
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_parser.c:17:46: error: unused parameter ‘transport_id’ [-Werror=unused-parameter]
+ void dtu_service_on_bytes(dtu_transport_id_t transport_id, const uint8_t *data, uint16_t len)
+                                              ^~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_parser.c:17:75: error: unused parameter ‘data’ [-Werror=unused-parameter]
+ void dtu_service_on_bytes(dtu_transport_id_t transport_id, const uint8_t *data, uint16_t len)
+                                                                           ^~~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_parser.c:17:90: error: unused parameter ‘len’ [-Werror=unused-parameter]
+ void dtu_service_on_bytes(dtu_transport_id_t transport_id, const uint8_t *data, uint16_t len)
+                                                                                          ^~~
+At top level:
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_parser.c:8:31: error: ‘dtu_service_parser’ defined but not used [-Werror=unused-function]
+ static dtu_protocol_parser_t *dtu_service_parser(dtu_transport_id_t transport_id)
+                               ^~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+[ 11%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_mode_run.c.obj
+[ 11%] Built target hal_adc
+[ 11%] Building C object kernel/osal/CMakeFiles/osal.dir/adapt/liteos/osal_cpp_adapt.c.obj
+make[2]: *** [application/samples/CMakeFiles/samples.dir/build.make:76: application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_parser.c.obj] Error 1
+make[2]: *** Waiting for unfinished jobs....
+[ 12%] Building C object hal/spi/CMakeFiles/hal_spi.dir/hal_spi.c.obj
+[ 12%] Building C object application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj
+[ 12%] Built target hal_dma_v151
+[ 12%] Building C object hal/tsensor/CMakeFiles/hal_tsensor.dir/v151/hal_tsensor_v151.c.obj
+[ 12%] Building C object hal/tsensor/CMakeFiles/hal_tsensor.dir/v151/hal_tsensor_v151_regs_op.c.obj
+[ 12%] Building C object hal/tsensor/CMakeFiles/hal_tsensor.dir/hal_tsensor.c.obj
+[ 12%] Building C object hal/spi/CMakeFiles/hal_spi.dir/v151/hal_spi_v151.c.obj
+[ 12%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_addr.c.obj
+Scanning dependencies of target hal_uart
+[ 12%] Building C object drivers/chips/ws63/porting/arch/CMakeFiles/pmp_cfg_ws63.dir/riscv/pmp_cfg.c.obj
+Scanning dependencies of target pwm_port
+Scanning dependencies of target hal_sio
+[ 12%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_atomic.c.obj
+[ 12%] Built target hal_gpio_v150
+[ 12%] Built target hal_pwm
+[ 12%] Building C object hal/spi/CMakeFiles/hal_spi.dir/v151/hal_spi_v151_regs_op.c.obj
+[ 12%] Built target hal_reboot
+[ 12%] Built target hal_efuse_v151
+Scanning dependencies of target gpio_port
+Scanning dependencies of target adc_port
+[ 12%] Building C object hal/uart/CMakeFiles/hal_uart.dir/hal_uart.c.obj
+Scanning dependencies of target pmp_port
+[ 12%] Building C object hal/sio/CMakeFiles/hal_sio.dir/hal_sio.c.obj
+Scanning dependencies of target chip_ws63
+[ 13%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151.c.obj
+[ 13%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_barrier.c.obj
+[ 13%] Linking C static library libhal_tsensor.a
+[ 13%] Linking C static library libhal_spi.a
+[ 13%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_cache.c.obj
+[ 14%] Linking C static library libpmp_cfg_ws63.a
+Scanning dependencies of target wifi_csa
+Scanning dependencies of target dma_port
+[ 14%] Built target osal_adapt
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_completion.c.obj
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c: In function ‘dtu_service_reply’:
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c:8:43: error: unused parameter ‘transport_id’ [-Werror=unused-parameter]
+ void dtu_service_reply(dtu_transport_id_t transport_id, uint8_t cmd, uint8_t seq, const uint8_t *body, uint16_t body_len)
+                                           ^~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c:8:65: error: unused parameter ‘cmd’ [-Werror=unused-parameter]
+ void dtu_service_reply(dtu_transport_id_t transport_id, uint8_t cmd, uint8_t seq, const uint8_t *body, uint16_t body_len)
+                                                                 ^~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c:8:78: error: unused parameter ‘seq’ [-Werror=unused-parameter]
+ void dtu_service_reply(dtu_transport_id_t transport_id, uint8_t cmd, uint8_t seq, const uint8_t *body, uint16_t body_len)
+                                                                              ^~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c:8:98: error: unused parameter ‘body’ [-Werror=unused-parameter]
+ void dtu_service_reply(dtu_transport_id_t transport_id, uint8_t cmd, uint8_t seq, const uint8_t *body, uint16_t body_len)
+                                                                                                  ^~~~
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/service/dtu_sender.c:8:113: error: unused parameter ‘body_len’ [-Werror=unused-parameter]
+ void dtu_service_reply(dtu_transport_id_t transport_id, uint8_t cmd, uint8_t seq, const uint8_t *body, uint16_t body_len)
+                                                                                                                 ^~~~~~~~
+cc1: all warnings being treated as errors
+[ 15%] Building C object drivers/chips/ws63/porting/gpio/CMakeFiles/gpio_port.dir/gpio_porting.c.obj
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_debug.c.obj
+[ 15%] Built target ws63_liteos_app
+[ 15%] Building C object drivers/chips/ws63/porting/pwm/CMakeFiles/pwm_port.dir/pwm_porting.c.obj
+make[2]: *** [application/samples/CMakeFiles/samples.dir/build.make:89: application/samples/CMakeFiles/samples.dir/Dtu/service/dtu_sender.c.obj] Error 1
+Scanning dependencies of target sfc_flash_config_ws63
+make[1]: *** [CMakeFiles/Makefile2:9393: application/samples/CMakeFiles/samples.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 15%] Built target hal_i2c
+[ 15%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt.c.obj
+[ 15%] Building C object drivers/chips/ws63/porting/adc/CMakeFiles/adc_port.dir/adc_porting.c.obj
+[ 15%] Building C object drivers/chips/ws63/porting/pmp/CMakeFiles/pmp_port.dir/pmp_porting.c.obj
+Scanning dependencies of target liteos_port
+[ 15%] Building C object hal/sio/CMakeFiles/hal_sio.dir/hal_sio_v151/hal_sio_v151.c.obj
+[ 15%] Building C object hal/uart/CMakeFiles/hal_uart.dir/v151/hal_uart_v151_regs_op.c.obj
+Scanning dependencies of target hal_security_unified
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_math.c.obj
+[ 15%] Linking C static library libgpio_port.a
+[ 15%] Building C object drivers/chips/ws63/porting/dma/CMakeFiles/dma_port.dir/dma_porting.c.obj
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_event.c.obj
+[ 15%] Linking C static library libpwm_port.a
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_drvbox.c.obj
+[ 15%] Building C object hal/sio/CMakeFiles/hal_sio.dir/hal_sio_v151/hal_sio_v151_regs_op.c.obj
+Scanning dependencies of target i2c_porting
+[ 15%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/interrupt_handler.c.obj
+[ 15%] Building C object drivers/chips/ws63/porting/sfc/flash_config/CMakeFiles/sfc_flash_config_ws63.dir/flash_config_info.c.obj
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_interrupt.c.obj
+[ 15%] Building C object protocol/wifi/CMakeFiles/wifi_csa.dir/source/host/feature/hmac_csa_ap.c.obj
+[ 15%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_fileops.c.obj
+[ 16%] Building ASM object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/vectors.s.obj
+[ 17%] Building C object drivers/chips/ws63/porting/liteos/CMakeFiles/liteos_port.dir/riscv31/idle_config.c.obj
+Scanning dependencies of target tsensor_port
+Scanning dependencies of target spi_porting
+[ 17%] Linking C static library libadc_port.a
+[ 17%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/flash_patch.c.obj
+[ 17%] Linking C static library libpmp_port.a
+[ 17%] Built target hal_tsensor
+[ 17%] Linking C static library libdma_port.a
+[ 17%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_msgqueue.c.obj
+[ 17%] Linking C static library libhal_sio.a
+[ 17%] Linking C static library libhal_uart.a
+[ 17%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/interrupt/interrupt_adapter.c.obj
+Scanning dependencies of target uart_port
+[ 17%] Built target pmp_cfg_ws63
+[ 17%] Building C object drivers/chips/ws63/porting/i2c/CMakeFiles/i2c_porting.dir/i2c_porting.c.obj
+[ 17%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_spinlock.c.obj
+[ 17%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/os/crypto_osal_lib.c.obj
+[ 17%] Building C object protocol/wifi/CMakeFiles/wifi_csa.dir/source/host/feature/hmac_csa_sta.c.obj
+[ 17%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_mutex.c.obj
+[ 17%] Built target hal_spi
+Scanning dependencies of target drv_security_unified
+[ 17%] Building C object drivers/chips/ws63/porting/spi/CMakeFiles/spi_porting.dir/spi_porting.c.obj
+[ 19%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_semaphore.c.obj
+[ 19%] Building C object drivers/chips/ws63/porting/liteos/CMakeFiles/liteos_port.dir/riscv31/tick_timer.c.obj
+Scanning dependencies of target sfc_port_ws63
+[ 19%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/vectors/vectors.c.obj
+[ 19%] Building C object drivers/chips/ws63/porting/liteos/CMakeFiles/liteos_port.dir/riscv31/memory_info.c.obj
+[ 19%] Linking C static library libsfc_flash_config_ws63.a
+Scanning dependencies of target efuse_port
+[ 19%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_task.c.obj
+[ 19%] Building C object drivers/chips/ws63/porting/tsensor/CMakeFiles/tsensor_port.dir/tsensor_porting.c.obj
+[ 19%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/crypto_osal/cfbb/crypto_security.c.obj
+[ 19%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_string.c.obj
+[ 19%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/interrupt/interrupt_os_adapter.c.obj
+[ 19%] Building C object drivers/chips/ws63/porting/uart/CMakeFiles/uart_port.dir/uart_porting.c.obj
+[ 19%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/drv_common_pke.c.obj
+[ 19%] Building C object drivers/chips/ws63/CMakeFiles/chip_ws63.dir/arch/riscv/riscv31/oam_trace.c.obj
+[ 19%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_sign_verify_common.c.obj
+[ 19%] Built target pwm_port
+[ 19%] Linking C static library libi2c_porting.a
+[ 19%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_timer.c.obj
+[ 19%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_porting.c.obj
+[ 20%] Linking C static library ../../../../../../interim_binary/ws63/libs/wifi/ws63-liteos-app/libwifi_csa.a
+[ 20%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect_gd25q32.c.obj
+[ 20%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_wait.c.obj
+[ 20%] Building C object drivers/chips/ws63/porting/sfc/porting/CMakeFiles/sfc_port_ws63.dir/sfc_protect.c.obj
+[ 20%] Linking C static library libliteos_port.a
+[ 20%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/rom_lib.c.obj
+[ 20%] Built target gpio_port
+[ 20%] Linking C static library libtsensor_port.a
+[ 20%] Building C object kernel/osal/CMakeFiles/osal.dir/src/liteos/osal_workqueue.c.obj
+[ 20%] Linking C static library libspi_porting.a
+[ 21%] Building C object drivers/chips/ws63/porting/efuse/CMakeFiles/efuse_port.dir/efuse_porting.c.obj
+[ 21%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/hal_pke.c.obj
+[ 21%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/spacc/hal_hash.c.obj
+[ 22%] Linking C static library libuart_port.a
+[ 22%] Linking C static library libchip_ws63.a
+[ 22%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/drv_symc.c.obj
+[ 23%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/spacc/hal_symc.c.obj
+[ 23%] Built target adc_port
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/drv_symc_mac_hard.c.obj
+[ 24%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/ecc_data_ram_addr.c.obj
+[ 24%] Built target hal_sio
+[ 24%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_fapc/hal_fapc.c.obj
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/crypto_drv_common.c.obj
+[ 24%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/trng/hal_trng.c.obj
+[ 24%] Built target dma_port
+[ 24%] Built target hal_uart
+[ 24%] Built target sfc_flash_config_ws63
+[ 24%] Built target pmp_port
+Scanning dependencies of target coap
+[ 24%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_rkp.c.obj
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/drv_trng.c.obj
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/drv_pbkdf2_hard.c.obj
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_code/drv_hash.c.obj
+[ 24%] Linking C static library libsfc_port_ws63.a
+[ 24%] Linking C static library libefuse_port.a
+[ 24%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_fapc/drv_fapc.c.obj
+[ 25%] Linking C static library libosal.a
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecdsa.c.obj
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_klad.c.obj
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_km/drv_keyslot.c.obj
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_pke_weak_func.c.obj
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_hash.c.obj
+[ 25%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/rsa.c.obj
+[ 25%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_keyslot.c.obj
+[ 25%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/init/cfbb/crypto_curve_param.c.obj
+[ 25%] Built target i2c_porting
+[ 25%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/sm2_ec_fp_sign_verify.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_sign_common.c.obj
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_hash_simple.c.obj
+[ 26%] Built target wifi_csa
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_init.c.obj
+[ 26%] Built target spi_porting
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_km/hal_klad.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_verify_common.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_sign.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/arch/rsa_data_ram_addr.c.obj
+[ 26%] Built target tsensor_port
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_symc.c.obj
+[ 26%] Building C object hal/security_unified/CMakeFiles/hal_security_unified.dir/hal_cipher/pke/alg/ecc_ec_fp_verify.c.obj
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_trng.c.obj
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_km.c.obj
+[ 26%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/trng.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/sl_common.c.obj
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_block.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/pke.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_pke.c.obj
+[ 28%] Built target uart_port
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/security_init.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/cipher.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/security_sha256.c.obj
+[ 28%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/service_layer/km.c.obj
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_session.c.obj
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_hashkey.c.obj
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_io_lwip.c.obj
+[ 28%] Built target sfc_port_ws63
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_pdu.c.obj
+[ 28%] Built target liteos_port
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_net.c.obj
+[ 28%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_option.c.obj
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_resource.c.obj
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_encode.c.obj
+[ 29%] Built target efuse_port
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_uri.c.obj
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_str.c.obj
+[ 29%] Linking C static library libhal_security_unified.a
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_debug.c.obj
+[ 29%] Built target osal
+[ 29%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_subscribe.c.obj
+[ 29%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/kapi/source/kapi_pke_ecc_cal.c.obj
+[ 29%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/init/cfbb/os/crypto_drv_irq.c.obj
+[ 29%] Built target chip_ws63
+[ 29%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_rsa.c.obj
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c: In function ‘coap_send_internal’:
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1512:7: warning: jump skips variable initialization [-Wjump-misses-init]
+       goto error;
+       ^~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1617:1: note: label ‘error’ defined here
+ error:
+ ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1605:17: note: ‘node’ declared here
+   coap_queue_t *node = coap_new_node();
+                 ^~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1525:5: warning: jump skips variable initialization [-Wjump-misses-init]
+     goto error;
+     ^~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1617:1: note: label ‘error’ defined here
+ error:
+ ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1605:17: note: ‘node’ declared here
+   coap_queue_t *node = coap_new_node();
+                 ^~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1582:5: warning: jump skips variable initialization [-Wjump-misses-init]
+     goto error;
+     ^~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1617:1: note: label ‘error’ defined here
+ error:
+ ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/libcoap/libcoap/src/coap_net.c:1605:17: note: ‘node’ declared here
+   coap_queue_t *node = coap_new_node();
+                 ^~~~
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecc_cal.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/init/cfbb/os/crypto_drv_init.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_cal.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecc_ecdh.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/ecc/drv_pke_ecc_verify.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/ecc/drv_pke_ecc_sign.c.obj
+[ 30%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/drv_cipher/drv_pke_v5/drv_pke_ecc_gen_key.c.obj
+[ 31%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/mbedtls_harden_adapt/ecp_harden_impl.c.obj
+[ 31%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/mbedtls_harden_adapt/hash_harden_impl_long_term.c.obj
+[ 31%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/mbedtls_harden_adapt/aes_harden_impl_long_term.c.obj
+[ 31%] Building C object driver/security_unified/CMakeFiles/drv_security_unified.dir/mbedtls_harden_adapt/mbedtls_harden_adapt.c.obj
+[ 31%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_netif.c.obj
+[ 31%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_address.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_cache.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_dtls.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_tcp.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_io.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_ws.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_async.c.obj
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_layers.c.obj
+[ 32%] Linking C static library libdrv_security_unified.a
+[ 32%] Building C object CMakeFiles/coap.dir/open_source/libcoap/libcoap/src/coap_notls.c.obj
+[ 32%] Built target hal_security_unified
+[ 32%] Linking C static library libcoap.a
+[ 32%] Built target drv_security_unified
+[ 32%] Built target coap
+Scanning dependencies of target wpa_supplicant
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/bss.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/ctrl_iface.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/config.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/eap_register.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/scan.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/events.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/wpa_supplicant.c.obj
+[ 32%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/hostapd/liteos_hostapd_src/hostapd_ctrl_iface_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/ap.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/hostapd/liteos_hostapd_src/hostapd_main_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/wpas_glue.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/crypto_mbedtls.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/ctrl_iface_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/eloop_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/os_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/main_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/liteos_wpa_api/wifi_softap_api.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/common/wpa_common.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/l2_packet_rtos.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/aes-unwrap.c.obj
+[ 33%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/aes-internal.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/liteos_wpa_src/wpa_cli_rtos.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/common/hw_features_common.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/liteos_wpa_api/wifi_api.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/dh_groups.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/common/ieee802_11_common.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/aes-wrap.c.obj
+[ 34%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/crypto_internal-modexp.c.obj
+[ 35%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/aes-omac1.c.obj
+Scanning dependencies of target mbedtls
+[ 35%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/random.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/drivers/driver_common.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_peer/eap.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/rc4.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha256-prf.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/drivers/drivers.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/md5.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_common/eap_common.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha1-prf.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eapol_supp/eapol_supp_sm.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_peer/eap_methods.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/rsn_supp/wpa_ie.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_server/eap_server_identity.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eapol_auth/eapol_auth_sm.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_server/eap_server.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/common.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/eap_server/eap_server_methods.c.obj
+[ 37%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/wpa_debug.c.obj
+[ 38%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/rsn_supp/wpa.c.obj
+[ 38%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/tls/bignum.c.obj
+[ 38%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/wpabuf.c.obj
+[ 38%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/base64.c.obj
+[ 38%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/uuid.c.obj
+[ 38%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/aes.c.obj
+[ 38%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/aria.c.obj
+[ 38%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/asn1parse.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/aesni.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/base64.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/camellia.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/asn1write.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ccm.c.obj
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c: In function ‘mbedtls_mpi_exp_mod’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2204:5: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+     MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &W[x_index], j ) );
+     ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2205:5: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+     MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &W[1],  j ) );
+     ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2206:5: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+     MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &T, j * 2 ) );
+     ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2214:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &Apos, A ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2240:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_mod_mpi( &W[1], A, N ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2244:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &W[1], N->n + 1 ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2247:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &W[1], A ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2256:5: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+     MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &W[x_index], &RR ) );
+     ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2274:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &W[j], N->n + 1 ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2275:9: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+         MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &W[j], &W[1]    ) );
+         ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2285:13: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+             MBEDTLS_MPI_CHK( mbedtls_mpi_grow( &W[i], N->n + 1 ) );
+             ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:40:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/include/mbedtls/bignum.h:56:13: warning: jump skips variable initialization [-Wjump-misses-init]
+             goto cleanup;        \
+             ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2286:13: note: in expansion of macro ‘MBEDTLS_MPI_CHK’
+             MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &W[i], &W[i - 1] ) );
+             ^~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2396:1: note: label ‘cleanup’ defined here
+ cleanup:
+ ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/bignum.c:2295:12: note: ‘exponent_bits_in_window’ declared here
+     size_t exponent_bits_in_window = 0;
+            ^~~~~~~~~~~~~~~~~~~~~~~
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/chacha20.c.obj
+[ 39%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/cipher.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/chachapoly.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/cipher_wrap.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/constant_time.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/des.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/cmac.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ctr_drbg.c.obj
+[ 40%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/debug.c.obj
+[ 40%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/hostapd.c.obj
+[ 40%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/sta_info.c.obj
+[ 40%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/wpa_auth_glue.c.obj
+[ 41%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/bss_load.c.obj
+[ 41%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ieee802_11_ht.c.obj
+[ 41%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ap_config.c.obj
+[ 41%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ap_mlme.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ieee802_11.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/wpa_auth_ie.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/utils.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ap_drv_ops.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/hw_features.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/drv_callbacks.c.obj
+[ 42%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/wpa_auth.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/pmksa_cache_auth.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/sme.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/acs.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ieee802_11_he.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/eap_user_db.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/common/dragonfly.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/beacon.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ieee802_1x.c.obj
+[ 43%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/common/sae.c.obj
+[ 43%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ecdh.c.obj
+[ 43%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ecp.c.obj
+[ 43%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ecjpake.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/dhm.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ecdsa.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/error.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ecp_curves.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/entropy.c.obj
+[ 44%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/gcm.c.obj
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/ecdsa.c: In function ‘ecdsa_verify_restartable’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/ecdsa.c:546:29: warning: passing argument 2 of ‘get_curve_type’ from incompatible pointer type [-Wincompatible-pointer-types]
+     get_curve_type(grp->id, &curve_type, &klen);
+                             ^
+In file included from /home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/library/ecdsa.c:526:0:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/internal_include/ecc_harden_common.h:13:6: note: expected ‘drv_pke_ecc_curve_type * {aka enum <anonymous> *}’ but argument is of type ‘mbedtls_alt_ecp_curve_type * {aka enum <anonymous> *}’
+ void get_curve_type( mbedtls_ecp_group_id grp_id, drv_pke_ecc_curve_type *curve_type, unsigned int *klen );
+      ^~~~~~~~~~~~~~
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/hmac_drbg.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/md5.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/md.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/mps_trace.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/hkdf.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/memory_buffer_alloc.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/mps_reader.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/nist_kw.c.obj
+[ 46%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/oid.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/rsn_supp/pmksa_cache.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/driver_soc/driver_soc.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/ltos_src/eloop_ltos.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha384-prf.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha256-kdf.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/utils/crc32.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha512-prf.c.obj
+[ 46%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/osdep/osdep_osal.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/ap/ieee802_11_shared.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/driver_soc/driver_soc_ioctl.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/wpa_supplicant/notify.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha512-kdf.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/open_source/wpa_supplicant/src/crypto/sha384-kdf.c.obj
+[ 47%] Building C object CMakeFiles/wpa_supplicant.dir/middleware/services/wifi_service/wpa/scan_list_adapt/scan_list_adapt.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/padlock.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pem.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pk.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pkcs12.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/platform.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pkcs5.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pk_wrap.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pkparse.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/pkwrite.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/rsa_alt_helpers.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/poly1305.c.obj
+[ 48%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/rsa.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/platform_util.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/sha1.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ripemd160.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/sha512.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_cache.c.obj
+[ 49%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/sha256.c.obj
+[ 50%] Linking C static library ../../../../interim_binary/ws63/libs/wifi/ws63-liteos-app/libwpa_supplicant.a
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_ciphersuites.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_cookie.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_debug_helpers_generated.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_ticket.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_srv.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_msg.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_cli.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_tls13_keys.c.obj
+[ 51%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/threading.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_tls13_generic.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_tls.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_tls13_server.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/ssl_tls13_client.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/version.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/version_features.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509_create.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509.c.obj
+[ 52%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509_csr.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509_crt.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509_crl.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/net_sockets.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509write_csr.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/cipher_adapt.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/cipher_common.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/entropy_harden.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/library/x509write_crt.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/ecc_harden_common.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/hkdf_harden.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/cmac_harden.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/hash_harden_common.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/dfx.c.obj
+[ 53%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/pbkdf2_hmac_harden.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/ecc_harden.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/bignum_harden.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/sha256.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/gcm_harden.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/sha1.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/aes.c.obj
+[ 55%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/ccm_harden.c.obj
+[ 56%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/hash_harden_adapt.c.obj
+[ 56%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/sha512.c.obj
+[ 56%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/aes_harden_adapt.c.obj
+[ 56%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c.obj
+[ 56%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c.obj
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/ecc_harden.c:55:12: warning: ‘ecdsa_sig_alloc’ defined but not used [-Wunused-function]
+ static int ecdsa_sig_alloc( const unsigned int klen, drv_pke_ecc_sig *sig )
+            ^~~~~~~~~~~~~~~
+[ 56%] Built target wpa_supplicant
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsaes_oaep_encrypt’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:733:35: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                             int (*f_rng)(void *, unsigned char *, size_t),
+                                   ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:734:35: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                             void *p_rng,
+                                   ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsaes_pkcs1_v15_encrypt’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:785:20: warning: unused variable ‘p’ [-Wunused-variable]
+     unsigned char *p = output;
+                    ^
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:784:9: warning: unused variable ‘ret’ [-Wunused-variable]
+     int ret = MBEDTLS_ERR_ERROR_CORRUPTION_DETECTED;
+         ^~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:783:12: warning: unused variable ‘nb_pad’ [-Wunused-variable]
+     size_t nb_pad, olen;
+            ^~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:778:40: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                                  int (*f_rng)(void *, unsigned char *, size_t),
+                                        ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:779:40: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                                  void *p_rng, size_t ilen,
+                                        ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsaes_oaep_decrypt’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:848:35: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                             int (*f_rng)(void *, unsigned char *, size_t),
+                                   ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:849:35: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                             void *p_rng,
+                                   ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsaes_pkcs1_v15_decrypt’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:899:40: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                                  int (*f_rng)(void *, unsigned char *, size_t),
+                                        ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:900:40: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                                  void *p_rng,
+                                        ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘rsa_rsassa_pss_sign’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:967:32: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                          int (*f_rng)(void *, unsigned char *, size_t),
+                                ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:968:32: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                          void *p_rng,
+                                ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:972:30: warning: unused parameter ‘saltlen’ [-Wunused-parameter]
+                          int saltlen,
+                              ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsassa_pss_sign_ext’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1004:59: warning: unused parameter ‘ctx’ [-Wunused-parameter]
+ int mbedtls_rsa_rsassa_pss_sign_ext( mbedtls_rsa_context *ctx,
+                                                           ^~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1005:32: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                          int (*f_rng)(void *, unsigned char *, size_t),
+                                ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1006:32: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                          void *p_rng,
+                                ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1007:44: warning: unused parameter ‘md_alg’ [-Wunused-parameter]
+                          mbedtls_md_type_t md_alg,
+                                            ^~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1008:39: warning: unused parameter ‘hashlen’ [-Wunused-parameter]
+                          unsigned int hashlen,
+                                       ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1009:47: warning: unused parameter ‘hash’ [-Wunused-parameter]
+                          const unsigned char *hash,
+                                               ^~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1010:30: warning: unused parameter ‘saltlen’ [-Wunused-parameter]
+                          int saltlen,
+                              ^~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1011:41: warning: unused parameter ‘sig’ [-Wunused-parameter]
+                          unsigned char *sig )
+                                         ^~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsassa_pkcs1_v15_sign’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1043:38: warning: unused parameter ‘f_rng’ [-Wunused-parameter]
+                                int (*f_rng)(void *, unsigned char *, size_t),
+                                      ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1044:38: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+                                void *p_rng,
+                                      ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c: In function ‘mbedtls_rsa_rsassa_pss_verify_ext’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa.c:1122:36: warning: unused parameter ‘expected_salt_len’ [-Wunused-parameter]
+                                int expected_salt_len,
+                                    ^~~~~~~~~~~~~~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c: In function ‘inner_alloc_pub_key’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c:59:31: warning: unused variable ‘e_len’ [-Wunused-variable]
+     size_t size_align, n_len, e_len = 0;
+                               ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c:59:24: warning: unused variable ‘n_len’ [-Wunused-variable]
+     size_t size_align, n_len, e_len = 0;
+                        ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c: In function ‘inner_alloc_priv_key_and_out_buf’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c:106:31: warning: unused variable ‘d_len’ [-Wunused-variable]
+     size_t size_align, n_len, d_len = 0;
+                               ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/rsa_harden_adapt.c:106:24: warning: unused variable ‘n_len’ [-Wunused-variable]
+     size_t size_align, n_len, d_len = 0;
+                        ^~~~~
+[ 57%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/ecp_harden_adapt.c.obj
+[ 57%] Building C object CMakeFiles/mbedtls.dir/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/ecp.c.obj
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/ecp.c: In function ‘mbedtls_ecp_mul_restartable’:
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/ecp.c:139:58: warning: unused parameter ‘p_rng’ [-Wunused-parameter]
+     int (*f_rng)(void *, unsigned char *, size_t), void *p_rng,
+                                                          ^~~~~
+/home/sueiny/fbb_ws63/src/open_source/mbedtls/mbedtls_v3.1.0/harden/src/connect_src/ecp.c:140:30: warning: unused parameter ‘rs_ctx’ [-Wunused-parameter]
+     mbedtls_ecp_restart_ctx *rs_ctx)
+                              ^~~~~~
+[ 57%] Linking C static library libmbedtls.a
+[ 57%] Built target mbedtls
+make: *** [Makefile:84: all] Error 2
+python path:  /usr/bin/python3
+flashboot start build .....
+['/usr/bin/python3', 'build.py', '-c', 'ws63-flashboot']
+loaderboot start build .....
+['/usr/bin/python3', 'build.py', '-c', 'ws63-loaderboot']
+[ws63][acore] run custom cmd success!
+/home/sueiny/fbb_ws63/src/build/script/./../../config.in
+/home/sueiny/fbb_ws63/src
+Kconfig header saved to '/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/mconfig.h'
+######### Build target:ws63_liteos_app failed

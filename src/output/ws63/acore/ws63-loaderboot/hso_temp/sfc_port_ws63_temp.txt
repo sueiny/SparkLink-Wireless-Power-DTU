@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/sfc/porting/sfc_porting.c,/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/sfc/porting/sfc_protect.c,/home/sueiny/fbb_ws63/src/drivers/chips/ws63/porting/sfc/porting/sfc_protect_gd25q32.c

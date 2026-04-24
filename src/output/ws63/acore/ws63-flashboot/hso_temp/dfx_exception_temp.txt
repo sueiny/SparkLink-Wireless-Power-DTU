@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/middleware/chips/ws63/exception/exception_riscv.s,/home/sueiny/fbb_ws63/src/middleware/chips/ws63/exception/exception_riscv.c

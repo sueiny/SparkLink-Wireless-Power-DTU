@@ -1,0 +1,13 @@
+{
+    "editor.codeLens": false,
+    "editor.semanticHighlighting.enabled": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "editor.linkedEditing": false,
+    "editor.colorDecorators": false,
+    "git.decorations.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.enabled": false
+}

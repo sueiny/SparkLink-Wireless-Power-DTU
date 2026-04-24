@@ -1,0 +1,1 @@
+####/home/sueiny/fbb_ws63/src/bootloader/provision_ws63/startup/main.c,/home/sueiny/fbb_ws63/src/bootloader/provision_ws63/startup/riscv_init.S,/home/sueiny/fbb_ws63/src/bootloader/provision_ws63/../commonboot/src/boot_uart_auth.c,/home/sueiny/fbb_ws63/src/bootloader/provision_ws63/../commonboot/src/boot_erase.c
