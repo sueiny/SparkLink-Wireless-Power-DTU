@@ -68,7 +68,7 @@ uint8_t g_sle_scan_rsp_data[] = {
 static int sle_set_default_announce_param(void)
 {
     sle_announce_param_t param = {0};
-    uint8_t mac[SLE_ADDR_LEN] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
+    uint8_t mac[SLE_ADDR_LEN] = {0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6};
     param.announce_mode = SLE_ANNOUNCE_MODE_CONNECTABLE_SCANABLE;
     param.announce_handle = SLE_ADV_HANDLE_DEFAULT;
     param.announce_gt_role = SLE_ANNOUNCE_ROLE_T_CAN_NEGO;

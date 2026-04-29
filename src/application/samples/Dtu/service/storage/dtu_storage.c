@@ -26,10 +26,37 @@ static dtu_storage_ctx_t g_dtu_storage = {
     .reboot_pending = false
 };
 
+/* NV 临时缓存放在静态区，避免 DtuInitTask/协议任务栈承载较大的结构体。 */
+static dtu_nv_blob_t g_dtu_nv_blob;
+static dtu_nv_wl_shard_blob_t g_dtu_wl_shard_blob;
+
+static const uint16_t g_dtu_wl_shard_keys[] = {
+    NV_ID_DTU_WL_SHARD0,
+    NV_ID_DTU_WL_SHARD1,
+    NV_ID_DTU_WL_SHARD2,
+    NV_ID_DTU_WL_SHARD3,
+    NV_ID_DTU_WL_SHARD4,
+    NV_ID_DTU_WL_SHARD5,
+    NV_ID_DTU_WL_SHARD6,
+    NV_ID_DTU_WL_SHARD7,
+};
+
 /* 返回唯一状态上下文，仅 core 内部共享。 */
 static dtu_storage_ctx_t *dtu_storage_ctx(void)
 {
     return &g_dtu_storage;
+}
+
+/* 返回 DTU NV 临时缓存，供 load/commit 共用。 */
+static dtu_nv_blob_t *dtu_storage_nv_blob(void)
+{
+    return &g_dtu_nv_blob;
+}
+
+/* 返回白名单分片 NV 临时缓存。 */
+static dtu_nv_wl_shard_blob_t *dtu_storage_wl_shard_blob(void)
+{
+    return &g_dtu_wl_shard_blob;
 }
 
 /* 将单个十六进制字符转换为数值。
@@ -322,12 +349,12 @@ void dtu_storage_set_default(dtu_runtime_cfg_t *cfg)
     cfg->uart_cfg.stop_bits = 0x01;
     cfg->uart_cfg.data_bits = 0x08;
     /* 默认预置 8 个 Modbus 项：
-     * 1. addr 直接使用数组下标值，便于和上位机索引一一对应
+     * 1. addr 直接使用数组下标值 + 1，便于和上位机索引一一对应
      * 2. dev_type 统一置为 0x05，表示“保留”类型
      */
     cfg->modbus_count = DTU_CFG_MAX_MODBUS_ITEMS;
     for (uint8_t i = 0; i < DTU_CFG_MAX_MODBUS_ITEMS; i++) {
-        cfg->modbus[i].addr = i;
+        cfg->modbus[i].addr = i + 1;
         cfg->modbus[i].dev_type = 0x05;
     }
     cfg->power = 5;
@@ -407,33 +434,206 @@ const char *dtu_storage_rx_profile_name(dtu_rx_profile_t profile)
     return (profile == DTU_RX_PROFILE_BATCH) ? "batch" : "fast-response";
 }
 
+/* 将 base NV 内容应用到 runtime。白名单内容由独立分片恢复。 */
+static bool dtu_storage_apply_base_blob(const dtu_nv_blob_t *blob)
+{
+    dtu_runtime_cfg_t *runtime = dtu_storage_runtime();
+
+    if (blob == NULL || blob->cfg.wl_count > DTU_CFG_MAX_WL_ITEMS ||
+        blob->cfg.modbus_count > DTU_CFG_MAX_MODBUS_ITEMS) {
+        return false;
+    }
+
+    runtime->role = blob->cfg.role;
+    runtime->uart_cfg.baud_level = blob->cfg.uart_cfg.baud_level;
+    runtime->uart_cfg.parity = blob->cfg.uart_cfg.parity;
+    runtime->uart_cfg.stop_bits = blob->cfg.uart_cfg.stop_bits;
+    runtime->uart_cfg.data_bits = blob->cfg.uart_cfg.data_bits;
+    runtime->modbus_count = blob->cfg.modbus_count;
+    runtime->power = blob->cfg.power;
+    runtime->wl_count = blob->cfg.wl_count;
+
+    if (memcpy_s(runtime->modbus, sizeof(runtime->modbus), blob->cfg.modbus, sizeof(blob->cfg.modbus)) != EOK) {
+        return false;
+    }
+    (void)memset_s(runtime->whitelist, sizeof(runtime->whitelist), 0, sizeof(runtime->whitelist));
+    return true;
+}
+
+/* 将 runtime 的基础字段打包到 base NV，白名单数组不进入该 key。 */
+static bool dtu_storage_pack_base_blob(dtu_nv_blob_t *blob)
+{
+    const dtu_runtime_cfg_t *runtime = dtu_storage_runtime_const();
+
+    if (blob == NULL || runtime->wl_count > DTU_CFG_MAX_WL_ITEMS ||
+        runtime->modbus_count > DTU_CFG_MAX_MODBUS_ITEMS) {
+        return false;
+    }
+
+    if (memset_s(blob, sizeof(*blob), 0, sizeof(*blob)) != EOK) {
+        return false;
+    }
+    blob->magic = DTU_CFG_NV_MAGIC;
+    blob->version = DTU_CFG_NV_VERSION;
+    blob->cfg.role = runtime->role;
+    blob->cfg.uart_cfg.baud_level = runtime->uart_cfg.baud_level;
+    blob->cfg.uart_cfg.parity = runtime->uart_cfg.parity;
+    blob->cfg.uart_cfg.stop_bits = runtime->uart_cfg.stop_bits;
+    blob->cfg.uart_cfg.data_bits = runtime->uart_cfg.data_bits;
+    blob->cfg.modbus_count = runtime->modbus_count;
+    blob->cfg.power = runtime->power;
+    blob->cfg.wl_count = runtime->wl_count;
+    return (memcpy_s(blob->cfg.modbus, sizeof(blob->cfg.modbus), runtime->modbus, sizeof(runtime->modbus)) == EOK);
+}
+
+/* 将一个白名单分片从 NV 恢复到 runtime 的连续白名单数组。 */
+static bool dtu_storage_apply_wl_shard(const dtu_nv_wl_shard_blob_t *shard, uint8_t shard_idx, uint8_t *loaded)
+{
+    dtu_runtime_cfg_t *runtime = dtu_storage_runtime();
+    uint8_t remain;
+
+    if (shard == NULL || loaded == NULL || shard->magic != DTU_CFG_NV_MAGIC ||
+        shard->version != DTU_CFG_NV_VERSION || shard->shard_index != shard_idx ||
+        shard->item_count > DTU_CFG_NV_WL_ITEMS_PER_SHARD || *loaded > runtime->wl_count) {
+        return false;
+    }
+
+    remain = (uint8_t)(runtime->wl_count - *loaded);
+    if (shard->item_count > remain) {
+        return false;
+    }
+
+    for (uint8_t i = 0; i < shard->item_count; i++) {
+        dtu_wl_item_t *rt_item = &runtime->whitelist[*loaded + i];
+        const dtu_nv_wl_item_t *nv_item = &shard->items[i];
+
+        if (memset_s(rt_item, sizeof(*rt_item), 0, sizeof(*rt_item)) != EOK ||
+            memcpy_s(rt_item->mac, sizeof(rt_item->mac), nv_item->mac, sizeof(nv_item->mac)) != EOK ||
+            memcpy_s(&rt_item->uart_cfg, sizeof(rt_item->uart_cfg), &nv_item->uart_cfg,
+                sizeof(nv_item->uart_cfg)) != EOK) {
+            return false;
+        }
+        rt_item->modbus_count = nv_item->modbus_count;
+        if (rt_item->modbus_count > DTU_CFG_MAX_MODBUS_ITEMS ||
+            memcpy_s(rt_item->modbus, sizeof(rt_item->modbus), nv_item->modbus, sizeof(nv_item->modbus)) != EOK) {
+            return false;
+        }
+
+    }
+
+    *loaded += shard->item_count;
+    return true;
+}
+
+/* 从 8 个白名单分片 key 中恢复白名单。失败时只清空白名单，保留 base 配置。 */
+static void dtu_storage_load_wl_shards(void)
+{
+    dtu_runtime_cfg_t *runtime = dtu_storage_runtime();
+    dtu_nv_wl_shard_blob_t *shard = dtu_storage_wl_shard_blob();
+    uint8_t loaded = 0;
+
+    for (uint8_t i = 0; i < DTU_CFG_NV_WL_SHARD_COUNT && loaded < runtime->wl_count; i++) {
+        uint16_t real_len = 0;
+        errcode_t ret;
+
+        if (memset_s(shard, sizeof(*shard), 0, sizeof(*shard)) != EOK) {
+            runtime->wl_count = 0;
+            return;
+        }
+        osal_printk("[DTU LOG] storage wl read begin: key=0x%X size=%u\r\n",
+            g_dtu_wl_shard_keys[i], (uint32_t)sizeof(*shard));
+        ret = uapi_nv_read(g_dtu_wl_shard_keys[i], sizeof(*shard), &real_len, (uint8_t *)shard);
+        osal_printk("[DTU LOG] storage wl read end: key=0x%X ret=0x%X real_len=%u\r\n",
+            g_dtu_wl_shard_keys[i], ret, real_len);
+        if (ret != ERRCODE_SUCC || real_len != sizeof(*shard) ||
+            !dtu_storage_apply_wl_shard(shard, i, &loaded)) {
+            dtu_log_error("load wl shard failed: key=0x%X ret=0x%X", g_dtu_wl_shard_keys[i], ret);
+            runtime->wl_count = 0;
+            (void)memset_s(runtime->whitelist, sizeof(runtime->whitelist), 0, sizeof(runtime->whitelist));
+            return;
+        }
+    }
+
+    if (loaded != runtime->wl_count) {
+        dtu_log_error("load wl shard count mismatch: expect=%u loaded=%u", runtime->wl_count, loaded);
+        runtime->wl_count = 0;
+        (void)memset_s(runtime->whitelist, sizeof(runtime->whitelist), 0, sizeof(runtime->whitelist));
+    }
+}
+
+/* 按固定 16 条一片打包白名单分片。读取时以 base.wl_count 为准，旧分片超出部分会被忽略。 */
+static bool dtu_storage_pack_wl_shard(dtu_nv_wl_shard_blob_t *shard, uint8_t shard_idx)
+{
+    const dtu_runtime_cfg_t *runtime = dtu_storage_runtime_const();
+    uint16_t start = (uint16_t)(shard_idx * DTU_CFG_NV_WL_ITEMS_PER_SHARD);
+    uint16_t remain;
+
+    if (shard == NULL || shard_idx >= DTU_CFG_NV_WL_SHARD_COUNT || runtime->wl_count > DTU_CFG_MAX_WL_ITEMS) {
+        return false;
+    }
+    if (memset_s(shard, sizeof(*shard), 0, sizeof(*shard)) != EOK) {
+        return false;
+    }
+
+    remain = (uint16_t)(runtime->wl_count > start ? runtime->wl_count - start : 0);
+    shard->magic = DTU_CFG_NV_MAGIC;
+    shard->version = DTU_CFG_NV_VERSION;
+    shard->shard_index = shard_idx;
+    shard->item_count = (uint8_t)(remain > DTU_CFG_NV_WL_ITEMS_PER_SHARD ? DTU_CFG_NV_WL_ITEMS_PER_SHARD : remain);
+
+    for (uint8_t i = 0; i < shard->item_count; i++) {
+        const dtu_wl_item_t *rt_item = &runtime->whitelist[start + i];
+        dtu_nv_wl_item_t *nv_item = &shard->items[i];
+
+        if (memcpy_s(nv_item->mac, sizeof(nv_item->mac), rt_item->mac, sizeof(rt_item->mac)) != EOK ||
+            memcpy_s(&nv_item->uart_cfg, sizeof(nv_item->uart_cfg), &rt_item->uart_cfg,
+                sizeof(rt_item->uart_cfg)) != EOK) {
+            return false;
+        }
+        nv_item->modbus_count = rt_item->modbus_count;
+        if (nv_item->modbus_count > DTU_CFG_MAX_MODBUS_ITEMS ||
+            memcpy_s(nv_item->modbus, sizeof(nv_item->modbus), rt_item->modbus, sizeof(rt_item->modbus)) != EOK) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 /* 从 NV 加载配置，并根据拨码开关决定当前生效模式。 */
 errcode_t dtu_storage_load(void)
 {
-    dtu_nv_blob_t blob;
+    dtu_nv_blob_t *blob = dtu_storage_nv_blob();
     uint16_t real_len = 0;
     errcode_t ret;
 
+    osal_printk("[DTU LOG] storage load begin\r\n");
     dtu_storage_set_default(dtu_storage_runtime());
+    osal_printk("[DTU LOG] storage default ready\r\n");
     dtu_storage_set_current_mode(dtu_storage_detect_mode_from_dip());
+    osal_printk("[DTU LOG] storage dip mode ready: %s\r\n", dtu_storage_mode_name(dtu_storage_current_mode()));
     dtu_storage_set_reboot_pending(false);
 
-    if (memset_s(&blob, sizeof(blob), 0, sizeof(blob)) != EOK) {
+    if (memset_s(blob, sizeof(*blob), 0, sizeof(*blob)) != EOK) {
         return ERRCODE_FAIL;
     }
 
-    ret = uapi_nv_read(NV_ID_DTU_CFG, sizeof(blob), &real_len, (uint8_t *)&blob);
-    if (ret != ERRCODE_SUCC || real_len != sizeof(blob) || blob.magic != DTU_CFG_NV_MAGIC) {
+    osal_printk("[DTU LOG] storage nv read begin: key=0x%X size=%u\r\n", NV_ID_DTU_CFG, (uint32_t)sizeof(*blob));
+    ret = uapi_nv_read(NV_ID_DTU_CFG, sizeof(*blob), &real_len, (uint8_t *)blob);
+    osal_printk("[DTU LOG] storage nv read end: ret=0x%X real_len=%u\r\n", ret, real_len);
+    if (ret != ERRCODE_SUCC || real_len != sizeof(*blob) || blob->magic != DTU_CFG_NV_MAGIC) {
         return ERRCODE_SUCC;
     }
-    if (blob.version != 0x0001 && blob.version != DTU_CFG_NV_VERSION) {
+    if (blob->version != DTU_CFG_NV_VERSION) {
         return ERRCODE_SUCC;
     }
 
-    if (memcpy_s(dtu_storage_runtime(), sizeof(*dtu_storage_runtime()), &blob.cfg, sizeof(blob.cfg)) != EOK) {
+    if (!dtu_storage_apply_base_blob(blob)) {
         dtu_storage_set_default(dtu_storage_runtime());
         return ERRCODE_FAIL;
     }
+    dtu_storage_load_wl_shards();
+    osal_printk("[DTU LOG] storage nv config applied: wl_count=%u\r\n", dtu_storage_runtime_const()->wl_count);
     return ERRCODE_SUCC;
 }
 
@@ -444,23 +644,39 @@ errcode_t dtu_storage_load(void)
  */
 errcode_t dtu_storage_commit(void)
 {
-    dtu_nv_blob_t blob;
+    dtu_nv_blob_t *blob = dtu_storage_nv_blob();
+    dtu_nv_wl_shard_blob_t *shard = dtu_storage_wl_shard_blob();
+    uint8_t shard_count;
     errcode_t ret;
 
-    if (memset_s(&blob, sizeof(blob), 0, sizeof(blob)) != EOK) {
+    if (!dtu_storage_pack_base_blob(blob)) {
+        dtu_log_error("commit base pack failed");
         return ERRCODE_FAIL;
     }
 
-    blob.magic = DTU_CFG_NV_MAGIC;
-    blob.version = DTU_CFG_NV_VERSION;
-    if (memcpy_s(&blob.cfg, sizeof(blob.cfg), dtu_storage_runtime_const(), sizeof(*dtu_storage_runtime_const())) != EOK) {
-        return ERRCODE_FAIL;
-    }
-
-    ret = uapi_nv_write(NV_ID_DTU_CFG, (const uint8_t *)&blob, sizeof(blob));
+    osal_printk("[DTU LOG] storage nv write begin: key=0x%X size=%u\r\n", NV_ID_DTU_CFG, (uint32_t)sizeof(*blob));
+    ret = uapi_nv_write(NV_ID_DTU_CFG, (const uint8_t *)blob, sizeof(*blob));
+    osal_printk("[DTU LOG] storage nv write end: ret=0x%X\r\n", ret);
     if (ret != ERRCODE_SUCC) {
         dtu_log_error("commit nv write failed: ret=0x%X", ret);
         return ret;
+    }
+
+    shard_count = (uint8_t)((dtu_storage_runtime_const()->wl_count + DTU_CFG_NV_WL_ITEMS_PER_SHARD - 1) /
+        DTU_CFG_NV_WL_ITEMS_PER_SHARD);
+    for (uint8_t i = 0; i < shard_count; i++) {
+        if (!dtu_storage_pack_wl_shard(shard, i)) {
+            dtu_log_error("commit wl shard pack failed: shard=%u", i);
+            return ERRCODE_FAIL;
+        }
+        osal_printk("[DTU LOG] storage wl write begin: key=0x%X shard=%u count=%u size=%u\r\n",
+            g_dtu_wl_shard_keys[i], i, shard->item_count, (uint32_t)sizeof(*shard));
+        ret = uapi_nv_write(g_dtu_wl_shard_keys[i], (const uint8_t *)shard, sizeof(*shard));
+        osal_printk("[DTU LOG] storage wl write end: key=0x%X ret=0x%X\r\n", g_dtu_wl_shard_keys[i], ret);
+        if (ret != ERRCODE_SUCC) {
+            dtu_log_error("commit wl shard write failed: key=0x%X ret=0x%X", g_dtu_wl_shard_keys[i], ret);
+            return ret;
+        }
     }
     return ERRCODE_SUCC;
 }

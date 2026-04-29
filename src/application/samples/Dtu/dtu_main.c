@@ -3,17 +3,19 @@
 
 #include "dtu_service.h"
 
-#define DTU_INIT_TASK_STACK_SIZE 0x1000
+#define DTU_INIT_TASK_STACK_SIZE 0x2000
 #define DTU_INIT_TASK_PRIO       24
 
 /* 启动 DTU 服务初始化任务，避免在应用入口直接做较重初始化。 */
 static void dtu_init_task(void)
 {
     /* 真正的协议处理在服务内部，这里只负责启动 DTU 配置服务。 */
+    osal_printk("[DTU LOG] DtuInitTask begin\r\n");
     if (dtu_service_init() != ERRCODE_SUCC) {
         osal_printk("DTU sample init failed\r\n");
         return;
     }
+    osal_printk("[DTU LOG] DtuInitTask end\r\n");
 }
 
 /* 注册 DTU 示例入口，由系统线程在合适时机拉起初始化任务。 */

@@ -61,21 +61,13 @@ static void dtu_log_print_modbus_cfg(const char *prefix, const dtu_runtime_cfg_t
     }
 }
 
-/* 打印完整白名单内容。 */
-static void dtu_log_print_whitelist(const char *prefix, const dtu_runtime_cfg_t *cfg)
+/* 打印白名单摘要。
+ * 白名单现在最多 128 条，并且 V2 的 READ_ROOT_WL_ALL 只关心 MAC 列表。
+ * 启动/提交快照只打印数量，避免每次 reboot 把所有 node 子配置刷满串口。
+ */
+static void dtu_log_print_whitelist_summary(const char *prefix, const dtu_runtime_cfg_t *cfg)
 {
     dtu_log_printf("%s whitelist_count=%u", prefix, cfg->wl_count);
-    for (uint8_t i = 0; i < cfg->wl_count; i++) {
-        osal_printk("%s %s whitelist[%u]: mac=", DTU_LOG_PREFIX, prefix, i);
-        dtu_log_print_mac(cfg->whitelist[i].mac);
-        osal_printk(" name=%.*s\r\n", cfg->whitelist[i].name_len, cfg->whitelist[i].name);
-        dtu_log_print_uart_cfg("  node_cfg", &cfg->whitelist[i].uart_cfg);
-        dtu_log_printf("  node_cfg modbus_count=%u", cfg->whitelist[i].modbus_count);
-        for (uint8_t j = 0; j < cfg->whitelist[i].modbus_count; j++) {
-            dtu_log_printf("  node_cfg modbus[%u]: addr=%u dev_type=0x%02X",
-                j, cfg->whitelist[i].modbus[j].addr, cfg->whitelist[i].modbus[j].dev_type);
-        }
-    }
 }
 
 /* 打印完整运行配置快照。
@@ -104,7 +96,7 @@ static void dtu_log_runtime_snapshot(const char *prefix)
     dtu_log_print_uart_cfg(prefix, &cfg->uart_cfg);
     dtu_log_print_modbus_cfg(prefix, cfg);
     dtu_log_printf("%s power=%u", prefix, cfg->power);
-    dtu_log_print_whitelist(prefix, cfg);
+    dtu_log_print_whitelist_summary(prefix, cfg);
     dtu_log_printf("%s end", prefix);
 }
 
@@ -186,7 +178,7 @@ void dtu_log_cfg_read_modbus(void)
 /* 打印白名单读取日志。 */
 void dtu_log_cfg_read_whitelist(void)
 {
-    dtu_log_print_whitelist("DTU cfg read", dtu_storage_runtime_const());
+    dtu_log_print_whitelist_summary("DTU cfg read", dtu_storage_runtime_const());
 }
 
 /* 打印 ROOT 功率读取日志。 */
@@ -203,7 +195,7 @@ void dtu_log_cfg_read_wl_node(const dtu_wl_item_t *item)
     }
     osal_printk("%s DTU cfg read wl_node: mac=", DTU_LOG_PREFIX);
     dtu_log_print_mac(item->mac);
-    osal_printk(" name=%.*s\r\n", item->name_len, item->name);
+    osal_printk("\r\n");
     dtu_log_print_uart_cfg("DTU cfg read wl_node", &item->uart_cfg);
     dtu_log_printf("DTU cfg read wl_node modbus_count=%u", item->modbus_count);
     for (uint8_t i = 0; i < item->modbus_count; i++) {
@@ -243,7 +235,7 @@ void dtu_log_cfg_write_power(uint8_t power)
 /* 打印白名单写入日志。 */
 void dtu_log_cfg_write_whitelist(void)
 {
-    dtu_log_print_whitelist("DTU cfg set", dtu_storage_runtime_const());
+    dtu_log_print_whitelist_summary("DTU cfg set", dtu_storage_runtime_const());
 }
 
 /* 打印白名单 node 子配置写入日志。 */
@@ -254,7 +246,7 @@ void dtu_log_cfg_write_wl_node(const dtu_wl_item_t *item)
     }
     osal_printk("%s DTU cfg set wl_node: mac=", DTU_LOG_PREFIX);
     dtu_log_print_mac(item->mac);
-    osal_printk(" name=%.*s\r\n", item->name_len, item->name);
+    osal_printk("\r\n");
     dtu_log_print_uart_cfg("DTU cfg set wl_node", &item->uart_cfg);
     dtu_log_printf("DTU cfg set wl_node modbus_count=%u", item->modbus_count);
     for (uint8_t i = 0; i < item->modbus_count; i++) {
@@ -274,4 +266,22 @@ void dtu_log_cfg_reject(dtu_transport_id_t transport_id, uint8_t cmd)
         dtu_service_transport_name(transport_id),
         dtu_service_cmd_name(cmd),
         dtu_storage_mode_name(dtu_storage_current_mode()));
+}
+
+/* ========================================================================== */
+/* 运行模式日志区                                                             */
+/* ========================================================================== */
+
+/* 打印运行态 UART -> SLE 转发摘要，仅 trace 打开时输出。 */
+void dtu_log_run_forward(dtu_transport_id_t src, dtu_transport_id_t dst, uint16_t payload_len, uint16_t packet_len)
+{
+#if (DTU_CFG_LOG_TRACE_ENABLE == 0)
+    unused(src);
+    unused(dst);
+    unused(payload_len);
+    unused(packet_len);
+#else
+    dtu_log_printf("DTU run forward: %s -> %s payload_len=%u packet_len=%u",
+        dtu_service_transport_name(src), dtu_service_transport_name(dst), payload_len, packet_len);
+#endif
 }

@@ -29,9 +29,10 @@
 #define BT_SRRC_CHANNEL_NUM 8
 #define SLP_RADAR_MFG_PHASE_CALI_NUM        2
 #define SLP_RADAR_MFG_DELAY_CALI_NUM        4
-#define DTU_NV_MAX_NAME_LEN 31
 #define DTU_NV_MAX_MODBUS_ITEMS 8
-#define DTU_NV_MAX_WL_ITEMS 16
+#define DTU_NV_MAX_WL_ITEMS 128
+#define DTU_NV_WL_SHARD_COUNT 8
+#define DTU_NV_WL_ITEMS_PER_SHARD 16
 /* 基础类型无需在此文件中定义，直接引用即可，对应app.json中的sample0 */
 
 /* 普通结构体，对应app.json中的sample1 */
@@ -230,8 +231,6 @@ typedef struct {
 
 typedef struct {
     uint8_t mac[WLAN_MAC_ADDR_LEN];
-    uint8_t name_len;
-    char name[DTU_NV_MAX_NAME_LEN];
     dtu_nv_uart_cfg_t uart_cfg;
     uint8_t modbus_count;
     dtu_nv_modbus_item_t modbus[DTU_NV_MAX_MODBUS_ITEMS];
@@ -244,14 +243,21 @@ typedef struct {
     dtu_nv_modbus_item_t modbus[DTU_NV_MAX_MODBUS_ITEMS];
     uint8_t power;
     uint8_t wl_count;
-    dtu_nv_wl_item_t whitelist[DTU_NV_MAX_WL_ITEMS];
-} dtu_nv_runtime_cfg_t;
+} dtu_nv_base_cfg_t;
 
 typedef struct {
     uint32_t magic;
     uint16_t version;
     uint8_t mode;      /* 保留字段：当前 DTU 模式已改为由 DIP 决定，不再从 NV 恢复 */
     uint8_t reserved;
-    dtu_nv_runtime_cfg_t cfg;
+    dtu_nv_base_cfg_t cfg;
 } dtu_nv_blob_t;
+
+typedef struct {
+    uint32_t magic;
+    uint16_t version;
+    uint8_t shard_index;
+    uint8_t item_count;
+    dtu_nv_wl_item_t items[DTU_NV_WL_ITEMS_PER_SHARD];
+} dtu_nv_wl_shard_blob_t;
 #endif /* __NV_COMMON_CFG_H__ */

@@ -33,6 +33,7 @@ static uint32_t g_dtu_rx_task_wakeup_count = 0;
 static const dtu_transport_if_t *g_dtu_transport_table[DTU_TRANSPORT_MAX] = {
     [DTU_TRANSPORT_UART] = &g_dtu_uart_transport,
     [DTU_TRANSPORT_BLE] = &g_dtu_ble_transport,
+    [DTU_TRANSPORT_SLE] = &g_dtu_sle_transport,
 };
 
 /* 返回 transport 接口对象，未注册时返回空。
@@ -196,28 +197,55 @@ void dtu_service_trace_rx_task_wakeup(void)
 /* 4. 这样日志里看到的配置就是当前真实会生效的配置。                          */
 /* ========================================================================== */
 
+/* 初始化单个 transport，并统一处理失败日志。 */
+static errcode_t dtu_service_init_transport(dtu_transport_id_t transport_id)
+{
+    const dtu_transport_if_t *transport_if = dtu_service_transport_if(transport_id);
+    errcode_t ret;
+
+    if (transport_if == NULL || transport_if->init == NULL) {
+        return ERRCODE_SUCC;
+    }
+
+    ret = transport_if->init();
+    if (ret != ERRCODE_SUCC) {
+        dtu_log_error("transport init failed: %s ret=0x%x", dtu_service_transport_name(transport_id), ret);
+    }
+    return ret;
+}
+
 /* DTU 服务总初始化入口。 */
 errcode_t dtu_service_init(void)
 {
     errcode_t load_ret;
     errcode_t ret;
 
-    load_ret = dtu_storage_load();
+    osal_printk("[DTU LOG] service init begin\r\n");
+    load_ret = dtu_storage_load(); /* 加载配置，同时读取 DIP 得到当前模式。 */
+    osal_printk("[DTU LOG] service storage load done: ret=0x%x mode=%u\r\n",
+        load_ret, (uint32_t)dtu_storage_current_mode());
 
-    for (uint8_t i = 0; i < DTU_TRANSPORT_MAX; i++) {
-        const dtu_transport_if_t *transport_if = dtu_service_transport_if((dtu_transport_id_t)i);
+    osal_printk("[DTU LOG] service uart init begin\r\n");
+    ret = dtu_service_init_transport(DTU_TRANSPORT_UART);
+    osal_printk("[DTU LOG] service uart init end: ret=0x%X\r\n", ret);
+    if (ret != ERRCODE_SUCC) {
+        return ret;
+    }
 
-        if (transport_if == NULL || transport_if->init == NULL) {
-            continue;
-        }
-        ret = transport_if->init();
-        if (ret != ERRCODE_SUCC) {
-            dtu_log_error("transport init failed: %s ret=0x%x",
-                dtu_service_transport_name((dtu_transport_id_t)i), ret);
-            return ret;
-        }
+    if (dtu_storage_current_mode() == DTU_MODE_RUN) {
+        osal_printk("[DTU LOG] service sle init begin\r\n");
+        ret = dtu_service_init_transport(DTU_TRANSPORT_SLE);//run mode 启动sle组网
+        osal_printk("[DTU LOG] service sle init end: ret=0x%X\r\n", ret);
+    } else {
+        osal_printk("[DTU LOG] service ble init begin\r\n");
+        ret = dtu_service_init_transport(DTU_TRANSPORT_BLE);//config mode 启动ble/uart配置
+        osal_printk("[DTU LOG] service ble init end: ret=0x%X\r\n", ret);
+    }
+    if (ret != ERRCODE_SUCC) {
+        return ret;
     }
 
     dtu_log_boot(load_ret);
+    osal_printk("[DTU LOG] service init end\r\n");
     return ERRCODE_SUCC;
 }

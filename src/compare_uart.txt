@@ -1,0 +1,8 @@
+=== SLE SPEED CLIENT UART ===
+// sle_speed_client.c - uart_test_init()
+uapi_uart_register_rx_callback(0, UART_RX_CONDITION_FULL_OR_IDLE, 1, dtu_uart_rx_callback);
+
+=== DTU CHANNEL UART ===
+// dtu_channel_uart.c - dtu_uart_transport_init_impl()
+uapi_uart_register_rx_callback(DTU_CFG_UART_BUS, UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE, 1, dtu_uart_rx_callback);
+

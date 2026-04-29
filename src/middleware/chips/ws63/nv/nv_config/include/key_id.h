@@ -126,7 +126,15 @@
 #define NV_ID_HILINK_ENTRY_MODE            0x2150 /* hilink entry mode */
 #define NV_ID_HILINK_CONNECT_INFO          0x2151 /* hilink connect info */
 #define NV_ID_CHBA_MODE_CFG                0x2160 /* chba mode cfg */
-#define NV_ID_DTU_CFG                      0x2161 /* dtu config */
+#define NV_ID_DTU_CFG                      0x2161 /* dtu base config */
+#define NV_ID_DTU_WL_SHARD0                0x2162 /* dtu whitelist shard 0 */
+#define NV_ID_DTU_WL_SHARD1                0x2163 /* dtu whitelist shard 1 */
+#define NV_ID_DTU_WL_SHARD2                0x2164 /* dtu whitelist shard 2 */
+#define NV_ID_DTU_WL_SHARD3                0x2165 /* dtu whitelist shard 3 */
+#define NV_ID_DTU_WL_SHARD4                0x2166 /* dtu whitelist shard 4 */
+#define NV_ID_DTU_WL_SHARD5                0x2167 /* dtu whitelist shard 5 */
+#define NV_ID_DTU_WL_SHARD6                0x2168 /* dtu whitelist shard 6 */
+#define NV_ID_DTU_WL_SHARD7                0x2169 /* dtu whitelist shard 7 */
 /* system stable key_id [0x3000,0x4000) */
 #define NV_ID_SYSTEM_STABLE_AREA_START     0x3000 /* Not a real key_id , just used for region determination. */
 #define NV_ID_DBG_UART_BUS_ID              0x3001 /* dbg uart bus id */

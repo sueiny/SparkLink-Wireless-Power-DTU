@@ -1,7 +1,7 @@
 # DTU 代码结构说明
 
-当前这版已经收敛成“顶层少量核心文件”的结构，默认只启用 `UART` 通道。  
-后续如果要接 `BLE / SLE`，目标是“新增通道文件”，而不是改协议和保存逻辑。
+当前这版已经收敛成"顶层少量核心文件"的结构，支持三种 transport 通道：`UART`、`BLE`、`SLE`。  
+新增通道时只需"新增通道文件"，而不是改协议和保存逻辑。
 
 ---
 
@@ -20,7 +20,10 @@
 | `service/mode/dtu_mode_config.c` | 配置模式 | 读写配置、提交、恢复出厂 |
 | `service/mode/dtu_mode_run.c` | 运行模式 | 运行态拒配边界 |
 | `transport/dtu_channel_uart.c` | UART 通道 | UART 初始化、RX ring、DMA 发送、UART 任务 |
-| `transport/dtu_channel_ble.c` | BLE 预留 | 当前只保留通道接口形状 |
+| `transport/dtu_channel_ble.c` | BLE 通道 | BLE GATT server、RX ring、notify 发送、BLE 任务 |
+| `transport/dtu_channel_sle.c` | SLE 通道 | 星闪 SLE server、RX ring、notify 发送、SLE 任务 |
+| `test_tools/dtu_ble_full_test.py` | BLE 测试工具 | BLE 全流程自动化测试脚本 |
+| `test_tools/dtu_ble_client.py` | BLE 客户端 | BLE 连接与数据收发客户端工具 |
 | `common/dtu_build_config.h` | 常量配置 | 引脚、命令字、状态码、资源限制 |
 | `common/dtu_types.h` | 共享类型 | mode、transport、runtime cfg 等共享结构 |
 
@@ -28,7 +31,7 @@
 
 ## 2. 现在该怎么看代码
 
-如果你要理解“收到一包数据后系统怎么走”，按这条主线看最清楚：
+如果你要理解"收到一包数据后系统怎么走"，按这条主线看最清楚：
 
 ```text
 transport/dtu_channel_uart.c
@@ -40,7 +43,7 @@ transport/dtu_channel_uart.c
     -> channel send()
 ```
 
-如果你要理解“配置为什么能保存、模式为什么能重启后生效”，按这条线看：
+如果你要理解"配置为什么能保存、模式为什么能重启后生效"，按这条线看：
 
 ```text
 mode handler
@@ -68,6 +71,8 @@ mode handler
 | `dtu_mode_config_dispatch()` | `service/mode/dtu_mode_config.c` | 配置模式命令表分发 |
 | `dtu_mode_run_dispatch()` | `service/mode/dtu_mode_run.c` | 运行模式命令表分发 |
 | `g_dtu_uart_transport` | `transport/dtu_channel_uart.c` | UART 通道接口对象 |
+| `g_dtu_ble_transport` | `transport/dtu_channel_ble.c` | BLE 通道接口对象 |
+| `g_dtu_sle_transport` | `transport/dtu_channel_sle.c` | SLE 通道接口对象 |
 
 ---
 
@@ -88,13 +93,13 @@ mode handler
 
 ### `dtu_storage.c`
 
-这里是唯一“真状态拥有者”：
+这里是唯一"真状态拥有者"：
 - `dtu_runtime_cfg_t`
 - `current_mode`
 - `mode_source`
 - `reboot_pending`
 
-其他层只能通过接口访问它，不能自己维护一份“影子状态”。
+其他层只能通过接口访问它，不能自己维护一份"影子状态"。
 
 ### `service/dtu_service.c` + `service/flow/dtu_flow.c`
 
@@ -113,7 +118,7 @@ service 现在拆成两个主子模块协作：
 
 ---
 
-## 5. transport 为什么现在更好接新模块
+## 5. transport 接口设计
 
 现在发包不再靠枚举分支判断：
 
@@ -128,10 +133,15 @@ const dtu_transport_if_t *transport_if = transport_table[id];
 transport_if->send(data, len);
 ```
 
-这意味着后面加 `BLE/SLE` 时：
+当前已注册三种 transport：
+- `g_dtu_uart_transport`：UART 通道
+- `g_dtu_ble_transport`：BLE 通道
+- `g_dtu_sle_transport`：SLE 通道
+
+后面加新通道时：
 - 新建一个 `dtu_channel_xxx.c`
 - 实现自己的 `init/send`
-- 在路由层注册进表
+- 在 `dtu_service.c` 的 `g_dtu_transport_table` 中注册
 
 就够了，不需要去全局搜所有 `switch(transport)` 再一处处补。
 
@@ -139,7 +149,7 @@ transport_if->send(data, len);
 
 ## 6. mode 为什么现在更好扩命令
 
-配置模式和运行模式都已经改成“命令表分发”，不是一个越来越大的总 `switch`。
+配置模式和运行模式都已经改成"命令表分发"，不是一个越来越大的总 `switch`。
 
 ### 配置模式
 
@@ -185,15 +195,20 @@ static const dtu_cmd_entry_t g_dtu_run_cmd_table[]
 
 ---
 
-## 8. 如果后面要接 BLE / SLE，正确入口在哪
+## 8. BLE / SLE 通道接入说明
 
-不要改：
+当前版本已实现三种 transport 通道：
+- **UART**：本地串口，配置模式和运行模式均可用
+- **BLE**：低功耗蓝牙，配置模式下提供无线配置接入
+- **SLE**：星闪（Sparkling Low Energy），运行模式下提供组网通信
+
+接入新通道时，不要改：
 - `dtu_protocol.c`
 - `dtu_storage.c`
 - 大部分 `mode` 处理函数
 
 正确做法是：
-1. 新建 `dtu_channel_ble.c` 或 `dtu_channel_sle.c`
+1. 新建 `dtu_channel_xxx.c`
 2. 自己维护该通道的接收缓存、连接句柄、发送接口
 3. 收到原始字节后统一喂：
    - `dtu_service_on_bytes()`
@@ -201,7 +216,7 @@ static const dtu_cmd_entry_t g_dtu_run_cmd_table[]
    - 如果上层已拿到完整帧，就喂 `dtu_service_on_frame()`
 4. 回复仍由 `dtu_service_reply()` 统一下发到该 transport 的 `send()`
 
-这就是现在这版“高内聚、低耦合”的关键价值：
+这就是现在这版"高内聚、低耦合"的关键价值：
 - 协议不跟 transport 绑死
 - 保存不跟 UART 绑死
 - mode 不跟 BLE/UART 绑死
@@ -223,7 +238,13 @@ static const dtu_cmd_entry_t g_dtu_run_cmd_table[]
 ### 想看 UART 怎么接进来
 1. `dtu_channel_uart.c`
 
-### 想接 BLE / SLE
-1. `dtu_channel_uart.c`
+### 想看 BLE 怎么接进来
+1. `dtu_channel_ble.c`
+
+### 想看 SLE 怎么接进来
+1. `dtu_channel_sle.c`
+
+### 想接新通道
+1. `dtu_channel_uart.c`（参考基本结构）
 2. 对照它做新的 `transport` 文件
-3. 最后在 `dtu_service.c` 注册新通道
+3. 最后在 `dtu_service.c` 的 `g_dtu_transport_table` 中注册

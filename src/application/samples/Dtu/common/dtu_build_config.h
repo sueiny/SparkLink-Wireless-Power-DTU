@@ -48,13 +48,17 @@
 /* ==================== 协议与资源限制区 ==================== */
 #define DTU_CFG_RX_DRIVER_BUFFER_SIZE         512
 #define DTU_CFG_RING_BUFFER_SIZE              2048
+#define DTU_CFG_RUN_PACKET_MAX_PAYLOAD        192
+#define DTU_CFG_RUN_PACKET_HEADER_SIZE        10
 #define DTU_CFG_MAX_FRAME_BODY                192
 #define DTU_CFG_MAX_NAME_LEN                  31
 #define DTU_CFG_MAX_MODBUS_ITEMS              8
-#define DTU_CFG_MAX_WL_ITEMS                  16
-#define DTU_CFG_WL_FRAGMENT_BODY_MAX          96
-#define DTU_CFG_NV_MAGIC                      0x44545531U
-#define DTU_CFG_NV_VERSION                    0x0003
+#define DTU_CFG_MAX_WL_ITEMS                  128
+#define DTU_CFG_NV_WL_SHARD_COUNT             8
+#define DTU_CFG_NV_WL_ITEMS_PER_SHARD         16
+#define DTU_CFG_WL_FRAGMENT_BODY_MAX          89
+#define DTU_CFG_NV_MAGIC                      0x44545532U
+#define DTU_CFG_NV_VERSION                    0x0005
 
 #define DTU_CFG_ROLE_NODE                     0x00
 #define DTU_CFG_ROLE_ROOT                     0x01

@@ -10,6 +10,7 @@ set(SOURCES_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/service/storage/dtu_storage.c
     ${CMAKE_CURRENT_SOURCE_DIR}/transport/dtu_channel_uart.c
     ${CMAKE_CURRENT_SOURCE_DIR}/transport/dtu_channel_ble.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/transport/dtu_channel_sle.c
     ${CMAKE_CURRENT_SOURCE_DIR}/service/mode/dtu_mode_config.c
     ${CMAKE_CURRENT_SOURCE_DIR}/service/mode/dtu_mode_run.c
     ${CMAKE_CURRENT_SOURCE_DIR}/dtu_main.c

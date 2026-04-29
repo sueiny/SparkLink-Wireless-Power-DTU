@@ -20,7 +20,7 @@
 /* NV运行区默认起始地址(物理地址) */
 #define KV_STORE_START_ADDR           0x22C000
 /* NV运行区page数 */
-#define KV_STORE_DATA_PAGE_NUM        4
+#define KV_STORE_DATA_PAGE_NUM        8
 /* NV运行区默认长度（不包含备份区） */
 #define KV_STORE_DATA_SIZE            (KV_STORE_DATA_PAGE_NUM * KV_PAGE_SIZE)
 

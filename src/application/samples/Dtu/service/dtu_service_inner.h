@@ -22,6 +22,7 @@ typedef struct {
 
 extern const dtu_transport_if_t g_dtu_uart_transport;
 extern const dtu_transport_if_t g_dtu_ble_transport;
+extern const dtu_transport_if_t g_dtu_sle_transport;
 
 /* ==================== 模式分发接口（原 dtu_mode.h） ==================== */
 typedef void (*dtu_cmd_handler_t)(dtu_transport_id_t transport_id, const dtu_frame_t *frame);
@@ -71,6 +72,7 @@ void dtu_log_cfg_write_power(uint8_t power);
 void dtu_log_cfg_write_whitelist(void);
 void dtu_log_cfg_write_wl_node(const dtu_wl_item_t *item);
 void dtu_log_cfg_reject(dtu_transport_id_t transport_id, uint8_t cmd);
+void dtu_log_run_forward(dtu_transport_id_t src, dtu_transport_id_t dst, uint16_t payload_len, uint16_t packet_len);
 
 /* ==================== 输入入口 ==================== */
 /* 由 transport 提交原始字节流。 */

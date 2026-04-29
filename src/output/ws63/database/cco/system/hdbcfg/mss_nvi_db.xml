@@ -99,5 +99,13 @@
 		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2151" NAME="hilink_connect_info" PARAM_NAME="hilink_connect_info_t"/>
 		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2160" NAME="chba_cfg" PARAM_NAME="chba_cfg_t"/>
 		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2161" NAME="dtu_cfg" PARAM_NAME="dtu_nv_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2162" NAME="dtu_wl_shard0" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2163" NAME="dtu_wl_shard1" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2164" NAME="dtu_wl_shard2" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2165" NAME="dtu_wl_shard3" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2166" NAME="dtu_wl_shard4" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2167" NAME="dtu_wl_shard5" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2168" NAME="dtu_wl_shard6" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
+		<NV CATEGORY="FTM" DESCRIPTION="FTM" DEV="CCO" ID="0x2169" NAME="dtu_wl_shard7" PARAM_NAME="dtu_nv_wl_shard_blob_t"/>
 	</GROUP>
 </DebugKits>

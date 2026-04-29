@@ -1,15 +1,14 @@
 {
-   "Partition_Tbl":{
-      "image_id" : "0x4B87A54B",
-      "stru_ver" : "0x00010000",
-      "version"  : "0x00000000",
-      "param_info_description" : [
+   "Partition_Tbl": {
+      "image_id": "0x4B87A54B",
+      "stru_ver": "0x00010000",
+      "version": "0x00000000",
+      "param_info_description": [
          "Address Constraints: flash type must fill with relative address, RAM regions must fill with absolute address.",
          "Item ID Constraints: ssb type:                       0x00 ~ 0x0F, Relative address, Size",
          "                     root public key and signature:  0x10 ~ 0x1F, Relative address, Size",
          "                     firmware on flash:              0x20 ~ 0x2F, Relative address, Size",
          "                     data on flash:                  0x30 ~ 0x3F, Relative address, Size",
-
          "Fixed item id:  0x00: ssb",
          "                0x01: FlashBoot",
          "                0x02: FlashBoot backup",
@@ -27,27 +26,24 @@
          "                0x34: rsv4",
          "                0x34: rsv5"
       ],
-      "param_info" : [
+      "param_info": [
          ["0x00", "0x00002000", "0x00006000"],
          ["0x01", "0x00020000", "0x00010000"],
          ["0x02", "0x00010000", "0x00010000"],
          ["0x03", "0x00000000", "0x00000800"],
-
          ["0x08", "0x00008000", "0x00004000"],
          ["0x09", "0x0000C000", "0x00004000"],
-         ["0x10", "0x003FC000", "0x00004000"],
-         ["0x11", "0x003FB000", "0x00001000"],
-
+         ["0x10", "0x003F8000", "0x00008000"],
+         ["0x11", "0x003F7000", "0x00001000"],
          ["0x20", "0x00030000", "0x001C0000"],
-         ["0x21", "0x00270000", "0x00183000"],
-
-         ["0x30", "0x003F3000", "0x00008000"],
-         ["0x31", "0x001F0000", "0x00080000"],
-         ["0x32", "0x003F3000", "0x00000000"],
-         ["0x33", "0x003F3000", "0x00000000"],
-         ["0x34", "0x003F3000", "0x00000000"],
-         ["0x35", "0x003F3000", "0x00000000"]
+         ["0x21", "0x00270000", "0x0017F000"],
+         ["0x30", "0x003EF000", "0x00008000"],
+         ["0x31", "0x003EF000", "0x00080000"],
+         ["0x32", "0x003EF000", "0x00000000"],
+         ["0x33", "0x003EF000", "0x00000000"],
+         ["0x34", "0x003EF000", "0x00000000"],
+         ["0x35", "0x003EF000", "0x00000000"]
       ]
    },
-   "Output_file_prefix":"AIoT"
+   "Output_file_prefix": "AIoT"
 }

@@ -1,0 +1,34 @@
+=== UART RX Callback 中的 WRITE 问题分析 ===
+
+dtu_uart_rx_callback() {
+    // ❌ 问题1：没有检查关键状态
+    if (buffer == NULL || length == 0 || error) {
+        return;  // 这被注释掉了！
+    }
+    
+    // ❌ 问题2：没有检查 handle 是否有效
+    param.handle = g_find_service_result.start_hdl;  // 可能还是 0 或无效值
+    
+    // ❌ 问题3：没有检查连接状态
+    param.data = (uint8_t*)buffer;  // buffer 可能是驱动内部缓存，数据立即被覆盖！
+    
+    ret = ssapc_write_req(0, g_conn_id, &param);
+    
+    // ❌ 问题4：没有检查 write_req 的返回值
+    // 如果返回非0，说明write失败了，但没有任何错误处理
+}
+
+=== 关键问题清单 ===
+1. ❌ buffer 来自 UART 驱动的内部缓冲，write_req 是异步的
+   -> 当 WRITE 真正发送时，buffer 已经被下一次数据覆盖了！
+   -> 需要拷贝数据到自己的缓冲区
+
+2. ❌ g_find_service_result.start_hdl 可能无效
+   -> 需要检查 gatt discovery 是否完成
+   
+3. ❌ g_conn_id 可能无效或连接已断开
+   -> 需要检查连接状态
+
+4. ❌ 没有检查 ssapc_write_req 的返回值
+   -> 返回非0表示write失败，需要知道失败原因
+

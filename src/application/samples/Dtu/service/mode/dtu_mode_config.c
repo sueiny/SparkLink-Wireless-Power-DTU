@@ -1,5 +1,6 @@
 #include "dtu_service_inner.h"
 
+#include "osal_mutex.h"
 #include "securec.h"
 
 /* 配置模式职责：
@@ -13,8 +14,30 @@
  * 1. 白名单读取需要支持分片返回。
  * 2. 这些辅助函数只服务于 ROOT 白名单读写，不对外暴露。
  */
-static uint8_t dtu_mode_cfg_pack_wl_fragment(uint8_t frag_idx, uint8_t frag_total, uint8_t *body);
-static uint8_t dtu_mode_cfg_calc_wl_frag_total(void);
+typedef struct {
+    uint8_t start;
+    uint8_t end;
+} dtu_wl_frag_range_t;
+
+typedef struct {
+    uint8_t total;
+    dtu_wl_frag_range_t ranges[DTU_CFG_MAX_WL_ITEMS];
+} dtu_wl_frag_plan_t;
+
+/* 白名单分片计划和响应 body 放在静态区，避免 128 条白名单时压爆业务任务栈。 */
+static dtu_wl_frag_plan_t g_wl_frag_plan;
+static uint8_t g_wl_frag_body[DTU_CFG_WL_FRAGMENT_BODY_MAX];
+
+/* 白名单分片缓存只有一份，因此用 mutex 串行保护。
+ * 这样既能避免 UART/BLE 同时读取时互相覆盖，又不需要按 transport 额外复制缓存。
+ */
+static osal_mutex g_wl_frag_mutex;
+static bool g_wl_frag_mutex_ready;
+
+static void dtu_mode_cfg_build_wl_frag_plan(dtu_wl_frag_plan_t *plan);
+static uint8_t dtu_mode_cfg_pack_wl_fragment(const dtu_wl_frag_plan_t *plan, uint8_t frag_idx, uint8_t *body);
+static bool dtu_mode_cfg_lock_wl_frag_cache(void);
+static void dtu_mode_cfg_unlock_wl_frag_cache(void);
 static bool dtu_mode_cfg_expect_empty_body(dtu_transport_id_t transport_id, const dtu_frame_t *frame);
 
 /* ==================== 读取命令处理区 ==================== */
@@ -166,78 +189,104 @@ static void dtu_mode_cfg_handle_read_modbus_cfg(dtu_transport_id_t transport_id,
     dtu_service_reply(transport_id, frame->cmd, frame->seq, body, off);
 }
 
-/* 计算白名单分片总数。 */
-static uint8_t dtu_mode_cfg_calc_wl_frag_total(void)
+/* 生成白名单分片计划。
+ * 计划只保存每个分片覆盖的 item 范围 [start, end)，生成后打包阶段不再重新扫描白名单。
+ */
+static void dtu_mode_cfg_build_wl_frag_plan(dtu_wl_frag_plan_t *plan)
 {
     const dtu_runtime_cfg_t *cfg = dtu_storage_runtime_const();
     uint16_t used = 5;
-    uint8_t total = 1;
+    uint8_t frag = 0;
+
+    if (plan == NULL) {
+        return;
+    }
+
+    (void)memset_s(plan, sizeof(*plan), 0, sizeof(*plan));
+    plan->total = 1;
+    plan->ranges[0].start = 0;
+    plan->ranges[0].end = 0;
 
     if (cfg->wl_count == 0) {
-        return 1;
+        return;
     }
+
     for (uint8_t i = 0; i < cfg->wl_count; i++) {
-        uint16_t item_len = (uint16_t)(WIFI_MAC_LEN + 1 + cfg->whitelist[i].name_len);
-        if (used + item_len > DTU_CFG_WL_FRAGMENT_BODY_MAX) {
-            total++;
+        if (used + WIFI_MAC_LEN > DTU_CFG_WL_FRAGMENT_BODY_MAX) {
+            plan->ranges[frag].end = i;
+            frag++;
+            plan->total = (uint8_t)(frag + 1);
+            plan->ranges[frag].start = i;
+            plan->ranges[frag].end = i;
             used = 5;
         }
-        used = (uint16_t)(used + item_len);
+        used = (uint16_t)(used + WIFI_MAC_LEN);
     }
-    return total;
+
+    plan->ranges[frag].end = cfg->wl_count;
 }
 
 /* 打包指定分片的白名单内容。 */
-static uint8_t dtu_mode_cfg_pack_wl_fragment(uint8_t frag_idx, uint8_t frag_total, uint8_t *body)
+static uint8_t dtu_mode_cfg_pack_wl_fragment(const dtu_wl_frag_plan_t *plan, uint8_t frag_idx, uint8_t *body)
 {
     const dtu_runtime_cfg_t *cfg = dtu_storage_runtime_const();
+    const dtu_wl_frag_range_t *range;
     uint16_t used = 5;
-    uint8_t current_frag = 1;
-    uint8_t count = 0;
+
+    if (plan == NULL || body == NULL || frag_idx == 0 || frag_idx > plan->total) {
+        return 0;
+    }
+
+    range = &plan->ranges[frag_idx - 1];
 
     body[0] = DTU_CFG_STATUS_SUCC;
     body[1] = frag_idx;
-    body[2] = frag_total;
+    body[2] = plan->total;
     body[3] = cfg->wl_count;
-    body[4] = 0;
+    body[4] = (uint8_t)(range->end - range->start);
 
-    for (uint8_t i = 0; i < cfg->wl_count; i++) {
-        uint16_t item_len = (uint16_t)(WIFI_MAC_LEN + 1 + cfg->whitelist[i].name_len);
-
-        if (used + item_len > DTU_CFG_WL_FRAGMENT_BODY_MAX) {
-            current_frag++;
-            used = 5;
-        }
-        if (current_frag != frag_idx) {
-            used = (uint16_t)(used + item_len);
-            continue;
-        }
-
+    for (uint8_t i = range->start; i < range->end; i++) {
         if (memcpy_s(&body[used], DTU_CFG_WL_FRAGMENT_BODY_MAX - used, cfg->whitelist[i].mac, WIFI_MAC_LEN) != EOK) {
             return 0;
         }
         used = (uint16_t)(used + WIFI_MAC_LEN);
-        body[used++] = cfg->whitelist[i].name_len;
-        if (cfg->whitelist[i].name_len > 0) {
-            if (memcpy_s(&body[used], DTU_CFG_WL_FRAGMENT_BODY_MAX - used,
-                cfg->whitelist[i].name, cfg->whitelist[i].name_len) != EOK) {
-                return 0;
-            }
-            used = (uint16_t)(used + cfg->whitelist[i].name_len);
-        }
-        count++;
-        body[4] = count;
     }
     return (uint8_t)used;
+}
+
+/* 获取白名单分片缓存锁。 */
+static bool dtu_mode_cfg_lock_wl_frag_cache(void)
+{
+    if (!g_wl_frag_mutex_ready) {
+        if (osal_mutex_init(&g_wl_frag_mutex) != 0) {
+            dtu_log_error("wl frag mutex init failed");
+            return false;
+        }
+        g_wl_frag_mutex_ready = true;
+    }
+
+    if (osal_mutex_lock(&g_wl_frag_mutex) != 0) {
+        dtu_log_error("wl frag mutex lock failed");
+        return false;
+    }
+    return true;
+}
+
+/* 释放白名单分片缓存锁。 */
+static void dtu_mode_cfg_unlock_wl_frag_cache(void)
+{
+    if (g_wl_frag_mutex_ready) {
+        (void)osal_mutex_unlock(&g_wl_frag_mutex);
+    }
 }
 
 /* 读取 ROOT 白名单。 */
 static void dtu_mode_cfg_handle_read_root_wl_all(dtu_transport_id_t transport_id, const dtu_frame_t *frame)
 {
-    uint8_t frag_total;
-    uint8_t body[DTU_CFG_WL_FRAGMENT_BODY_MAX];
-
     if (!dtu_mode_cfg_expect_empty_body(transport_id, frame)) {
+        return;
+    }
+    if (transport_id >= DTU_TRANSPORT_MAX) {
         return;
     }
 
@@ -247,11 +296,17 @@ static void dtu_mode_cfg_handle_read_root_wl_all(dtu_transport_id_t transport_id
     }
 
     dtu_log_cfg_read_whitelist();
-    frag_total = dtu_mode_cfg_calc_wl_frag_total();
-    for (uint8_t frag = 1; frag <= frag_total; frag++) {
-        uint8_t body_len = dtu_mode_cfg_pack_wl_fragment(frag, frag_total, body);
-        dtu_service_reply(transport_id, frame->cmd, frame->seq, body, body_len);
+    if (!dtu_mode_cfg_lock_wl_frag_cache()) {
+        dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_BUSY);
+        return;
     }
+
+    dtu_mode_cfg_build_wl_frag_plan(&g_wl_frag_plan);
+    for (uint8_t frag = 1; frag <= g_wl_frag_plan.total; frag++) {
+        uint8_t body_len = dtu_mode_cfg_pack_wl_fragment(&g_wl_frag_plan, frag, g_wl_frag_body);
+        dtu_service_reply(transport_id, frame->cmd, frame->seq, g_wl_frag_body, body_len);
+    }
+    dtu_mode_cfg_unlock_wl_frag_cache();
 }
 
 /* 读取 ROOT 功率配置。 */
@@ -401,7 +456,7 @@ static void dtu_mode_cfg_handle_set_root_power(dtu_transport_id_t transport_id, 
 /* 新增或覆盖白名单项。 */
 static void dtu_mode_cfg_handle_add_wl_item(dtu_transport_id_t transport_id, const dtu_frame_t *frame)
 {
-    uint8_t name_len;
+    dtu_runtime_cfg_t *runtime = dtu_storage_runtime();
     int32_t exist_idx;
     bool new_item = false;
 
@@ -409,14 +464,8 @@ static void dtu_mode_cfg_handle_add_wl_item(dtu_transport_id_t transport_id, con
         dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_ROLE_MISMATCH);
         return;
     }
-    if (frame->len < 7) {
+    if (frame->len != WIFI_MAC_LEN) {
         dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_LEN_ERR);
-        return;
-    }
-
-    name_len = frame->body[WIFI_MAC_LEN];
-    if (name_len > DTU_CFG_MAX_NAME_LEN || frame->len != (uint16_t)(WIFI_MAC_LEN + 1 + name_len)) {
-        dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_PARAM_ERR);
         return;
     }
 
@@ -426,24 +475,17 @@ static void dtu_mode_cfg_handle_add_wl_item(dtu_transport_id_t transport_id, con
             dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_WL_FULL);
             return;
         }
-        exist_idx = dtu_storage_runtime()->wl_count++;
+        exist_idx = runtime->wl_count;
         new_item = true;
     }
 
-    if (memcpy_s(dtu_storage_runtime()->whitelist[exist_idx].mac, WIFI_MAC_LEN, frame->body, WIFI_MAC_LEN) != EOK) {
+    if (memcpy_s(runtime->whitelist[exist_idx].mac, WIFI_MAC_LEN, frame->body, WIFI_MAC_LEN) != EOK) {
         dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_SAVE_FAIL);
         return;
     }
-    dtu_storage_runtime()->whitelist[exist_idx].name_len = name_len;
-    if (name_len > 0) {
-        if (memcpy_s(dtu_storage_runtime()->whitelist[exist_idx].name, DTU_CFG_MAX_NAME_LEN,
-            &frame->body[WIFI_MAC_LEN + 1], name_len) != EOK) {
-            dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_SAVE_FAIL);
-            return;
-        }
-    }
     if (new_item) {
-        dtu_storage_init_wl_item_cfg(&dtu_storage_runtime()->whitelist[exist_idx]);
+        dtu_storage_init_wl_item_cfg(&runtime->whitelist[exist_idx]);
+        runtime->wl_count++;
     }
     dtu_log_cfg_write_whitelist();
     dtu_service_reply_status(transport_id, frame->cmd, frame->seq, DTU_CFG_STATUS_SUCC);

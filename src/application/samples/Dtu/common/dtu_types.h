@@ -43,8 +43,6 @@ typedef struct {
 
 typedef struct {
     uint8_t mac[WIFI_MAC_LEN];
-    uint8_t name_len;
-    char name[DTU_CFG_MAX_NAME_LEN];
     /* node 子配置：
      * 1. 仅在 ROOT 角色维护白名单时使用
      * 2. power 不在这里单独保存，node 统一跟随 ROOT 当前 power

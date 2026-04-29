@@ -1,0 +1,40 @@
+=== SLE SPEED CLIENT UART ===
+uart_test_init() {
+    // ❌ 缺失 DMA 初始化
+    // uapi_dma_init();
+    // uapi_dma_open();
+    
+    uapi_pin_set_mode(17, 1);
+    uapi_pin_set_mode(18, 1);
+    uapi_uart_deinit(0);
+    ret = uapi_uart_init(0, &pin_config, &attr, &extra_attr, &g_app_uart_buffer_config);
+    
+    uapi_uart_unregister_rx_callback(0);
+    ret = uapi_uart_register_rx_callback(0, UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE, 1, ...);
+}
+
+=== DTU CHANNEL UART ===
+dtu_uart_transport_init_impl() {
+    // ✅ 完整的 DMA 初始化
+    uapi_dma_init();
+    uapi_dma_open();
+    
+    uapi_pin_set_mode(DTU_CFG_UART_TX_PIN, DTU_CFG_UART_PIN_MODE);
+    uapi_pin_set_mode(DTU_CFG_UART_RX_PIN, DTU_CFG_UART_PIN_MODE);
+    uapi_uart_deinit(DTU_CFG_UART_BUS);
+    
+    ret = osal_sem_binary_sem_init(&ctx->rx_sem, 0);  // ✅ 初始化信号量
+    
+    ret = uapi_uart_init(DTU_CFG_UART_BUS, &uart_pins, &uart_attr, &extra_attr, &ctx->buffer_cfg);
+    
+    ret = uapi_uart_register_rx_callback(..., UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE, 1, ...);
+    
+    task = osal_kthread_create((osal_kthread_handler)dtu_uart_task, NULL, "DtuUartTask", 0x1200);
+    // ✅ 创建接收任务处理
+}
+
+KEY DIFFERENCES:
+1. ❌ Client 缺少 uapi_dma_init() / uapi_dma_open() - DMA 模块可能未被正确初始化
+2. ❌ Client 缺少接收任务 - 没有专门的线程来处理和唤醒中断
+3. ❌ Client 缺少 osal_sem_binary_sem_init() - 没有信号量协调中断与接收任务
+

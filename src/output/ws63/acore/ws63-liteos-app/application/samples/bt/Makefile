@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(CMAKE_COMMAND) -E cmake_progress_start /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/Dtu/CMakeFiles/progress.marks
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/Dtu/all
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(CMAKE_COMMAND) -E cmake_progress_start /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/CMakeFiles/progress.marks
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/bt/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/Dtu/clean
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/bt/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,12 +97,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/Dtu/preinstall
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/bt/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/Dtu/preinstall
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f CMakeFiles/Makefile2 application/samples/bt/preinstall
 .PHONY : preinstall/fast
 
 # clear depends

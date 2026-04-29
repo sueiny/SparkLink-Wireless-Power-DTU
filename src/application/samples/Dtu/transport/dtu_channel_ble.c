@@ -127,40 +127,7 @@ static bool dtu_ble_ring_pop(uint8_t *byte)
     return true;
 }
 
-/* BLE 解析任务：
- * 1. 从本地 ring buffer 批量取字节
- * 2. 统一喂给 dtu_service_on_bytes(BLE, ...)
- * 3. 这样 GATT write 回调上下文只负责快速入队，不会被协议解析拖慢
- */
-static void *dtu_ble_task(const char *arg)
-{
-    uint8_t batch[64];
 
-    unused(arg);
-    while (1) {
-        uint16_t count = 0;
-
-        while (count < sizeof(batch) && dtu_ble_ring_pop(&batch[count])) {
-            count++;
-        }
-        if (count > 0) {
-            dtu_service_on_bytes(DTU_TRANSPORT_BLE, batch, count);
-            continue;
-        }
-
-        if (dtu_storage_is_reboot_pending()) {
-            osal_msleep(20);
-            hal_reboot_chip();
-        }
-
-        dtu_service_trace_rx_task_wakeup();
-        if (osal_sem_down(&dtu_ble_ctx()->rx_sem) != OSAL_SUCCESS) {
-            osal_msleep(1);
-        }
-    }
-
-    return NULL;
-}
 
 /* 将 16bit UUID 填充为 bt_uuid_t。
  * BT 示例里大量使用 16bit UUID，本地封装一个小工具后，
@@ -505,6 +472,86 @@ static errcode_t dtu_ble_register_callbacks(void)
     return ERRCODE_SUCC;
 }
 
+
+
+
+
+/* BLE 解析任务：
+ * 1. 从本地 ring buffer 批量取字节
+ * 2. 统一喂给 dtu_service_on_bytes(BLE, ...)
+ * 3. 这样 GATT write 回调上下文只负责快速入队，不会被协议解析拖慢
+ */
+static void *dtu_ble_task(const char *arg)
+{
+    uint8_t batch[64];
+
+    unused(arg);
+    while (1) {
+        uint16_t count = 0;
+
+        while (count < sizeof(batch) && dtu_ble_ring_pop(&batch[count])) {
+            count++;
+        }
+        if (count > 0) {
+            dtu_service_on_bytes(DTU_TRANSPORT_BLE, batch, count);
+            continue;
+        }
+
+        if (dtu_storage_is_reboot_pending()) {
+            osal_msleep(20);
+            hal_reboot_chip();
+        }
+
+        dtu_service_trace_rx_task_wakeup();
+        if (osal_sem_down(&dtu_ble_ctx()->rx_sem) != OSAL_SUCCESS) {
+            osal_msleep(1);
+        }
+    }
+
+    return NULL;
+}
+
+
+/* 通过 BLE notify 发送完整 DTU 协议帧。
+ * 注意这里发送的是“已经打包好的完整 DTU 响应帧”：
+ * service/flow 层先把 body 组装成协议帧，再由 BLE transport 直接 notify。
+ *
+ * 这样 BLE 通道不会参与任何协议拼装，只承担：
+ * 1. 原始字节写入
+ * 2. 原始字节通知
+ *
+ * 这也是当前 DTU transport 设计里“低耦合”的核心。
+ */
+static errcode_t dtu_ble_transport_send_impl(const uint8_t *data, uint16_t len)
+{
+    gatts_ntf_ind_t param = {0};
+    uint8_t *value;
+
+    if (data == NULL || len == 0) {
+        return ERRCODE_FAIL;
+    }
+    if (!dtu_ble_ctx()->service_started || !dtu_ble_ctx()->connected || dtu_ble_ctx()->value_handle == 0) {
+        osal_printk("there is no active connection to send data\r\n");
+        return ERRCODE_FAIL;
+    }
+
+    value = osal_vmalloc(len);
+    if (value == NULL) {
+        return ERRCODE_MALLOC;
+    }
+    if (memcpy_s(value, len, data, len) != EOK) {
+        osal_vfree(value);
+        return ERRCODE_FAIL;
+    }
+
+    param.attr_handle = dtu_ble_ctx()->value_handle;
+    param.value = value;
+    param.value_len = len;
+    (void)gatts_notify_indicate(dtu_ble_ctx()->server_id, dtu_ble_ctx()->conn_handle, &param);
+    osal_vfree(value);
+    return ERRCODE_SUCC;
+}
+
 /* 初始化 BLE transport。
  * transport init 只做两件事：
  * 1. 注册 BLE GAP/GATTS 回调
@@ -550,45 +597,6 @@ static errcode_t dtu_ble_transport_init_impl(void)
     return ERRCODE_SUCC;
 }
 
-/* 通过 BLE notify 发送完整 DTU 协议帧。
- * 注意这里发送的是“已经打包好的完整 DTU 响应帧”：
- * service/flow 层先把 body 组装成协议帧，再由 BLE transport 直接 notify。
- *
- * 这样 BLE 通道不会参与任何协议拼装，只承担：
- * 1. 原始字节写入
- * 2. 原始字节通知
- *
- * 这也是当前 DTU transport 设计里“低耦合”的核心。
- */
-static errcode_t dtu_ble_transport_send_impl(const uint8_t *data, uint16_t len)
-{
-    gatts_ntf_ind_t param = {0};
-    uint8_t *value;
-
-    if (data == NULL || len == 0) {
-        return ERRCODE_FAIL;
-    }
-    if (!dtu_ble_ctx()->service_started || !dtu_ble_ctx()->connected || dtu_ble_ctx()->value_handle == 0) {
-        osal_printk("there is no active connection to send data\r\n");
-        return ERRCODE_FAIL;
-    }
-
-    value = osal_vmalloc(len);
-    if (value == NULL) {
-        return ERRCODE_MALLOC;
-    }
-    if (memcpy_s(value, len, data, len) != EOK) {
-        osal_vfree(value);
-        return ERRCODE_FAIL;
-    }
-
-    param.attr_handle = dtu_ble_ctx()->value_handle;
-    param.value = value;
-    param.value_len = len;
-    (void)gatts_notify_indicate(dtu_ble_ctx()->server_id, dtu_ble_ctx()->conn_handle, &param);
-    osal_vfree(value);
-    return ERRCODE_SUCC;
-}
 
 const dtu_transport_if_t g_dtu_ble_transport = {
     .name = "BLE",

@@ -1,12 +1,16 @@
 #include "dtu_service.h"
 #include "dtu_service_inner.h"
 
+#include "securec.h"
+
 #define DTU_SERVICE_MAX_FRAME_SIZE (DTU_CFG_MAX_FRAME_BODY + 8)
+#define DTU_RUN_PACKET_VERSION 0x01
+#define DTU_RUN_PACKET_SRC_UART 0x00
 
 /* flow 子模块职责：
- * 1. 统一收拢输入、分发、输出三条主链路，减少 service 层来回跳转
- * 2. 对外仍保留 on_bytes / on_frame / reply 这组稳定入口
- * 3. 只负责协议流转，不承担配置存储与 transport 初始化职责
+ * 1. CONFIG 模式：字节流 -> DTU 配置协议帧 -> 公共/配置命令分发
+ * 2. RUN 模式：UART 原始数据贴节点信息后转发到 SLE，SLE 下行数据直接写入 UART
+ * 3. 输出仍统一走 dtu_service_reply()，业务层不感知具体 transport
  */
 
 /* ========================================================================== */
@@ -56,6 +60,94 @@ static const dtu_mode_if_t *dtu_flow_get_mode_if(dtu_mode_t mode)
         return NULL;
     }
     return g_dtu_mode_table[mode];
+}
+
+/* ========================================================================== */
+/* 运行模式数据转发区                                                         */
+/* 说明：                                                                     */
+/* 1. RUN 模式不解析 DTU 配置协议，也不做 Modbus 过滤。                       */
+/* 2. UART 上行：贴上当前 DTU 节点信息，再交给 SLE transport。                */
+/* 3. SLE 下行：当前作为控制/业务下行载荷，直接写入 UART。                   */
+/* 4. 后续组网协议确定后，只需要替换这里的轻量打包/解包入口。                */
+/* ========================================================================== */
+
+// static uint16_t dtu_flow_pack_run_uart_data(const uint8_t *data, uint16_t len, uint8_t *out, uint16_t out_size)
+// {
+//     uint8_t mac[WIFI_MAC_LEN] = {0};
+//     uint16_t payload_len;
+//     uint16_t offset = 0;
+
+//     if (data == NULL || out == NULL || out_size < DTU_CFG_RUN_PACKET_HEADER_SIZE) {
+//         return 0;
+//     }
+
+//     payload_len = (len > DTU_CFG_RUN_PACKET_MAX_PAYLOAD) ? DTU_CFG_RUN_PACKET_MAX_PAYLOAD : len;
+//     if (out_size < (uint16_t)(DTU_CFG_RUN_PACKET_HEADER_SIZE + payload_len)) {
+//         return 0;
+//     }
+
+//     dtu_storage_get_device_mac(mac);
+//     out[offset++] = DTU_RUN_PACKET_VERSION;
+//     out[offset++] = DTU_RUN_PACKET_SRC_UART;
+//     (void)memcpy_s(&out[offset], out_size - offset, mac, sizeof(mac));
+//     offset = (uint16_t)(offset + sizeof(mac));
+//     out[offset++] = (uint8_t)(payload_len & 0xFF);
+//     out[offset++] = (uint8_t)((payload_len >> 8) & 0xFF);
+//     if (payload_len > 0 && memcpy_s(&out[offset], out_size - offset, data, payload_len) != EOK) {
+//         return 0;
+//     }
+//     return (uint16_t)(offset + payload_len);
+// }
+
+static void dtu_flow_forward_run_uart_data(const uint8_t *data, uint16_t len)
+{
+    const dtu_transport_if_t *sle_if = dtu_service_transport_if(DTU_TRANSPORT_SLE);
+    // uint8_t packet[DTU_CFG_RUN_PACKET_HEADER_SIZE + DTU_CFG_RUN_PACKET_MAX_PAYLOAD];
+    // uint16_t packet_len;
+    errcode_t ret;
+
+    if (data == NULL || len == 0) {
+        return;
+    }
+    if (sle_if == NULL || sle_if->send == NULL) {
+        dtu_log_error("run forward failed: SLE transport unsupported");
+        return;
+    }
+
+    // packet_len = dtu_flow_pack_run_uart_data(data, len, packet, sizeof(packet));
+    // if (packet_len == 0) {
+    //     dtu_log_error("run forward pack failed: len=%u", len);
+    //     return;
+    // }
+
+   // dtu_log_run_forward(DTU_TRANSPORT_UART, DTU_TRANSPORT_SLE, len, packet_len);
+   // ret = sle_if->send(packet, packet_len);//贴节点信息发送
+    ret = sle_if->send(data, len);//直接发送原始数据,暂时测试用
+    if (ret != ERRCODE_SUCC) {
+        dtu_log_error("run forward send failed: transport=%s ret=0x%x",
+            dtu_service_transport_name(DTU_TRANSPORT_SLE), ret);
+    }
+}
+
+static void dtu_flow_forward_run_sle_data(const uint8_t *data, uint16_t len)
+{
+    const dtu_transport_if_t *uart_if = dtu_service_transport_if(DTU_TRANSPORT_UART);
+    errcode_t ret;
+
+    if (data == NULL || len == 0) {
+        return;
+    }
+    if (uart_if == NULL || uart_if->send == NULL) {
+        dtu_log_error("run forward failed: UART transport unsupported");
+        return;
+    }
+
+    dtu_log_run_forward(DTU_TRANSPORT_SLE, DTU_TRANSPORT_UART, len, len);
+    ret = uart_if->send(data, len);
+    if (ret != ERRCODE_SUCC) {
+        dtu_log_error("run forward send failed: transport=%s ret=0x%x",
+            dtu_service_transport_name(DTU_TRANSPORT_UART), ret);
+    }
 }
 
 /* ========================================================================== */
@@ -137,6 +229,15 @@ void dtu_service_on_bytes(dtu_transport_id_t transport_id, const uint8_t *data, 
     dtu_protocol_parser_t *parser;
 
     if (transport_id >= DTU_TRANSPORT_MAX || data == NULL || len == 0) {
+        return;
+    }
+
+    if (dtu_storage_current_mode() == DTU_MODE_RUN) {
+        if (transport_id == DTU_TRANSPORT_UART) {
+            dtu_flow_forward_run_uart_data(data, len);
+        } else if (transport_id == DTU_TRANSPORT_SLE) {
+            dtu_flow_forward_run_sle_data(data, len);
+        }
         return;
     }
 

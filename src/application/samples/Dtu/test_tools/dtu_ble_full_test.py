@@ -96,7 +96,6 @@ CMD = {
 }
 
 WL_MAC = bytes([0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6])
-WL_NAME = b"DTU_N01"
 
 
 class TestFailure(Exception):
@@ -322,6 +321,7 @@ class DtuBleTester:
         frames = [first]
         if frag_idx != 1:
             raise TestFailure(f"READ_ROOT_WL_ALL 首片frag_idx异常: {frag_idx}")
+        self._check_wl_fragment(first)
 
         # 多片时继续收同一 seq/cmd 的后续通知
         while len(frames) < frag_total:
@@ -335,9 +335,21 @@ class DtuBleTester:
                 raise TestFailure("READ_ROOT_WL_ALL 分片响应空body")
             if parsed.body[0] != 0x00:
                 raise TestFailure(f"READ_ROOT_WL_ALL 分片status异常: 0x{parsed.body[0]:02X}")
+            self._check_wl_fragment(parsed)
             frames.append(parsed)
 
         return frames
+
+    @staticmethod
+    def _check_wl_fragment(frame: ParsedFrame) -> None:
+        if len(frame.body) < 5:
+            raise TestFailure("READ_ROOT_WL_ALL 分片长度过短")
+        item_count = frame.body[4]
+        payload_len = len(frame.body) - 5
+        if payload_len != item_count * 6:
+            raise TestFailure(
+                f"READ_ROOT_WL_ALL V2 item长度异常: payload={payload_len} item_count={item_count}"
+            )
 
 
 async def run_config_suite(t: DtuBleTester, runner: StepRunner) -> None:
@@ -422,7 +434,7 @@ async def run_config_suite(t: DtuBleTester, runner: StepRunner) -> None:
     except Exception as exc:
         runner.fail("SET_ROOT_POWER(5)", str(exc))
 
-    wl_body = WL_MAC + bytes([len(WL_NAME)]) + WL_NAME
+    wl_body = WL_MAC
     try:
         await t.send_cmd("ADD_WL_ITEM", CMD["ADD_WL_ITEM"], body=wl_body)
         runner.ok("ADD_WL_ITEM")
@@ -556,7 +568,7 @@ async def run_run_suite(t: DtuBleTester, runner: StepRunner) -> None:
         ("SET_UART_CFG", CMD["SET_UART_CFG"], bytes([0x07, 0x00, 0x01, 0x08])),
         ("SET_MODBUS_CFG", CMD["SET_MODBUS_CFG"], bytes([0x01, 0x01, 0x02])),
         ("SET_ROOT_POWER", CMD["SET_ROOT_POWER"], bytes([0x05])),
-        ("ADD_WL_ITEM", CMD["ADD_WL_ITEM"], WL_MAC + bytes([0x01, ord("X")])),
+        ("ADD_WL_ITEM", CMD["ADD_WL_ITEM"], WL_MAC),
         ("DEL_WL_ITEM", CMD["DEL_WL_ITEM"], WL_MAC),
         ("CLEAR_WL", CMD["CLEAR_WL"], b""),
         ("SET_WL_NODE_CFG", CMD["SET_WL_NODE_CFG"], WL_MAC + bytes([0x07, 0x00, 0x01, 0x08, 0x01, 0x01, 0x05])),

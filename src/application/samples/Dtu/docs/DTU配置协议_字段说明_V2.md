@@ -6,7 +6,7 @@
 |----------|--------------------------------------------------------------------|
 | 整理目标 | 把 DTU 配置协议整理成“字段说明表”，重点说明每个数据/字节代表什么。 |
 | 适用范围 | UART 配置通道、BLE 配置通道共用的 DTU 配置协议。                   |
-| 资料依据 | DTU配置协议.md、DTU测试流程（串口）.md、DTU完整测试流程.md。       |
+| 资料依据 | DTU配置协议.md、DTU测试流程（串口）.md、DTU完整测试流程.md；本文件为 V2。 |
 | 重要约定 | 表内 Hex 报文按线上实际发送顺序展示；SOF 显示为 AA 55。            |
 | 注意     | SEQ 是请求序号；如果 SEQ 改变，CRC 必须重新计算。                  |
 
@@ -90,15 +90,13 @@
 | 读取     | 0x04    | READ_ROOT_WL_ALL | 无                                          | status + frag_idx + frag_total + wl_total + item_count + items                                                         |
 | 读取     | 0x05    | READ_ROOT_POWER  | 无                                          | status + power                                                                                                         |
 | 读取     | 0x06    | GET_MODE_STATUS  | 无                                          | status + current_mode + role + baud_level + parity + stop_bits + data_bits + mode_source + rx_profile + reboot_pending |
-| 读取     | 0x07    | READ_WL_NODE_CFG | mac(6)                                      | status + baud_level + parity + stop_bits + data_bits + item_count + (addr + dev_type) * N                            |
 | 写入     | 0x10    | SET_ROLE         | role                                        | status                                                                                                                 |
 | 写入     | 0x11    | SET_UART_CFG     | baud_level + parity + stop_bits + data_bits | status                                                                                                                 |
 | 写入     | 0x12    | SET_MODBUS_CFG   | item_count + (addr + dev_type) \* N         | status                                                                                                                 |
 | 写入     | 0x13    | SET_ROOT_POWER   | power                                       | status                                                                                                                 |
-| 写入     | 0x14    | ADD_WL_ITEM      | mac + name_len + name                       | status                                                                                                                 |
+| 写入     | 0x14    | ADD_WL_ITEM      | mac                                         | status                                                                                                                 |
 | 写入     | 0x15    | DEL_WL_ITEM      | mac                                         | status                                                                                                                 |
 | 写入     | 0x16    | CLEAR_WL         | 无                                          | status                                                                                                                 |
-| 写入     | 0x17    | SET_WL_NODE_CFG  | mac(6) + uart_cfg(4) + item_count + (addr + dev_type) * N | status                                                                                                    |
 | 控制     | 0x20    | COMMIT           | 无                                          | status；保存当前配置到 NV                                                                                              |
 | 控制     | 0x21    | REBOOT           | 无                                          | status；响应后重启                                                                                                     |
 | 控制     | 0x22    | FACTORY_RESET    | 无或确认字节                                | status；恢复默认配置                                                                                                   |
@@ -125,18 +123,7 @@
 | READ_ROOT_WL_ALL | 响应      | 2             | 1        | frag_total     | 总分片数                                                     |
 | READ_ROOT_WL_ALL | 响应      | 3             | 1        | wl_total       | 白名单总条数                                                 |
 | READ_ROOT_WL_ALL | 响应      | 4             | 1        | item_count     | 当前分片内白名单条数                                         |
-| 白名单 item      | 请求/响应 | var           | 6        | mac            | 子设备 MAC                                                   |
-| 白名单 item      | 请求/响应 | var           | 1        | name_len       | 子设备 name 长度                                             |
-| 白名单 item      | 请求/响应 | var           | N        | name           | 子设备 name，例如 DTU_N01                                    |
-| READ_WL_NODE_CFG | 请求      | 0             | 6        | mac            | 目标白名单 node 的 MAC                                       |
-| READ_WL_NODE_CFG | 响应      | 0             | 1        | status         | 状态码                                                       |
-| READ_WL_NODE_CFG | 响应      | 1             | 1        | baud_level     | 该 node 子配置中的串口波特率挡位                            |
-| READ_WL_NODE_CFG | 响应      | 2             | 1        | parity         | 该 node 子配置中的串口校验位                                |
-| READ_WL_NODE_CFG | 响应      | 3             | 1        | stop_bits      | 该 node 子配置中的停止位                                    |
-| READ_WL_NODE_CFG | 响应      | 4             | 1        | data_bits      | 该 node 子配置中的数据位                                    |
-| READ_WL_NODE_CFG | 响应      | 5             | 1        | item_count     | 该 node 子配置中的 Modbus 预设项数量                        |
-| READ_WL_NODE_CFG | 响应      | 6+2n          | 1        | addr           | 第 n 项 Modbus 地址                                          |
-| READ_WL_NODE_CFG | 响应      | 7+2n          | 1        | dev_type       | 第 n 项设备类型                                              |
+| 白名单 item      | 请求/响应 | var           | 6        | mac            | 子设备 MAC；V2 中白名单 item 仅包含 MAC                       |
 | GET_MODE_STATUS  | 响应      | 0             | 1        | status         | 状态码                                                       |
 | GET_MODE_STATUS  | 响应      | 1             | 1        | current_mode   | 当前模式，CONFIG 或 RUN；具体数值以代码定义为准              |
 | GET_MODE_STATUS  | 响应      | 2             | 1        | role           | 当前角色                                                     |
@@ -147,20 +134,49 @@
 | GET_MODE_STATUS  | 响应      | 7             | 1        | mode_source    | 模式来源，当前主要由 GPIO13 拨码决定；具体数值以代码定义为准 |
 | GET_MODE_STATUS  | 响应      | 8             | 1        | rx_profile     | 接收配置/通道相关状态；具体数值以代码定义为准                |
 | GET_MODE_STATUS  | 响应      | 9             | 1        | reboot_pending | 是否有待重启生效项；具体数值以代码定义为准                   |
-| SET_WL_NODE_CFG  | 请求      | 0             | 6        | mac            | 目标白名单 node 的 MAC                                       |
-| SET_WL_NODE_CFG  | 请求      | 6             | 1        | baud_level     | 该 node 子配置的波特率挡位                                  |
-| SET_WL_NODE_CFG  | 请求      | 7             | 1        | parity         | 该 node 子配置的校验位                                      |
-| SET_WL_NODE_CFG  | 请求      | 8             | 1        | stop_bits      | 该 node 子配置的停止位                                      |
-| SET_WL_NODE_CFG  | 请求      | 9             | 1        | data_bits      | 该 node 子配置的数据位                                      |
-| SET_WL_NODE_CFG  | 请求      | 10            | 1        | item_count     | 要写入的 Modbus 预设项数量                                  |
-| SET_WL_NODE_CFG  | 请求      | 11+2n         | 1        | addr           | 第 n 项 Modbus 地址                                          |
-| SET_WL_NODE_CFG  | 请求      | 12+2n         | 1        | dev_type       | 第 n 项设备类型                                              |
+
+
+## 7.1 V2 白名单 BODY 结构补充
+
+### 7.1.1 ADD_WL_ITEM 请求 BODY
+
+| **偏移** | **长度** | **字段** | **含义** |
+|----------|----------|----------|----------|
+| 0        | 6        | mac      | 待加入白名单的子设备 MAC。 |
+
+说明：V2 中 `ADD_WL_ITEM` 不再携带 `name_len` 和 `name`。设备只根据 MAC 建立白名单项。
+
+### 7.1.2 READ_ROOT_WL_ALL 响应 BODY
+
+| **偏移** | **长度** | **字段** | **含义** |
+|----------|----------|----------|----------|
+| 0        | 1        | status     | 状态码。 |
+| 1        | 1        | frag_idx   | 当前分片序号，从 1 开始。 |
+| 2        | 1        | frag_total | 总分片数。 |
+| 3        | 1        | wl_total   | 白名单总条数。 |
+| 4        | 1        | item_count | 当前分片内白名单条数。 |
+| 5        | 6*N      | item[n]    | 每个 item 仅为 `mac(6)`。 |
+
+V2 中每个白名单 item 固定 6 字节。若 `READ_ROOT_WL_ALL` 的单片 BODY 最大值为 89 字节，则：
+
+```plain
+单片可用 item 空间 = 89 - 5 = 84 字节
+每个 item = 6 字节
+每片最多 = 84 / 6 = 14 条
+```
+
+因此 128 条白名单理论上可分为：
+
+```plain
+14 + 14 + 14 + 14 + 14 + 14 + 14 + 14 + 14 + 2 = 128
+即 frag_total = 10
+```
 
 # 8. ROOT / NODE 读写顺序
 
 | **角色** | **读取顺序**                                                                               | **写入顺序**                                                                             |
 |----------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| ROOT     | 1.READ_DEV_INFO；2.READ_UART_CFG；3.READ_MODBUS_CFG；4.READ_ROOT_WL_ALL；5.READ_ROOT_POWER；6.READ_WL_NODE_CFG | 1.SET_ROLE；2.SET_UART_CFG；3.SET_MODBUS_CFG；4.SET_ROOT_POWER；5.白名单增删改；6.SET_WL_NODE_CFG；7.COMMIT |
+| ROOT     | 1.READ_DEV_INFO；2.READ_UART_CFG；3.READ_MODBUS_CFG；4.READ_ROOT_WL_ALL；5.READ_ROOT_POWER | 1.SET_ROLE；2.SET_UART_CFG；3.SET_MODBUS_CFG；4.SET_ROOT_POWER；5.白名单增删改；6.COMMIT |
 | NODE     | 1.READ_DEV_INFO；2.READ_UART_CFG；3.READ_MODBUS_CFG                                        | 1.SET_ROLE；2.SET_UART_CFG；3.SET_MODBUS_CFG；4.COMMIT                                   |
 
 # 9. 配置生效规则
@@ -172,34 +188,87 @@
 | SET_MODBUS_CFG   | 配置表可立即读回                        | 需要                | 建议重启验证                | 用于设备轮询预设。                                            |
 | SET_ROOT_POWER   | ROOT 下可立即读回                       | 需要                | 建议重启验证                | NODE 下访问返回 ROLE_MISMATCH。                               |
 | ADD/DEL/CLEAR_WL | ROOT 下可立即读回                       | 需要                | 建议重启验证                | NODE 下访问返回 ROLE_MISMATCH。                               |
-| SET_WL_NODE_CFG  | ROOT 下可立即读回                       | 需要                | 建议重启验证                | 只修改指定白名单 node 的 uart_cfg 与 modbus 预设。            |
 | FACTORY_RESET    | 恢复默认配置                            | 内部处理            | 通常会结合重启/重新读取验证 | 恢复角色、串口、Modbus、功率、白名单默认值。                  |
 
-# 10. 白名单 node 子配置规则
-
-| **项目** | **规则** |
-|----------|----------|
-| 子配置归属 | 只有 `ROOT` 角色维护的白名单项才带 node 子配置。 |
-| 包含内容 | 每个白名单 node 额外带：`uart_cfg + modbus_count + modbus[]`。 |
-| 不包含内容 | node 不单独保存 `power`。 |
-| power 规则 | node 统一跟随 `ROOT` 当前 `power`；初始默认值仍由系统默认 `5` 起步。 |
-| 新增白名单项默认值 | 执行 `ADD_WL_ITEM` 新建成员时，默认继承当前 `ROOT runtime` 的 `uart_cfg` 和 `modbus` 预设。 |
-| 单独修改方式 | 后续通过 `SET_WL_NODE_CFG` 单独改该 node 的 `uart_cfg / modbus`。 |
-| 持久化方式 | 和其他配置一样，`COMMIT` 后写入 NV，重启后恢复。 |
-
-# 11. 固定示例报文说明
+# 10. 固定示例报文说明
 
 | **测试项**            | **发送 Hex**                                                      | **BODY 含义**                                        | **备注**                     |
 |-----------------------|-------------------------------------------------------------------|------------------------------------------------------|------------------------------|
 | 读取设备信息          | AA 55 01 01 00 00 50 18                                           | 空 BODY                                              | 返回 role/mac/name。         |
 | 读取串口配置          | AA 55 02 02 00 00 A0 5C                                           | 空 BODY                                              | 默认应返回 07 00 01 08。     |
-| 读取白名单 node 子配置 | AA 55 07 07 06 00 A1 A2 A3 A4 A5 A6 80 F3                         | MAC=A1:A2:A3:A4:A5:A6                                | 返回该 node 的 uart/modbus。 |
 | 设置为 ROOT           | AA 55 10 06 01 00 01 75 4B                                        | role=0x01                                            | 响应 status=00 表示成功。    |
 | 设置为 NODE           | AA 55 10 06 01 00 00 B4 8B                                        | role=0x00                                            | 响应 status=00 表示成功。    |
 | 设置串口 115200 8N1   | AA 55 11 07 04 00 07 00 01 08 F6 AD                               | baud_level=07，parity=00，stop_bits=01，data_bits=08 | 保存后重启才按新参数初始化。 |
 | 设置 Modbus 预设 2 项 | AA 55 12 08 05 00 02 01 02 05 03 10 5B                            | item_count=2；addr1=1,type1=2；addr2=5,type2=3       | 站号1单相电表，站号5温湿度。 |
-| 新增白名单 DTU_N01    | AA 55 14 0A 0E 00 A1 A2 A3 A4 A5 A6 07 44 54 55 5F 4E 30 31 07 7B | MAC=A1:A2:A3:A4:A5:A6；name_len=7；name=DTU_N01      | ROOT 专属。                  |
-| 设置白名单 node 子配置 | AA 55 17 08 0F 00 A1 A2 A3 A4 A5 A6 07 00 01 08 02 01 05 02 05 91 F7 | 目标 MAC + uart(115200 8N1) + 2 项 modbus          | ROOT 专属。                  |
+| 新增白名单 MAC         | AA 55 14 0A 06 00 A1 A2 A3 A4 A5 A6 B6 E8                         | MAC=A1:A2:A3:A4:A5:A6                                | ROOT 专属；V2 不再携带 name_len/name。 |
 
 整理备注：GET_MODE_STATUS
 为完整测试流程中当前代码已实现指令，原配置协议文档未单独列出，因此本说明按当前完整测试流程补充。
+
+
+# 11. Version 2 更改说明
+
+## 11.1 白名单协议结构变更
+
+| **项目** | **V1** | **V2** |
+|----------|--------|--------|
+| ADD_WL_ITEM 请求 BODY | `mac + name_len + name` | `mac` |
+| READ_ROOT_WL_ALL 白名单 item | `mac + name_len + name` | `mac` |
+| DEL_WL_ITEM 请求 BODY | `mac` | 不变 |
+| CLEAR_WL 请求 BODY | 无 | 不变 |
+| READ_DEV_INFO 中设备 name | 保留 | 不变 |
+
+说明：V2 只彻底移除“白名单读写”中的 `name_len/name`，不影响 `READ_DEV_INFO` 的设备自身名称字段。
+
+## 11.2 V2 修改原因
+
+ROOT 节点需要支持更多子设备白名单，白名单名称字段会增加 NV 存储压力。V2 改为白名单只保存和传输 MAC，降低：
+
+1. 协议 BODY 长度。
+2. 白名单分片数量。
+3. NV 中单条白名单占用。
+4. COMMIT 保存时的空间压力。
+
+## 11.3 V2 对测试脚本的影响
+
+测试脚本需要同步修改：
+
+```plain
+ADD_WL_ITEM V1 BODY:
+A1 A2 A3 A4 A5 A6 07 44 54 55 5F 4E 30 31
+
+ADD_WL_ITEM V2 BODY:
+A1 A2 A3 A4 A5 A6
+```
+
+固定示例报文也需要重新计算 CRC。示例：
+
+```plain
+V2 新增白名单：
+AA 55 14 0A 06 00 A1 A2 A3 A4 A5 A6 B6 E8
+```
+
+## 11.4 V2 对解析逻辑的影响
+
+解析 `READ_ROOT_WL_ALL` 时，客户端不再按变长 item 解析，而是按固定 6 字节 MAC 解析：
+
+```plain
+items_payload_len = body_len - 5
+item_count = body[4]
+期望 items_payload_len == item_count * 6
+```
+
+如果仍按 V1 的 `mac + name_len + name` 解析，会导致 item 对齐错误。
+
+## 11.5 V2 对 NV 存储的影响
+
+NV 中白名单结构也应同步去掉 `name_len/name`。如果运行态仍保留 name 字段用于 UI 显示，则可在加载 NV 时置空或由上位机/网关维护，不再作为白名单持久化字段。
+
+## 11.6 V2 兼容性说明
+
+V2 与 V1 的白名单命令不兼容：
+
+- V1 客户端发送 `mac + name_len + name`，V2 固件应返回 `LEN_ERR` 或 `PARAM_ERR`。
+- V2 客户端只发送 `mac`，V1 固件会认为长度不足。
+
+因此 App、网页、Python 测试脚本和固件必须同步升级到 V2。

@@ -178,7 +178,7 @@ static errcode_t dtu_uart_transport_init_impl(void)
     }
 
     ret = uapi_uart_register_rx_callback(DTU_CFG_UART_BUS, UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE,
-        dtu_storage_rx_notify_length(), dtu_uart_rx_callback);
+        1, dtu_uart_rx_callback);
     if (ret != ERRCODE_SUCC) {
         dtu_log_error("uart callback register failed: 0x%x", ret);
         return ret;

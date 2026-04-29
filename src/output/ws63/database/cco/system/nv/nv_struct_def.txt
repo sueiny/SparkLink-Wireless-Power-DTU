@@ -186,8 +186,6 @@ typedef struct {
 } dtu_nv_modbus_item_t;
 typedef struct {
     uint8_t mac[6];
-    uint8_t name_len;
-    char name[31];
     dtu_nv_uart_cfg_t uart_cfg;
     uint8_t modbus_count;
     dtu_nv_modbus_item_t modbus[8];
@@ -199,12 +197,18 @@ typedef struct {
     dtu_nv_modbus_item_t modbus[8];
     uint8_t power;
     uint8_t wl_count;
-    dtu_nv_wl_item_t whitelist[16];
-} dtu_nv_runtime_cfg_t;
+} dtu_nv_base_cfg_t;
 typedef struct {
     uint32_t magic;
     uint16_t version;
     uint8_t mode;
     uint8_t reserved;
-    dtu_nv_runtime_cfg_t cfg;
+    dtu_nv_base_cfg_t cfg;
 } dtu_nv_blob_t;
+typedef struct {
+    uint32_t magic;
+    uint16_t version;
+    uint8_t shard_index;
+    uint8_t item_count;
+    dtu_nv_wl_item_t items[16];
+} dtu_nv_wl_shard_blob_t;

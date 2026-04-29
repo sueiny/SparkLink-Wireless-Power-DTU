@@ -17,6 +17,10 @@
 #include "sle_ssap_client.h"
 
 #include "sle_speed_client.h"
+#include "uart.h"
+#include "pinctrl.h"
+#include "dma.h"
+#include "hal_dma.h"
 
 #undef THIS_FILE_ID
 #define THIS_FILE_ID BTH_GLE_SAMPLE_UUID_CLIENT
@@ -51,6 +55,12 @@ static ssapc_callbacks_t             g_ssapc_cbk = {0};
 static sle_addr_t                    g_remote_addr = {0};
 static uint16_t                      g_conn_id = 0;
 static ssapc_find_service_result_t   g_find_service_result = {0};
+
+static uint8_t g_app_uart_rx_buff[128] = { 0 };
+static uint8_t g_app_uart_tx_buff[256] = { 0 };  /* 存储待发送的数据 */
+static osal_semaphore g_app_uart_rx_sem = {0};
+static uint16_t my_handle = 0;
+
 
 void sle_speed_connect_param_init(void)
 {
@@ -110,7 +120,7 @@ void sle_sample_seek_disable_cbk(errcode_t status)
 void sle_sample_seek_result_info_cbk(sle_seek_result_info_t *seek_result_data)
 {
     if (seek_result_data != NULL) {
-        uint8_t mac[SLE_ADDR_LEN] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
+        uint8_t mac[SLE_ADDR_LEN] = {0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6};
         if (memcmp(seek_result_data->addr.addr, mac, SLE_ADDR_LEN) == 0) {
             (void)memcpy_s(&g_remote_addr, sizeof(sle_addr_t), &seek_result_data->addr, sizeof(sle_addr_t));
             sle_stop_seek();
@@ -152,6 +162,10 @@ static void sle_speed_notification_cb(uint8_t client_id, uint16_t conn_id, ssapc
         g_count_before_get_us = g_count_after_get_us;
     }
     g_recv_pkt_num++;
+
+     osal_printk("[DTU CALLBACK] sle_speed_notification_cb, conn_id:%d, data_len:%d\r\n", conn_id, data->data_len);
+     uapi_uart_write(0, (const uint8_t*)data->data, data->data_len, 0);
+     osal_printk("\r\n[DTU CALLBACK] end!!!!\r\n");
 }
 
 static void sle_speed_indication_cb(uint8_t client_id, uint16_t conn_id, ssapc_handle_value_t *data,
@@ -291,6 +305,7 @@ void sle_sample_find_structure_cbk(uint8_t client_id, uint16_t conn_id, ssapc_fi
         osal_printk("[ssap client] find structure mem cpy failed");
         return;
     }
+    my_handle=service->start_hdl;
 }
 
 void sle_sample_find_structure_cmp_cbk(uint8_t client_id, uint16_t conn_id,
@@ -336,26 +351,34 @@ void sle_sample_find_property_cbk(uint8_t client_id, uint16_t conn_id,
                 idx, property->uuid.uuid[idx]);
         }
     }
+    // my_handle = property->handle;
+
 }
 
 void sle_sample_write_cfm_cbk(uint8_t client_id, uint16_t conn_id, ssapc_write_result_t *write_result,
     errcode_t status)
 {
+    unused(conn_id);
+    unused(write_result);
     osal_printk("[ssap client] write cfm cbk, client id: %d status:%d.\n", client_id, status);
     // server端在接收到read_req消息后，会创建一个发包线程
-    ssapc_read_req(0, conn_id, write_result->handle, write_result->type);
+    // ssapc_read_req(0, conn_id, write_result->handle, write_result->type);
 }
 
 void sle_sample_read_cfm_cbk(uint8_t client_id, uint16_t conn_id, ssapc_handle_value_t *read_data,
     errcode_t status)
 {
-    osal_printk("[ssap client] read cfm cbk client id: %d conn id: %d status: %d\n",
-        client_id, conn_id, status);
-    osal_printk("[ssap client] read cfm cbk handle: %d, type: %d , len: %d\n",
-        read_data->handle, read_data->type, read_data->data_len);
-    for (uint16_t idx = 0; idx < read_data->data_len; idx++) {
-        osal_printk("[ssap client] read cfm cbk[%d] 0x%02x\r\n", idx, read_data->data[idx]);
-    }
+    unused(client_id);
+    unused(conn_id);
+    unused(read_data);
+    unused(status);
+    // osal_printk("[ssap client] read cfm cbk client id: %d conn id: %d status: %d\n",
+    //     client_id, conn_id, status);
+    // osal_printk("[ssap client] read cfm cbk handle: %d, type: %d , len: %d\n",
+    //     read_data->handle, read_data->type, read_data->data_len);
+    // for (uint16_t idx = 0; idx < read_data->data_len; idx++) {
+    //     osal_printk("[ssap client] read cfm cbk[%d] 0x%02x\r\n", idx, read_data->data[idx]);
+    // }
 }
 
 void sle_sample_ssapc_cbk_register(ssapc_notification_callback notification_cb,
@@ -365,8 +388,6 @@ void sle_sample_ssapc_cbk_register(ssapc_notification_callback notification_cb,
     g_ssapc_cbk.find_structure_cb = sle_sample_find_structure_cbk;
     g_ssapc_cbk.find_structure_cmp_cb = sle_sample_find_structure_cmp_cbk;
     g_ssapc_cbk.ssapc_find_property_cbk = sle_sample_find_property_cbk;
-    g_ssapc_cbk.write_cfm_cb = sle_sample_write_cfm_cbk;
-    g_ssapc_cbk.read_cfm_cb = sle_sample_read_cfm_cbk;
     g_ssapc_cbk.notification_cb = notification_cb;
     g_ssapc_cbk.indication_cb = indication_cb;
 }
@@ -382,10 +403,101 @@ void sle_client_init(ssapc_notification_callback notification_cb, ssapc_indicati
     enable_sle();
 }
 
+
+static void dtu_uart_rx_callback(const void *buffer, uint16_t length, bool error)
+{
+    unused(error);
+    ssapc_write_param_t param = {0};
+    errcode_t ret;
+
+
+    /* 限制数据长度 */
+    if (length > sizeof(g_app_uart_tx_buff)) {
+        length = sizeof(g_app_uart_tx_buff);
+    }
+
+    /* ✅ 关键修复：拷贝数据到自己的缓冲区 */
+    /* 因为 ssapc_write_req 是异步的，不能直接使用 UART 驱动的缓冲 */
+    if (memcpy_s(g_app_uart_tx_buff, sizeof(g_app_uart_tx_buff), (uint8_t*)buffer, length) != EOK) {
+        osal_printk("[DTU UART] memcpy failed\r\n");
+        return;
+    }
+
+    /* 准备写参数 */
+     param.handle = g_find_service_result.end_hdl;
+    // param.handle = my_handle;
+    param.type = SSAP_PROPERTY_TYPE_VALUE;
+    param.data_len = length;
+    param.data = g_app_uart_tx_buff;  /* 使用自己的缓冲 */
+
+       ret = ssapc_write_req(0, g_conn_id, &param);
+    osal_printk("[DTU UART] rx %d bytes, ssapc_write_req ret=0x%x conn=%u handle=0x%x\r\n",
+        length, ret, g_conn_id, param.handle);
+
+}
+
+void uart_test_init(void)
+{
+    uart_attr_t attr = {
+        .baud_rate = 115200,
+        .data_bits = UART_DATA_BIT_8,
+        .stop_bits = UART_STOP_BIT_1,
+        .parity = UART_PARITY_NONE
+    };
+    uart_extra_attr_t extra_attr = {
+        .tx_dma_enable = false,
+        .tx_int_threshold = UART_FIFO_INT_TX_LEVEL_EQ_0_CHARACTER,
+        .rx_dma_enable = false,
+        .rx_int_threshold = UART_FIFO_INT_RX_LEVEL_1_4
+    };
+
+    uart_pin_config_t pin_config = {
+        .tx_pin = 17,
+        .rx_pin = 18,
+        .cts_pin = PIN_NONE,
+        .rts_pin = PIN_NONE
+    };
+
+    static uart_buffer_config_t g_app_uart_buffer_config = {
+        .rx_buffer = g_app_uart_rx_buff,
+        .rx_buffer_size = 128
+    };
+    errcode_t ret;
+
+    /* 初始化 DMA 模块 */
+    uapi_dma_init();
+    uapi_dma_open();
+
+    /* 初始化信号量 */
+    ret = osal_sem_binary_sem_init(&g_app_uart_rx_sem, 0);
+    if (ret != OSAL_SUCCESS) {
+        osal_printk("[DTU UART] sem init failed: 0x%x\r\n", ret);
+        return;
+    }
+
+    uapi_pin_set_mode(17, 1);
+    uapi_pin_set_mode(18, 1);
+
+    uapi_uart_deinit(0);
+    ret = uapi_uart_init(0, &pin_config, &attr, &extra_attr, &g_app_uart_buffer_config);
+    osal_printk("[DTU UART] init ret=0x%x bus=0 tx=17 rx=18 baud=115200\r\n", ret);
+    if (ret != ERRCODE_SUCC) {
+        return;
+    }
+
+    // uapi_uart_unregister_rx_callback(0);
+    ret = uapi_uart_register_rx_callback(0, UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE, 1, dtu_uart_rx_callback);
+    osal_printk("[DTU UART] register rx cb ret=0x%x\r\n", ret);
+}
+
+
+
+
 int sle_speed_init(void)
 {
     osal_msleep(1000);  /* sleep 1000ms */
     sle_client_init(sle_speed_notification_cb, sle_speed_indication_cb);
+    uart_test_init();
     return 0;
 }
 

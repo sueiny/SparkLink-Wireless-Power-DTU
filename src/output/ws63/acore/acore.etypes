@@ -89,9 +89,9 @@ typedef uint32_t uint_fast32_t;
 # 96 "/home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/sysroot/usr/include/stdint.h" 2 3 4
 # 10 "/home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/lib/gcc/riscv32-linux-musl/7.3.0/include/stdint.h" 2 3
 # 10 "/home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include/nv_common_cfg.h" 2
-# 38 "/home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include/nv_common_cfg.h"
+# 39 "/home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include/nv_common_cfg.h"
 
-# 38 "/home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include/nv_common_cfg.h"
+# 39 "/home/sueiny/fbb_ws63/src/middleware/chips/ws63/nv/nv_config/include/nv_common_cfg.h"
 typedef struct {
     int8_t param1;
     int8_t param2;
@@ -287,8 +287,6 @@ typedef struct {
 
 typedef struct {
     uint8_t mac[6];
-    uint8_t name_len;
-    char name[31];
     dtu_nv_uart_cfg_t uart_cfg;
     uint8_t modbus_count;
     dtu_nv_modbus_item_t modbus[8];
@@ -301,14 +299,21 @@ typedef struct {
     dtu_nv_modbus_item_t modbus[8];
     uint8_t power;
     uint8_t wl_count;
-    dtu_nv_wl_item_t whitelist[16];
-} dtu_nv_runtime_cfg_t;
+} dtu_nv_base_cfg_t;
 
 typedef struct {
     uint32_t magic;
     uint16_t version;
     uint8_t mode;
     uint8_t reserved;
-    dtu_nv_runtime_cfg_t cfg;
+    dtu_nv_base_cfg_t cfg;
 } dtu_nv_blob_t;
+
+typedef struct {
+    uint32_t magic;
+    uint16_t version;
+    uint8_t shard_index;
+    uint8_t item_count;
+    dtu_nv_wl_item_t items[16];
+} dtu_nv_wl_shard_blob_t;
 # 2 "/home/sueiny/fbb_ws63/src/output/ws63/acore/acore.c" 2

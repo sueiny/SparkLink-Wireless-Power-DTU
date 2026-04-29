@@ -110,7 +110,7 @@ class generate_data_stream:
             enum_value = enum_fields.members.get(enum_str)
             if enum_value is None:
                 msg = "[error] [%s] not a enum value, please check!!" % enum_str
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
             return enum_value
 
         for field in enum_fields.members:
@@ -131,7 +131,7 @@ class generate_data_stream:
 
         if value.bit_length() > bitsize:
             msg = "[error] [%s]'s value exceeds its bit width!!" % typename
-            raise ParserError(msg)
+            print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
         if bitLength == bitsize:
             baseByteSize = sizeof(fields)
             totalByteLen = 0
@@ -230,16 +230,16 @@ class generate_data_stream:
         if ((isBaseType and not isSomeKindOfArray) or isEnum or isPointer) and \
             (type(value) is list or type(value) is dict):
                 msg = "[error] [%s] is not a array or a structrue, the value cannot be a list or a dict!!" % type_name
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
 
         if not ((isBaseType and not isSomeKindOfArray) or isEnum or isPointer) and \
             not (type(value) is list or type(value) is dict):
                 msg = "[error] [%s] is a array or a structrue, the value must be a list or a dict!!" % type_name
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
 
         if isUnion and not isSomeKindOfArray and type(value) is list:
             msg = "[error] [%s] is a union, the value must be a hex or int or a dict!!" % type_name
-            raise ParserError(msg)
+            print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
 
         buffer = b''
         if isEnum:
@@ -280,7 +280,7 @@ class generate_data_stream:
         if isSomeKindOfArray:
             if type(value) is not list:
                 msg = "[error] [%s] is a array, the value must be a list!!" % type_name
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
 
             # print("array type: ", fields._type_)
             # print("array length: ", fields._length_)
@@ -291,7 +291,7 @@ class generate_data_stream:
             # print("sizeof array [%s]: " % type_name, sizeof(fields))
             if len(buffer) > sizeof(fields):
                 msg = "[error] the value is oversized the array: [%s]!!" % type_name
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
             buffer += bytearray(sizeof(fields) - len(buffer))
             # print("buffer: ", buffer)
             return buffer
@@ -315,7 +315,7 @@ class generate_data_stream:
                 typesIdx += 1
             if len(value) != 0:
                 msg = "[error] the value is not match the type: [%s]!!" % type_name
-                raise ParserError(msg)
+                print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
             return buffer
 
         if type(value) is dict:
@@ -341,7 +341,7 @@ class generate_data_stream:
         # print('types: ', self.v.typedefs)
         if fields is None:
             msg = "[error] not found the type [%s]!" % struct_name
-            raise ParserError(msg)
+            print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value); print('ERROR DUMP:', type_name, value, 'struct_name:', struct_name); raise ParserError(msg)
         buffer = self.recursion_parse(fields, struct_name, value)
         return buffer, len(buffer)
 
