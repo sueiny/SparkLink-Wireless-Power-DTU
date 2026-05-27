@@ -1,16 +1,19 @@
-#include "dtu_service_inner.h"
+#include "dtu_transport.h"
 
-#include <stdarg.h>
 #include <string.h>
 
-#include "osal_addr.h"
-#include "soc_osal.h"
-#include "securec.h"
-#include "hal_reboot.h"
 #include "bts_def.h"
 #include "bts_le_gap.h"
 #include "bts_gatt_stru.h"
 #include "bts_gatt_server.h"
+#include "dtu_log.h"
+#include "dtu_service.h"
+#include "dtu_storage.h"
+#include "hal_reboot.h"
+#include "osal_addr.h"
+#include "osal_debug.h"
+#include "securec.h"
+#include "soc_osal.h"
 
 /* BLE transport 职责：
  * 1. 提供与 UART 并行的第二条 DTU 配置接入通道。
@@ -35,7 +38,7 @@
 #define DTU_BLE_SERVER_APP_UUID           0x4454
 #define DTU_BLE_SERVICE_UUID              0xFDF0
 #define DTU_BLE_CHAR_UUID                 0xFDF1
-#define DTU_BLE_LOG_PREFIX                "[BLE dtu server]"
+#define dtu_ble_log(fmt, ...)             dtu_log_transport("BLE", fmt, ##__VA_ARGS__)
 
 typedef struct {
     uint8_t server_id;
@@ -54,28 +57,6 @@ typedef struct {
 } dtu_ble_transport_ctx_t;
 
 static dtu_ble_transport_ctx_t g_dtu_ble_ctx;
-
-/* 打印 BLE transport 专属日志。
- * 说明：
- * 1. BLE 相关日志仍然走系统/UART 日志口输出
- * 2. 但统一带上 [BLE dtu server] 前缀，方便和 UART/DTU 业务日志区分
- */
-static void dtu_ble_log(const char *fmt, ...)
-{
-    char buf[192] = {0};
-    va_list args;
-    int ret;
-
-    va_start(args, fmt);
-    ret = vsnprintf_s(buf, sizeof(buf), sizeof(buf) - 1, fmt, args);
-    va_end(args);
-
-    if (ret < 0) {
-        osal_printk("%s <format failed>\r\n", DTU_BLE_LOG_PREFIX);
-        return;
-    }
-    osal_printk("%s %s\r\n", DTU_BLE_LOG_PREFIX, buf);
-}
 
 /* 返回 BLE transport 私有上下文。
  * 当前 BLE 通道的运行时状态都集中保存在这里：
@@ -384,7 +365,7 @@ static void dtu_ble_service_start_cb(uint8_t server_id, uint16_t handle, errcode
  * 4. 直接调用 dtu_service_on_bytes(DTU_TRANSPORT_BLE, ...)
  *
  * 也就是说，BLE 和 UART 只是“入口不同”，进入 service 后走的是同一套
- * protocol / flow / mode / storage 逻辑。
+ * protocol / manager / mode / storage 逻辑。
  */
 static void dtu_ble_write_req_cb(uint8_t server_id, uint16_t conn_id,
     gatts_req_write_cb_t *write_cb_para, errcode_t status)
@@ -472,10 +453,6 @@ static errcode_t dtu_ble_register_callbacks(void)
     return ERRCODE_SUCC;
 }
 
-
-
-
-
 /* BLE 解析任务：
  * 1. 从本地 ring buffer 批量取字节
  * 2. 统一喂给 dtu_service_on_bytes(BLE, ...)
@@ -483,7 +460,7 @@ static errcode_t dtu_ble_register_callbacks(void)
  */
 static void *dtu_ble_task(const char *arg)
 {
-    uint8_t batch[64];
+    uint8_t batch[DTU_CFG_TRANSPORT_RX_BATCH_SIZE];
 
     unused(arg);
     while (1) {
@@ -493,28 +470,27 @@ static void *dtu_ble_task(const char *arg)
             count++;
         }
         if (count > 0) {
-            dtu_service_on_bytes(DTU_TRANSPORT_BLE, batch, count);
+            dtu_service_on_bytes(DTU_TRANSPORT_BLE, batch, count); // BLE 写入数据统一交给 manager 走 CONFIG 协议。
             continue;
         }
 
         if (dtu_storage_is_reboot_pending()) {
-            osal_msleep(20);
-            hal_reboot_chip();
+            osal_msleep(DTU_CFG_REBOOT_DELAY_MS); // 等待 REBOOT 响应通过 BLE notify 发出。
+            hal_reboot_chip(); // 在 BLE 任务安全点执行真正复位。
         }
 
         dtu_service_trace_rx_task_wakeup();
         if (osal_sem_down(&dtu_ble_ctx()->rx_sem) != OSAL_SUCCESS) {
-            osal_msleep(1);
+            osal_msleep(DTU_CFG_TASK_IDLE_RETRY_MS);
         }
     }
 
     return NULL;
 }
 
-
 /* 通过 BLE notify 发送完整 DTU 协议帧。
  * 注意这里发送的是“已经打包好的完整 DTU 响应帧”：
- * service/flow 层先把 body 组装成协议帧，再由 BLE transport 直接 notify。
+ * config/manager 先把 body 组装成协议帧，再由 BLE transport 直接 notify。
  *
  * 这样 BLE 通道不会参与任何协议拼装，只承担：
  * 1. 原始字节写入
@@ -531,7 +507,7 @@ static errcode_t dtu_ble_transport_send_impl(const uint8_t *data, uint16_t len)
         return ERRCODE_FAIL;
     }
     if (!dtu_ble_ctx()->service_started || !dtu_ble_ctx()->connected || dtu_ble_ctx()->value_handle == 0) {
-        osal_printk("there is no active connection to send data\r\n");
+        dtu_ble_log("there is no active connection to send data");
         return ERRCODE_FAIL;
     }
 
@@ -565,7 +541,7 @@ static errcode_t dtu_ble_transport_init_impl(void)
     errcode_t ret;
 
     if (!dtu_ble_ctx()->rx_sem_ready) {
-        ret = osal_sem_binary_sem_init(&dtu_ble_ctx()->rx_sem, 0);
+        ret = osal_sem_binary_sem_init(&dtu_ble_ctx()->rx_sem, 0); // GATT write 回调和 BLE task 之间用信号量解耦。
         if (ret != OSAL_SUCCESS) {
             dtu_ble_log("sem init failed: 0x%x", ret);
             return ERRCODE_FAIL;
@@ -574,21 +550,22 @@ static errcode_t dtu_ble_transport_init_impl(void)
     }
 
     if (!dtu_ble_ctx()->task_started) {
-        task = osal_kthread_create((osal_kthread_handler)dtu_ble_task, NULL, "DtuBleTask", 0x1200);
+        task = osal_kthread_create((osal_kthread_handler)dtu_ble_task, NULL,
+            DTU_CFG_BLE_TASK_NAME, DTU_CFG_TRANSPORT_TASK_STACK_SIZE);
         if (task == NULL) {
             dtu_ble_log("task create failed");
             return ERRCODE_FAIL;
         }
-        osal_kthread_set_priority(task, 25);
+        osal_kthread_set_priority(task, DTU_CFG_TRANSPORT_TASK_PRIO);
         dtu_ble_ctx()->task_started = true;
     }
 
-    ret = dtu_ble_register_callbacks();
+    ret = dtu_ble_register_callbacks(); // 注册 GAP/GATTS 回调，后续建 service 和广播都在回调里推进。
     if (ret != ERRCODE_SUCC) {
         return ret;
     }
 
-    ret = enable_ble();
+    ret = enable_ble(); // CONFIG 模式请求启动 BLE 配置通道。
     if (ret != ERRCODE_BT_SUCCESS) {
         dtu_ble_log("enable request failed: 0x%x", ret);
         return ret;
@@ -596,7 +573,6 @@ static errcode_t dtu_ble_transport_init_impl(void)
 
     return ERRCODE_SUCC;
 }
-
 
 const dtu_transport_if_t g_dtu_ble_transport = {
     .name = "BLE",

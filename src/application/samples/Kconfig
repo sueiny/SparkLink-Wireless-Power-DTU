@@ -92,5 +92,7 @@ config ENABLE_DTU_SAMPLE
         This option means enable the sample of DTU.
 
 if ENABLE_DTU_SAMPLE
+menu "DTU Sample Configuration"
 osource "application/samples/Dtu/Kconfig"
+endmenu
 endif

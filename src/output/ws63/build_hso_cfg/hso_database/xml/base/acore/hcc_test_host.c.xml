@@ -1,0 +1,11 @@
+<MSG_LOG><MSG STRUCTURE="diag_log_msg0" NAME="get credit failed @hcc_test_host.c(63),ERROR" ID="0xa0aa01fa" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="read reg failed @hcc_test_host.c(105),ERROR" ID="0xa0aa034a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="write reg failed @hcc_test_host.c(115),ERROR" ID="0xa0aa039a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="opt param err- %d @hcc_test_host.c(123),ERROR" ID="0xa0aa03da" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="cmd len err:%d - arc len: %d @hcc_test_host.c(184),ERROR" ID="0xa0aa05c2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[ERROR] invalid argc @hcc_test_host.c(285),ERROR" ID="0xa0aa08ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="invalid argv:[%d] @hcc_test_host.c(293),ERROR" ID="0xa0aa092a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[ERROR] remote cmd need more arguments @hcc_test_host.c(337),ERROR" ID="0xa0aa0a8a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="malloc user_param ERR @hcc_test_host.c(343),ERROR" ID="0xa0aa0aba" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="para cpy err @hcc_test_host.c(361),ERROR" ID="0xa0aa0b4a" />
+			</MSG_LOG>

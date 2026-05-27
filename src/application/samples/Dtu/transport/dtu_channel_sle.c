@@ -1,9 +1,11 @@
-#include "dtu_service_inner.h"
+#include "dtu_transport.h"
 
-#include <stdarg.h>
-
+#include "dtu_log.h"
+#include "dtu_service.h"
+#include "dtu_storage.h"
 #include "hal_reboot.h"
 #include "osal_addr.h"
+#include "osal_debug.h"
 #include "securec.h"
 #include "sle_common.h"
 #include "sle_connection_manager.h"
@@ -19,25 +21,26 @@
  * 4. send() 只通过 SLE notify/indicate 回传完整数据
  */
 
-#define DTU_SLE_LOG_PREFIX                 "[SLE dtu server]"
+#define dtu_sle_log(fmt, ...)              dtu_log_transport("SLE", fmt, ##__VA_ARGS__)
 #define DTU_SLE_UUID_LEN_2                 2
 #define DTU_SLE_ADV_HANDLE                 1
-#define DTU_SLE_ADV_TX_POWER               20
+/* SLE 广播发射功率。
+ * 0x7F 是 SDK 文档定义的“不设置特定发送功率”，避免进入固定功率 RF 校准路径。
+ */
+#define DTU_SLE_ADV_TX_POWER               0x7F
 #define DTU_SLE_CONN_INTERVAL              0x14
-#define DTU_SLE_CONN_LATENCY               0
+#define DTU_SLE_CONN_LATENCY               0x1F3
 #define DTU_SLE_CONN_TIMEOUT               0x1F4
-#define DTU_SLE_MTU_SIZE                   1500
+#define DTU_SLE_MTU_SIZE                   300
 #define DTU_SLE_SERVICE_UUID               0xFDF0
 #define DTU_SLE_PROPERTY_UUID              0xFDF1
 #define DTU_SLE_SERVER_APP_UUID            0x4454
 #define DTU_SLE_ADV_DISCOVERY_LEN          1
 #define DTU_SLE_ADV_UUID_LEN               2
-#define DTU_SLE_ADV_TX_POWER_LEN           1
 #define DTU_SLE_ADV_NAME_MAX_LEN           15
 #define DTU_SLE_ADV_TYPE_DISCOVERY_LEVEL   0x01
 #define DTU_SLE_ADV_TYPE_UUID16_COMPLETE   0x05
 #define DTU_SLE_ADV_TYPE_LOCAL_NAME        0x0B
-#define DTU_SLE_ADV_TYPE_TX_POWER          0x0C
 #define DTU_SLE_NOTIFY_ENABLE              0x0001
 
 typedef struct {
@@ -62,24 +65,6 @@ static uint8_t g_dtu_sle_uuid_base[SLE_UUID_LEN] = {
     0x37, 0xBE, 0xA8, 0x80, 0xFC, 0x70, 0x11, 0xEA,
     0xB7, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
-
-/* 打印 SLE transport 专属日志，仍然从 UART/system log 口输出。 */
-static void dtu_sle_log(const char *fmt, ...)
-{
-    char buf[192] = {0};
-    va_list args;
-    int ret;
-
-    va_start(args, fmt);
-    ret = vsnprintf_s(buf, sizeof(buf), sizeof(buf) - 1, fmt, args);
-    va_end(args);
-
-    if (ret < 0) {
-        osal_printk("%s <format failed>\r\n", DTU_SLE_LOG_PREFIX);
-        return;
-    }
-    osal_printk("%s %s\r\n", DTU_SLE_LOG_PREFIX, buf);
-}
 
 /* 返回 SLE transport 私有上下文。 */
 static dtu_sle_transport_ctx_t *dtu_sle_ctx(void)
@@ -210,9 +195,6 @@ static errcode_t dtu_sle_set_announce_data(void)
     adv_data[adv_len++] = (uint8_t)(DTU_SLE_SERVICE_UUID & 0xFF);
     adv_data[adv_len++] = (uint8_t)((DTU_SLE_SERVICE_UUID >> 8) & 0xFF);
 
-    scan_rsp[rsp_len++] = DTU_SLE_ADV_TYPE_TX_POWER;
-    scan_rsp[rsp_len++] = DTU_SLE_ADV_TX_POWER_LEN;
-    scan_rsp[rsp_len++] = DTU_SLE_ADV_TX_POWER;
     name_len = dtu_sle_get_device_name(name, sizeof(name));
     if (name_len > 0) {
         scan_rsp[rsp_len++] = DTU_SLE_ADV_TYPE_LOCAL_NAME;
@@ -353,7 +335,7 @@ static void dtu_sle_enable_cb(errcode_t status)
 
     dtu_sle_set_local_addr();
     if (dtu_sle_register_server() != ERRCODE_SLE_SUCCESS) {
-        dtu_sle_log("register server flow failed");
+        dtu_sle_log("register server callback failed");
     }
 }
 
@@ -396,7 +378,6 @@ static void dtu_sle_write_request_cb(uint8_t server_id, uint16_t conn_id,
         accepted++;
         
     }
-    // osal_printk("received data : %s\r\n", write_cb_para->value);
     dtu_service_trace_rx_batch(write_cb_para->length, accepted, dtu_sle_ring_used(dtu_sle_ctx()));
     osal_sem_up(&dtu_sle_ctx()->rx_sem);
 }
@@ -465,36 +446,31 @@ static errcode_t dtu_sle_register_callbacks(void)
     return ERRCODE_SUCC;
 }
 
-
-
-
-
-
 /* SLE 接收任务：把回调入队的数据批量提交给 service。 */
 static void *dtu_sle_task(const char *arg)
 {
-    uint8_t batch[64];
+    uint8_t batch[DTU_CFG_TRANSPORT_RX_BATCH_SIZE];
 
     unused(arg);
     while (1) {
         uint16_t count = 0;
-       
+
         while (count < sizeof(batch) && dtu_sle_ring_pop(&batch[count])) {
             count++;
         }
         if (count > 0) {
-            dtu_service_on_bytes(DTU_TRANSPORT_SLE, batch, count);
+            dtu_service_on_bytes(DTU_TRANSPORT_SLE, batch, count); // SLE 下行数据统一交给 manager 走 RUN 分流。
             continue;
         }
 
         if (dtu_storage_is_reboot_pending()) {
-            osal_msleep(20);
-            hal_reboot_chip();
+            osal_msleep(DTU_CFG_REBOOT_DELAY_MS); // 等待 REBOOT 响应通过 SLE 发出。
+            hal_reboot_chip(); // 在 SLE 任务安全点执行真正复位。
         }
 
         dtu_service_trace_rx_task_wakeup();
         if (osal_sem_down(&dtu_sle_ctx()->rx_sem) != OSAL_SUCCESS) {
-            osal_msleep(1);
+            osal_msleep(DTU_CFG_TASK_IDLE_RETRY_MS);
         }
     }
 
@@ -508,7 +484,7 @@ static errcode_t dtu_sle_transport_init_impl(void)
     errcode_t ret;
 
     if (!dtu_sle_ctx()->rx_sem_ready) {
-        ret = osal_sem_binary_sem_init(&dtu_sle_ctx()->rx_sem, 0);
+        ret = osal_sem_binary_sem_init(&dtu_sle_ctx()->rx_sem, 0); // SLE 写回调和 SLE task 之间用信号量解耦。
         if (ret != OSAL_SUCCESS) {
             dtu_sle_log("sem init failed: 0x%x", ret);
             return ERRCODE_FAIL;
@@ -517,30 +493,28 @@ static errcode_t dtu_sle_transport_init_impl(void)
     }
 
     if (!dtu_sle_ctx()->task_started) {
-        task = osal_kthread_create((osal_kthread_handler)dtu_sle_task, NULL, "DtuSleTask", 0x1200);
+        task = osal_kthread_create((osal_kthread_handler)dtu_sle_task, NULL,
+            DTU_CFG_SLE_TASK_NAME, DTU_CFG_TRANSPORT_TASK_STACK_SIZE);
         if (task == NULL) {
             dtu_sle_log("task create failed");
             return ERRCODE_FAIL;
         }
-        osal_kthread_set_priority(task, 25);
+        osal_kthread_set_priority(task, DTU_CFG_TRANSPORT_TASK_PRIO);
         dtu_sle_ctx()->task_started = true;
     }
 
-    ret = dtu_sle_register_callbacks();
+    ret = dtu_sle_register_callbacks(); // 注册 SLE/SSAPS 回调，后续建 service 和广播都在回调里推进。
     if (ret != ERRCODE_SUCC) {
         return ret;
     }
 
-    ret = enable_sle();
+    ret = enable_sle(); // RUN 模式请求启动 SLE 业务通道。
     if (ret != ERRCODE_SLE_SUCCESS) {
         dtu_sle_log("enable request failed: 0x%x", ret);
         return ret;
     }
     return ERRCODE_SUCC;
 }
-
-
-
 
 /* 通过 SLE notify/indicate 发送完整数据。 */
 static errcode_t dtu_sle_transport_send_impl(const uint8_t *data, uint16_t len)

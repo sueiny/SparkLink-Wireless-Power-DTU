@@ -56,7 +56,18 @@ include CMakeFiles/HSO_DB_samples.dir/progress.make
 CMakeFiles/HSO_DB_samples: hso_temp/samples.txt
 
 
-hso_temp/samples.txt: ../../../../application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/common/dtu_log.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/manager/dtu_service.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/config/dtu_config.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/config/dtu_config_protocol.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/config/dtu_config_commands.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/run/dtu_run.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/storage/dtu_storage.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/board/dtu_board.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/transport/dtu_channel_uart.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/transport/dtu_channel_ble.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/transport/dtu_channel_sle.c
+hso_temp/samples.txt: ../../../../application/samples/Dtu/dtu_main.c
 hso_temp/samples.txt: ../../../../middleware/chips/ws63/dfx/include/log_def_bt.h
 hso_temp/samples.txt: ../../../../middleware/chips/ws63/dfx/include/log_def_dsp.h
 hso_temp/samples.txt: ../../../../middleware/chips/ws63/dfx/include/log_def_pf.h

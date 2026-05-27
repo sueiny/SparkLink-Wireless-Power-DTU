@@ -127,14 +127,8 @@
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/edit_cache.dir
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/rebuild_cache.dir
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/CMakeFiles/rebuild_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/CMakeFiles/edit_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/CMakeFiles/rebuild_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/CMakeFiles/edit_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/sle_speed_client/CMakeFiles/rebuild_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/sle_speed_client/CMakeFiles/edit_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/sle_speed_client/src/CMakeFiles/rebuild_cache.dir
-/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/bt/sle/sle_speed_client/src/CMakeFiles/edit_cache.dir
+/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/Dtu/CMakeFiles/rebuild_cache.dir
+/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/Dtu/CMakeFiles/edit_cache.dir
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/ws63/CMakeFiles/rebuild_cache.dir
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/ws63/CMakeFiles/edit_cache.dir
 /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/ws63/ws63_liteos_application/CMakeFiles/edit_cache.dir

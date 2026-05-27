@@ -1,0 +1,39 @@
+<MSG_LOG><MSG STRUCTURE="diag_log_msg4" NAME="{hmac_single_proxysta_user_del:del ipv4 map mac[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(146),INFO" ID="0x850c0495" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_single_proxysta_user_del:not find map[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(174),INFO" ID="0x850c0575" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_find_unknow_mac:: null param} @hmac_single_proxysta.c(190),ERROR" ID="0x850c05f2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_unknow_addr_replace::The length of buf is invalid.} @hmac_single_proxysta.c(230),ERROR" ID="0x850c0732" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_rx_unknow_addr_replace:: can't find mac addr of unknow protocol:0x%x.} @hmac_single_proxysta.c(243),ERROR" ID="0x850c079a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_find_ipv4_mac:: vap_proxysta  null param.} @hmac_single_proxysta.c(264),ERROR" ID="0x850c0842" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_arp_addr_replace::The length of buf is invalid.} @hmac_single_proxysta.c(327),ERROR" ID="0x850c0a3a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process:null param.} @hmac_single_proxysta.c(503),ERROR" ID="0x850c0fba" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_insert_ipv4_mac:: map num exceed max size: %d.} @hmac_single_proxysta.c(606),ERROR" ID="0x850c12f2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: mem alloc null pointer.} @hmac_single_proxysta.c(613),ERROR" ID="0x850c132a" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_bridge_insert_unknow_mac:: insert unknow map protocol:0x%x-mac:%x:%x:%x:**:**:**.} @hmac_single_proxysta.c(631),WARNING" ID="0x850c13bb" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_unknow_mac:: null param.} @hmac_single_proxysta.c(647),ERROR" ID="0x850c143a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_unknow_addr_insert::The length of buf is invalid.} @hmac_single_proxysta.c(691),ERROR" ID="0x850c159a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_insert_ipv4_mac:: map num exceed max size: %d.} @hmac_single_proxysta.c(711),ERROR" ID="0x850c163a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: mem alloc null pointer.} @hmac_single_proxysta.c(718),ERROR" ID="0x850c1672" />
+			<MSG STRUCTURE="diag_log_msg3" NAME="{hmac_bridge_insert_ipv4_mac: insert ipv4 map ip[%d:%d:%d:**]} @hmac_single_proxysta.c(739),WARNING" ID="0x850c171b" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_bridge_insert_ipv4_mac: insert ipv4 map mac[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(741),WARNING" ID="0x850c172b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: vap_bridge  null param.} @hmac_single_proxysta.c(759),ERROR" ID="0x850c17ba" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: ip same, but mac not same!} @hmac_single_proxysta.c(774),INFO" ID="0x850c1835" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_arp_addr_insert::The length of buf is invalid.} @hmac_single_proxysta.c(861),ERROR" ID="0x850c1aea" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="{hmac_bridge_tx_arp_addr_insert::arp hln:%d, arp pro: %d ,not to process.} @hmac_single_proxysta.c(868),ERROR" ID="0x850c1b22" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_arp_addr_insert :: proxysta_mac == src_mac, not need insert map table!} @hmac_single_proxysta.c(880),INFO" ID="0x850c1b85" />
+			<MSG STRUCTURE="diag_log_msg3" NAME="{start delete ipv4 map ip[%d:%d:%d:**]} @hmac_single_proxysta.c(1102),INFO" ID="0x850c2275" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_single_proxysta_vap_add malloc error @hmac_single_proxysta.c(1134),ERROR" ID="0x850c2372" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_ccpriv_single_proxysta_debug type return err_code [%d] @hmac_single_proxysta.c(1304),WARNING" ID="0x850c28c3" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_addif::get net_dev ret NULL @hmac_single_proxysta.c(1350),WARNING" ID="0x850c2a33" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_bridge_control_addif::vap[%d] not legacy vap @hmac_single_proxysta.c(1360),WARNING" ID="0x850c2a83" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::get net_dev ret NULL @hmac_single_proxysta.c(1373),WARNING" ID="0x850c2aeb" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::delete AP from bridge @hmac_single_proxysta.c(1378),WARNING" ID="0x850c2b13" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::delete STA from bridge @hmac_single_proxysta.c(1382),WARNING" ID="0x850c2b33" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::can't find vap in bridge @hmac_single_proxysta.c(1387),WARNING" ID="0x850c2b5b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_rx_copy_data::malloc netbuf fail. @hmac_single_proxysta.c(1459),WARNING" ID="0x850c2d9b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process:null param.} @hmac_single_proxysta.c(1543),ERROR" ID="0x850c303a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process_sle:lwip_buf NULL.} @hmac_single_proxysta.c(1558),ERROR" ID="0x850c30b2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_ccpriv_wifi_sle_repeater_enable ret return err_code [%d] @hmac_single_proxysta.c(1621),WARNING" ID="0x850c32ab" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_get_converted_pbuf::mem safe function err!} @hmac_single_proxysta.c(1655),ERROR" ID="0x850c33ba" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hmac_get_converted_skb, len = %d, tot_len = %d @hmac_single_proxysta.c(1666),ERROR" ID="0x850c3412" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[hmac_bridge_forward_to_syschannel] skb_convert_2_pbuf, lwip_buf is null! @hmac_single_proxysta.c(1735),ERROR" ID="0x850c363a" />
+			</MSG_LOG>

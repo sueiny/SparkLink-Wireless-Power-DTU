@@ -1,0 +1,10 @@
+<MSG_LOG><MSG STRUCTURE="diag_log_msg1" NAME="hcc alloc srv-%d null @hcc_adapt.c(70),ERROR" ID="0xa0ae0232" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc alloc priv srv- %d @hcc_adapt.c(75),ERROR" ID="0xa0ae025a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc free srv err, q-%d, srv-%d @hcc_adapt.c(88),ERROR" ID="0xa0ae02c2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc free adapt srv- %d null @hcc_adapt.c(93),ERROR" ID="0xa0ae02ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc adapt free-%d null @hcc_adapt.c(102),ERROR" ID="0xa0ae0332" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc mem free param err @hcc_adapt.c(143),ERROR" ID="0xa0ae047a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc unc enq null @hcc_adapt.c(159),ERROR" ID="0xa0ae04fa" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc null type:%d @hcc_adapt.c(192),ERROR" ID="0xa0ae0602" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="data invalid index:%u, len:%u @hcc_adapt.c(205),ERROR" ID="0xa0ae066a" />
+			</MSG_LOG>

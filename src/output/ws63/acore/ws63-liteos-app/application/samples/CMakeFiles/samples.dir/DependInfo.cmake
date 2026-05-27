@@ -4,7 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/sueiny/fbb_ws63/src/application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_board.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/common/dtu_log.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_commands.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_protocol.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/dtu_main.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/manager/dtu_service.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/run/dtu_run.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/storage/dtu_storage.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_ble.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_sle.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj"
+  "/home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_uart.c" "/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -130,7 +141,14 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../../../../kernel/liteos/liteos_v208.5.0/Huawei_LiteOS/targets/ws63/include"
-  "../../../../application/samples/bt/sle/sle_speed_client/inc"
+  "../../../../application/samples/Dtu"
+  "../../../../application/samples/Dtu/common"
+  "../../../../application/samples/Dtu/manager"
+  "../../../../application/samples/Dtu/config"
+  "../../../../application/samples/Dtu/run"
+  "../../../../application/samples/Dtu/storage"
+  "../../../../application/samples/Dtu/board"
+  "../../../../application/samples/Dtu/transport"
   "../../../../kernel/osal/include"
   "../../../../kernel/osal/include/atomic"
   "../../../../kernel/osal/include/debug"

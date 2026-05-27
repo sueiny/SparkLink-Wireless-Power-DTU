@@ -1,0 +1,6 @@
+<MSG_LOG><MSG STRUCTURE="diag_log_msg1" NAME="hcc test cmd[%d] @hcc_test.c(265),ERROR" ID="0xa092084a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p1 @hcc_test.c(313),ERROR" ID="0xa09209ca" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p2 @hcc_test.c(329),ERROR" ID="0xa0920a4a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p3 @hcc_test.c(356),ERROR" ID="0xa0920b22" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test local argc err @hcc_test.c(390),ERROR" ID="0xa0920c32" />
+			</MSG_LOG>

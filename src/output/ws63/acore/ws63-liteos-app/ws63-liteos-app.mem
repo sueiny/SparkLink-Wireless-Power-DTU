@@ -24,7 +24,7 @@
     .btc_bss_tcm      0x00183668                    40                  
     .wifi_bss_tcm     0x00183690                   956                  
   
-  SRAM                0x00A00000     0x85F00   0x2D370 = 185200
+  SRAM                0x00A00000     0x85F00   0x30930 = 198960
     .wifi_pkt_ram     0x00A00000                 49152                  
     .plat_text_sram   0x00A0C000                 11140 load address 0x234B78
     .wifi_text_sram   0x00A0EB88                     0                  
@@ -34,19 +34,19 @@
     .wifi_data_sram   0x00A0F718                     0                  
     .btc_data_sram    0x00A0F718                     0                  
     .bth_data_sram    0x00A0F718                     0                  
-    .btc_data_flash   0x00A0F718                  5028 load address 0x36A4B0
-    .bth_data_flash   0x00A10AC0                  2516 load address 0x36B858
-    .data             0x00A11498                   388 load address 0x36C230
-    .plat_bss_sram    0x00A11620                  1217                  
-    .plat_bss_flash   0x00A11AE8                 12756                  
-    .wifi_bss_flash   0x00A14CC0                 38048                  
-    .radar_bss_flash  0x00A1E160                 39796                  
-    .radar_ai_bss_flash  0x00A27CD8                  6133                  
-    .btc_bss_flash    0x00A294D0                  3292                  
-    .bth_bss_flash    0x00A2A1B0                  3848                  
-    .bss              0x00A2B0B8                  3760                  
-    .stacks           0x00A2BF70                  5120                  
-    .heap             0x00A2D370                     0                  
+    .btc_data_flash   0x00A0F718                  5028 load address 0x36D7E8
+    .bth_data_flash   0x00A10AC0                  7724 load address 0x36EB90
+    .data             0x00A128F0                   388 load address 0x3709C0
+    .plat_bss_sram    0x00A12A80                  1217                  
+    .plat_bss_flash   0x00A12F48                 12756                  
+    .wifi_bss_flash   0x00A16120                 38048                  
+    .radar_bss_flash  0x00A1F5C0                 39796                  
+    .radar_ai_bss_flash  0x00A29138                  6133                  
+    .btc_bss_flash    0x00A2A930                  3292                  
+    .bth_bss_flash    0x00A2B610                 12376                  
+    .bss              0x00A2E668                  3776                  
+    .stacks           0x00A2F530                  5120                  
+    .heap             0x00A30930                     0                  
   
   PRESERVE_SHARE_MEM  0x00A85F00       0x100      0xFC = 252
     .preserve         0x00A85F00                   252                  
@@ -55,7 +55,7 @@
     startup           0x00230300                   424                  
     .sysintcall.init  0x002304A8                    52                  
   
-  PROGRAM             0x00230700    0x23F900  0x13BCB4 = 1293492
+  PROGRAM             0x00230700    0x23F900  0x140444 = 1311812
     .patch            0x00230700                  2344                  
     .rom_ram_cb_text  0x00231028                  1816                  
     .plat_romdata     0x00231740                   212                  
@@ -67,17 +67,17 @@
     .wifi_data_tcm    0x00233DD8                  3488                  
     .plat_text_sram   0x00234B78                 11140                  
     .patch_on_sram    0x00237700                  2960                  
-    .plat_text_flash  0x00238290                181720                  
-    .wifi_text_flash  0x00264868                588514                  
-    .patch_on_flash   0x002F4350                  2378                  
-    .btc_text_flash   0x002F4CA0                136832                  
-    .bth_text_flash   0x00316320                239888                  
-    .radar_text_flash  0x00350C30                 44810                  
-    .radar_ai_text_flash  0x0035BB40                 10188                  
-    .text             0x0035E310                 49568                  
-    .btc_data_flash   0x0036A4B0                  5028                  
-    .bth_data_flash   0x0036B858                  2516                  
-    .data             0x0036C230                   388                  
+    .plat_text_flash  0x00238290                182100                  
+    .wifi_text_flash  0x002649E8                588514                  
+    .patch_on_flash   0x002F44D0                  2378                  
+    .btc_text_flash   0x002F4E20                136832                  
+    .bth_text_flash   0x003164A0                251448                  
+    .radar_text_flash  0x00353AD8                 44810                  
+    .radar_ai_text_flash  0x0035E9E8                 10188                  
+    .text             0x003611B8                 50732                  
+    .btc_data_flash   0x0036D7E8                  5028                  
+    .bth_data_flash   0x0036EB90                  7724                  
+    .data             0x003709C0                   388                  
 
   ====================================================
 
@@ -89,7 +89,7 @@
   --------------------------------  --------  -----
 
 
-  .plat_text_flash                    101777
+  .plat_text_flash                    102159
 
     open_source                        32732
       mbedtls                               
@@ -131,18 +131,18 @@
             platform_util                           20
             rsa_alt_helpers                        338
 
-    drivers                            10372
-      chips                             3526
+    drivers                            10754
+      chips                             3548
         ws63                                
-          porting                       3121
+          porting                       3143
             liteos                       490
               riscv31                       
                 tick_timer                         246
                 idle_config                         26
                 memory_info                        218
 
-            uart                        1481
-              uart_porting                        1481
+            uart                        1503
+              uart_porting                        1503
 
             efuse                        566
               efuse_porting                        566
@@ -180,7 +180,7 @@
           interrupt                       73
             interrupt_os_adapter                    73
 
-      drivers                           6846
+      drivers                           7206
         hal                             4920
           tsensor                       1156
             v151                        1080
@@ -220,15 +220,15 @@
           reboot                          22
             hal_reboot                              22
 
-        driver                          1926
+        driver                          2286
           efuse                          380
             efuse                                  380
 
           tsensor                        176
             tsensor                                176
 
-          uart                          1370
-            uart                                  1370
+          uart                          1730
+            uart                                  1730
 
     devcloud                           23532
       workspace                             
@@ -458,11 +458,8 @@
 
     application                          246
       samples                              4
-        bt                                  
-          sle                               
-            sle_speed_client                
-              src                           
-                sle_speed_client                     4
+        Dtu                                 
+          dtu_main                                   4
 
       ws63                               242
         ws63_liteos_application             
@@ -1294,11 +1291,11 @@
   --------------------------------  --------  -----
 
 
-  .text                                42999
+  .text                                44755
 
-    drivers                            40847
-      drivers                          40175
-        hal                            14964
+    drivers                            42603
+      drivers                          41819
+        hal                            16260
           security_unified             14390
             hal_cipher                 12656
               pke                       7466
@@ -1337,15 +1334,15 @@
               hal_klad                             810
               hal_rkp                              440
 
-          dma                            574
-            v151                         540
-              hal_dmac_v151                        306
-              hal_dmac_v151_regs_op                234
+          dma                           1870
+            v151                        1830
+              hal_dmac_v151                       1582
+              hal_dmac_v151_regs_op                248
 
-            hal_dma_mem                              4
+            hal_dma_mem                             10
             hal_dma                                 30
 
-        driver                         25211
+        driver                         25559
           security_unified             24871
             init                        2186
               cfbb                          
@@ -1407,8 +1404,8 @@
               ecp_harden_impl                      108
               hash_harden_impl_long_term           308
 
-          dma                             58
-            dma                                     58
+          dma                            406
+            dma                                    406
 
           gpio                           166
             gpio                                   166
@@ -1416,14 +1413,14 @@
           pmp                            116
             pmp                                    116
 
-      chips                              672
+      chips                              784
         ws63                                
           porting                           
             xo_trim                      496
               xo_trim_porting                      496
 
-            dma                          126
-              dma_porting                          126
+            dma                          238
+              dma_porting                          238
 
             version                       16
               version_porting                       16
@@ -1464,9 +1461,9 @@
   --------------------------------  --------  -----
 
 
-  .bss                                  3703
+  .bss                                  3719
 
-    drivers                             3387
+    drivers                             3403
       chips                               36
         ws63                                
           porting                           
@@ -1476,7 +1473,7 @@
             xo_trim                       24
               xo_trim_porting                       24
 
-      drivers                           3351
+      drivers                           3367
         driver                          2765
           security_unified              2763
             init                           5
@@ -1515,11 +1512,12 @@
           gpio                             1
             gpio                                     1
 
-        hal                              586
-          dma                             52
+        hal                              602
+          dma                             68
+            v151                          64
+              hal_dmac_v151                         64
+
             hal_dma                                  4
-            v151                          48
-              hal_dmac_v151                         48
 
           security_unified               534
             hal_cipher                      
@@ -1556,15 +1554,36 @@
   --------------------------------  --------  -----
 
 
-  .bth_text_flash                       1832
+  .bth_text_flash                      11364
 
     application                             
       samples                               
-        bt                                  
-          sle                               
-            sle_speed_client                
-              src                           
-                sle_speed_client                  1832
+        Dtu                                 
+          transport                     3804
+            dtu_channel_ble                       1412
+            dtu_channel_sle                       1510
+            dtu_channel_uart                       882
+
+          board                          308
+            dtu_board                              308
+
+          config                        3082
+            dtu_config_commands                   2306
+            dtu_config_protocol                    644
+            dtu_config                             132
+
+          dtu_main                                  92
+          common                        1264
+            dtu_log                               1264
+
+          run                            304
+            dtu_run                                304
+
+          manager                        544
+            dtu_service                            544
+
+          storage                       1966
+            dtu_storage                           1966
 
 
   Section                            Total     Size
@@ -1750,15 +1769,24 @@
   --------------------------------  --------  -----
 
 
-  .bth_bss_flash                         559
+  .bth_bss_flash                        9081
 
     application                             
       samples                               
-        bt                                  
-          sle                               
-            sle_speed_client                
-              src                           
-                sle_speed_client                   559
+        Dtu                                 
+          board                           17
+            dtu_board                               17
+
+          transport                     4144
+            dtu_channel_ble                       2072
+            dtu_channel_sle                       2072
+
+          config                         966
+            dtu_config_protocol                    615
+            dtu_config_commands                    351
+
+          storage                       3954
+            dtu_storage                           3954
 
 
   Section                            Total     Size
@@ -1842,6 +1870,21 @@
   --------------------------------  --------  -----
 
 
+  .bth_data_flash                       5216
+
+    application                             
+      samples                               
+        Dtu                                 
+          transport                         
+            dtu_channel_sle                         16
+            dtu_channel_uart                      5200
+
+
+  Section                            Total     Size
+
+  --------------------------------  --------  -----
+
+
   .preserve                              252
 
     middleware                              
@@ -1917,14 +1960,14 @@
        startup  .lst file = 424 (0x1A8)
                  .du file = 336 (0x150)
 
-         .text  .lst file = 49568 (0xC1A0)
-                 .du file = 42999 (0xA7F7)
+         .text  .lst file = 50732 (0xC62C)
+                 .du file = 44755 (0xAED3)
 
          .data  .lst file = 388 (0x184)
                  .du file = 362 (0x16A)
 
-          .bss  .lst file = 3760 (0xEB0)
-                 .du file = 3703 (0xE77)
+          .bss  .lst file = 3776 (0xEC0)
+                 .du file = 3719 (0xE87)
 
   ====================================================
 

@@ -1,0 +1,6 @@
+<MSG_LOG><MSG STRUCTURE="diag_log_msg1" NAME="hcc send msg-%d @hcc_bus.c(152),ERROR" ID="0xa08604c2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bus msg cb-%d @hcc_bus.c(165),ERROR" ID="0xa086052a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc msg not registered, msg -%d @hcc_bus.c(174),ERROR" ID="0xa0860572" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bus malloc:%d err @hcc_bus.c(184),ERROR" ID="0xa08605c2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc bus ops tx proc is null @hcc_bus.c(233),ERROR" ID="0xa086074a" />
+			</MSG_LOG>

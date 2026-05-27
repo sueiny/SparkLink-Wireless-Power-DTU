@@ -1,34 +1,14 @@
 #!/usr/bin/env python3
 """DTU BLE 全流程自动化测试脚本。
 
-目标：
-1. 按 docs/DTU完整测试流程.md 覆盖配置模式与运行模式测试。
-2. 每条命令都做协议级校验（帧头/CRC/SEQ/RESP_CMD/status）。
-3. 发现错误即时输出，最终给出统计与非 0 退出码。
+覆盖 CONFIG/RUN 流程，并对帧头、CRC、SEQ、响应命令和 status 做协议级校验。
 
 依赖：
     python3 -m pip install bleak
 
 示例：
-    # 仅跑配置模式（请先把 GPIO13 拨到高电平并重启设备）
     python3 dtu_ble_full_test.py --suite config --name DTU
-
-    # 跑运行模式（请先把 GPIO13 拨到低电平并重启设备）
     python3 dtu_ble_full_test.py --suite run --name DTU
-
-    # 跑完整流程（脚本会提示你在中途手动切拨码）
-    python3 dtu_ble_full_test.py --suite all --name DTU
-
-        仅配置模式（先拨到 CONFIG）：
-    python3 dtu_ble_full_test.py --suite config --name DTU
-
-    仅运行模式（先拨到 RUN）：
-    python3 dtu_ble_full_test.py --suite run --name DTU
-
-    完整全测试（脚本中途会提示你切拨码）：
-    python3 dtu_ble_full_test.py --suite all --name DTU
-
-    失败即停：
     python3 dtu_ble_full_test.py --suite all --name DTU --fail-fast
 """
 

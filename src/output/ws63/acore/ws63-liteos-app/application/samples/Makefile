@@ -125,32 +125,329 @@ samples/fast:
 	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/build
 .PHONY : samples/fast
 
-bt/sle/sle_speed_client/src/sle_speed_client.obj: bt/sle/sle_speed_client/src/sle_speed_client.c.obj
+Dtu/board/dtu_board.obj: Dtu/board/dtu_board.c.obj
 
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.obj
+.PHONY : Dtu/board/dtu_board.obj
 
 # target to build an object file
-bt/sle/sle_speed_client/src/sle_speed_client.c.obj:
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.c.obj
+Dtu/board/dtu_board.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj
+.PHONY : Dtu/board/dtu_board.c.obj
 
-bt/sle/sle_speed_client/src/sle_speed_client.i: bt/sle/sle_speed_client/src/sle_speed_client.c.i
+Dtu/board/dtu_board.i: Dtu/board/dtu_board.c.i
 
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.i
+.PHONY : Dtu/board/dtu_board.i
 
 # target to preprocess a source file
-bt/sle/sle_speed_client/src/sle_speed_client.c.i:
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.i
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.c.i
+Dtu/board/dtu_board.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.i
+.PHONY : Dtu/board/dtu_board.c.i
 
-bt/sle/sle_speed_client/src/sle_speed_client.s: bt/sle/sle_speed_client/src/sle_speed_client.c.s
+Dtu/board/dtu_board.s: Dtu/board/dtu_board.c.s
 
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.s
+.PHONY : Dtu/board/dtu_board.s
 
 # target to generate assembly for a file
-bt/sle/sle_speed_client/src/sle_speed_client.c.s:
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.s
-.PHONY : bt/sle/sle_speed_client/src/sle_speed_client.c.s
+Dtu/board/dtu_board.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.s
+.PHONY : Dtu/board/dtu_board.c.s
+
+Dtu/common/dtu_log.obj: Dtu/common/dtu_log.c.obj
+
+.PHONY : Dtu/common/dtu_log.obj
+
+# target to build an object file
+Dtu/common/dtu_log.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj
+.PHONY : Dtu/common/dtu_log.c.obj
+
+Dtu/common/dtu_log.i: Dtu/common/dtu_log.c.i
+
+.PHONY : Dtu/common/dtu_log.i
+
+# target to preprocess a source file
+Dtu/common/dtu_log.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.i
+.PHONY : Dtu/common/dtu_log.c.i
+
+Dtu/common/dtu_log.s: Dtu/common/dtu_log.c.s
+
+.PHONY : Dtu/common/dtu_log.s
+
+# target to generate assembly for a file
+Dtu/common/dtu_log.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.s
+.PHONY : Dtu/common/dtu_log.c.s
+
+Dtu/config/dtu_config.obj: Dtu/config/dtu_config.c.obj
+
+.PHONY : Dtu/config/dtu_config.obj
+
+# target to build an object file
+Dtu/config/dtu_config.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj
+.PHONY : Dtu/config/dtu_config.c.obj
+
+Dtu/config/dtu_config.i: Dtu/config/dtu_config.c.i
+
+.PHONY : Dtu/config/dtu_config.i
+
+# target to preprocess a source file
+Dtu/config/dtu_config.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.i
+.PHONY : Dtu/config/dtu_config.c.i
+
+Dtu/config/dtu_config.s: Dtu/config/dtu_config.c.s
+
+.PHONY : Dtu/config/dtu_config.s
+
+# target to generate assembly for a file
+Dtu/config/dtu_config.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.s
+.PHONY : Dtu/config/dtu_config.c.s
+
+Dtu/config/dtu_config_commands.obj: Dtu/config/dtu_config_commands.c.obj
+
+.PHONY : Dtu/config/dtu_config_commands.obj
+
+# target to build an object file
+Dtu/config/dtu_config_commands.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj
+.PHONY : Dtu/config/dtu_config_commands.c.obj
+
+Dtu/config/dtu_config_commands.i: Dtu/config/dtu_config_commands.c.i
+
+.PHONY : Dtu/config/dtu_config_commands.i
+
+# target to preprocess a source file
+Dtu/config/dtu_config_commands.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.i
+.PHONY : Dtu/config/dtu_config_commands.c.i
+
+Dtu/config/dtu_config_commands.s: Dtu/config/dtu_config_commands.c.s
+
+.PHONY : Dtu/config/dtu_config_commands.s
+
+# target to generate assembly for a file
+Dtu/config/dtu_config_commands.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.s
+.PHONY : Dtu/config/dtu_config_commands.c.s
+
+Dtu/config/dtu_config_protocol.obj: Dtu/config/dtu_config_protocol.c.obj
+
+.PHONY : Dtu/config/dtu_config_protocol.obj
+
+# target to build an object file
+Dtu/config/dtu_config_protocol.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj
+.PHONY : Dtu/config/dtu_config_protocol.c.obj
+
+Dtu/config/dtu_config_protocol.i: Dtu/config/dtu_config_protocol.c.i
+
+.PHONY : Dtu/config/dtu_config_protocol.i
+
+# target to preprocess a source file
+Dtu/config/dtu_config_protocol.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.i
+.PHONY : Dtu/config/dtu_config_protocol.c.i
+
+Dtu/config/dtu_config_protocol.s: Dtu/config/dtu_config_protocol.c.s
+
+.PHONY : Dtu/config/dtu_config_protocol.s
+
+# target to generate assembly for a file
+Dtu/config/dtu_config_protocol.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.s
+.PHONY : Dtu/config/dtu_config_protocol.c.s
+
+Dtu/dtu_main.obj: Dtu/dtu_main.c.obj
+
+.PHONY : Dtu/dtu_main.obj
+
+# target to build an object file
+Dtu/dtu_main.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj
+.PHONY : Dtu/dtu_main.c.obj
+
+Dtu/dtu_main.i: Dtu/dtu_main.c.i
+
+.PHONY : Dtu/dtu_main.i
+
+# target to preprocess a source file
+Dtu/dtu_main.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.i
+.PHONY : Dtu/dtu_main.c.i
+
+Dtu/dtu_main.s: Dtu/dtu_main.c.s
+
+.PHONY : Dtu/dtu_main.s
+
+# target to generate assembly for a file
+Dtu/dtu_main.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.s
+.PHONY : Dtu/dtu_main.c.s
+
+Dtu/manager/dtu_service.obj: Dtu/manager/dtu_service.c.obj
+
+.PHONY : Dtu/manager/dtu_service.obj
+
+# target to build an object file
+Dtu/manager/dtu_service.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj
+.PHONY : Dtu/manager/dtu_service.c.obj
+
+Dtu/manager/dtu_service.i: Dtu/manager/dtu_service.c.i
+
+.PHONY : Dtu/manager/dtu_service.i
+
+# target to preprocess a source file
+Dtu/manager/dtu_service.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.i
+.PHONY : Dtu/manager/dtu_service.c.i
+
+Dtu/manager/dtu_service.s: Dtu/manager/dtu_service.c.s
+
+.PHONY : Dtu/manager/dtu_service.s
+
+# target to generate assembly for a file
+Dtu/manager/dtu_service.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.s
+.PHONY : Dtu/manager/dtu_service.c.s
+
+Dtu/run/dtu_run.obj: Dtu/run/dtu_run.c.obj
+
+.PHONY : Dtu/run/dtu_run.obj
+
+# target to build an object file
+Dtu/run/dtu_run.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj
+.PHONY : Dtu/run/dtu_run.c.obj
+
+Dtu/run/dtu_run.i: Dtu/run/dtu_run.c.i
+
+.PHONY : Dtu/run/dtu_run.i
+
+# target to preprocess a source file
+Dtu/run/dtu_run.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.i
+.PHONY : Dtu/run/dtu_run.c.i
+
+Dtu/run/dtu_run.s: Dtu/run/dtu_run.c.s
+
+.PHONY : Dtu/run/dtu_run.s
+
+# target to generate assembly for a file
+Dtu/run/dtu_run.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.s
+.PHONY : Dtu/run/dtu_run.c.s
+
+Dtu/storage/dtu_storage.obj: Dtu/storage/dtu_storage.c.obj
+
+.PHONY : Dtu/storage/dtu_storage.obj
+
+# target to build an object file
+Dtu/storage/dtu_storage.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj
+.PHONY : Dtu/storage/dtu_storage.c.obj
+
+Dtu/storage/dtu_storage.i: Dtu/storage/dtu_storage.c.i
+
+.PHONY : Dtu/storage/dtu_storage.i
+
+# target to preprocess a source file
+Dtu/storage/dtu_storage.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.i
+.PHONY : Dtu/storage/dtu_storage.c.i
+
+Dtu/storage/dtu_storage.s: Dtu/storage/dtu_storage.c.s
+
+.PHONY : Dtu/storage/dtu_storage.s
+
+# target to generate assembly for a file
+Dtu/storage/dtu_storage.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.s
+.PHONY : Dtu/storage/dtu_storage.c.s
+
+Dtu/transport/dtu_channel_ble.obj: Dtu/transport/dtu_channel_ble.c.obj
+
+.PHONY : Dtu/transport/dtu_channel_ble.obj
+
+# target to build an object file
+Dtu/transport/dtu_channel_ble.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj
+.PHONY : Dtu/transport/dtu_channel_ble.c.obj
+
+Dtu/transport/dtu_channel_ble.i: Dtu/transport/dtu_channel_ble.c.i
+
+.PHONY : Dtu/transport/dtu_channel_ble.i
+
+# target to preprocess a source file
+Dtu/transport/dtu_channel_ble.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.i
+.PHONY : Dtu/transport/dtu_channel_ble.c.i
+
+Dtu/transport/dtu_channel_ble.s: Dtu/transport/dtu_channel_ble.c.s
+
+.PHONY : Dtu/transport/dtu_channel_ble.s
+
+# target to generate assembly for a file
+Dtu/transport/dtu_channel_ble.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.s
+.PHONY : Dtu/transport/dtu_channel_ble.c.s
+
+Dtu/transport/dtu_channel_sle.obj: Dtu/transport/dtu_channel_sle.c.obj
+
+.PHONY : Dtu/transport/dtu_channel_sle.obj
+
+# target to build an object file
+Dtu/transport/dtu_channel_sle.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj
+.PHONY : Dtu/transport/dtu_channel_sle.c.obj
+
+Dtu/transport/dtu_channel_sle.i: Dtu/transport/dtu_channel_sle.c.i
+
+.PHONY : Dtu/transport/dtu_channel_sle.i
+
+# target to preprocess a source file
+Dtu/transport/dtu_channel_sle.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.i
+.PHONY : Dtu/transport/dtu_channel_sle.c.i
+
+Dtu/transport/dtu_channel_sle.s: Dtu/transport/dtu_channel_sle.c.s
+
+.PHONY : Dtu/transport/dtu_channel_sle.s
+
+# target to generate assembly for a file
+Dtu/transport/dtu_channel_sle.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.s
+.PHONY : Dtu/transport/dtu_channel_sle.c.s
+
+Dtu/transport/dtu_channel_uart.obj: Dtu/transport/dtu_channel_uart.c.obj
+
+.PHONY : Dtu/transport/dtu_channel_uart.obj
+
+# target to build an object file
+Dtu/transport/dtu_channel_uart.c.obj:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj
+.PHONY : Dtu/transport/dtu_channel_uart.c.obj
+
+Dtu/transport/dtu_channel_uart.i: Dtu/transport/dtu_channel_uart.c.i
+
+.PHONY : Dtu/transport/dtu_channel_uart.i
+
+# target to preprocess a source file
+Dtu/transport/dtu_channel_uart.c.i:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.i
+.PHONY : Dtu/transport/dtu_channel_uart.c.i
+
+Dtu/transport/dtu_channel_uart.s: Dtu/transport/dtu_channel_uart.c.s
+
+.PHONY : Dtu/transport/dtu_channel_uart.s
+
+# target to generate assembly for a file
+Dtu/transport/dtu_channel_uart.c.s:
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app && $(MAKE) -f application/samples/CMakeFiles/samples.dir/build.make application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.s
+.PHONY : Dtu/transport/dtu_channel_uart.c.s
 
 # Help Target
 help:
@@ -161,9 +458,42 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... samples"
-	@echo "... bt/sle/sle_speed_client/src/sle_speed_client.obj"
-	@echo "... bt/sle/sle_speed_client/src/sle_speed_client.i"
-	@echo "... bt/sle/sle_speed_client/src/sle_speed_client.s"
+	@echo "... Dtu/board/dtu_board.obj"
+	@echo "... Dtu/board/dtu_board.i"
+	@echo "... Dtu/board/dtu_board.s"
+	@echo "... Dtu/common/dtu_log.obj"
+	@echo "... Dtu/common/dtu_log.i"
+	@echo "... Dtu/common/dtu_log.s"
+	@echo "... Dtu/config/dtu_config.obj"
+	@echo "... Dtu/config/dtu_config.i"
+	@echo "... Dtu/config/dtu_config.s"
+	@echo "... Dtu/config/dtu_config_commands.obj"
+	@echo "... Dtu/config/dtu_config_commands.i"
+	@echo "... Dtu/config/dtu_config_commands.s"
+	@echo "... Dtu/config/dtu_config_protocol.obj"
+	@echo "... Dtu/config/dtu_config_protocol.i"
+	@echo "... Dtu/config/dtu_config_protocol.s"
+	@echo "... Dtu/dtu_main.obj"
+	@echo "... Dtu/dtu_main.i"
+	@echo "... Dtu/dtu_main.s"
+	@echo "... Dtu/manager/dtu_service.obj"
+	@echo "... Dtu/manager/dtu_service.i"
+	@echo "... Dtu/manager/dtu_service.s"
+	@echo "... Dtu/run/dtu_run.obj"
+	@echo "... Dtu/run/dtu_run.i"
+	@echo "... Dtu/run/dtu_run.s"
+	@echo "... Dtu/storage/dtu_storage.obj"
+	@echo "... Dtu/storage/dtu_storage.i"
+	@echo "... Dtu/storage/dtu_storage.s"
+	@echo "... Dtu/transport/dtu_channel_ble.obj"
+	@echo "... Dtu/transport/dtu_channel_ble.i"
+	@echo "... Dtu/transport/dtu_channel_ble.s"
+	@echo "... Dtu/transport/dtu_channel_sle.obj"
+	@echo "... Dtu/transport/dtu_channel_sle.i"
+	@echo "... Dtu/transport/dtu_channel_sle.s"
+	@echo "... Dtu/transport/dtu_channel_uart.obj"
+	@echo "... Dtu/transport/dtu_channel_uart.i"
+	@echo "... Dtu/transport/dtu_channel_uart.s"
 .PHONY : help
 
 

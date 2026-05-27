@@ -6373,6 +6373,11 @@
 			<MSG STRUCTURE="diag_log_msg3" NAME="panic id:0x%x, panic code: 0x%x, panic caller: 0x%x @preserve.c(534),INFO" ID="0xa04610b5" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="bt exception reboot with pc:0x%x, lr: 0x%x @preserve.c(544),INFO" ID="0xa0461105" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="app exception reboot pc:0x%x, lr: 0x%x @preserve.c(555),INFO" ID="0xa046115d" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc test cmd[%d] @hcc_test.c(265),ERROR" ID="0xa092084a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p1 @hcc_test.c(313),ERROR" ID="0xa09209ca" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p2 @hcc_test.c(329),ERROR" ID="0xa0920a4a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test cmd p3 @hcc_test.c(356),ERROR" ID="0xa0920b22" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test local argc err @hcc_test.c(390),ERROR" ID="0xa0920c32" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] upg_get_pkg_image_hash_table fail @upg_storage.c(280),ERROR" ID="0xa07808c2" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] upg_get_package_header fail @upg_storage.c(336),ERROR" ID="0xa0780a82" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[UPG] uapi_upg_verify_file fail, ret = 0x%x @upg_storage.c(344),ERROR" ID="0xa0780ac2" />
@@ -6548,6 +6553,15 @@
 			<MSG STRUCTURE="diag_log_msg3" NAME="{hmac_config_btcoex_assoc_state_proc::status 6slot:%d,a2dp:%d,data_transfer:%d.} @hmac_btcoex_notify.c(318),WARNING" ID="0x820a09f3" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="{expect_ba_size:%d, ba_size:%d, need_delba:%d.} @hmac_btcoex_notify.c(320),WARNING" ID="0x820a0a03" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="{hmac_m2s_siso_to_siso:: phy_chain[%d], cur state[%d].} @hmac_btcoex_notify.c(364),ERROR" ID="0x820a0b62" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc alloc srv-%d null @hcc_adapt.c(70),ERROR" ID="0xa0ae0232" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc alloc priv srv- %d @hcc_adapt.c(75),ERROR" ID="0xa0ae025a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc free srv err, q-%d, srv-%d @hcc_adapt.c(88),ERROR" ID="0xa0ae02c2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc free adapt srv- %d null @hcc_adapt.c(93),ERROR" ID="0xa0ae02ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc adapt free-%d null @hcc_adapt.c(102),ERROR" ID="0xa0ae0332" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc mem free param err @hcc_adapt.c(143),ERROR" ID="0xa0ae047a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc unc enq null @hcc_adapt.c(159),ERROR" ID="0xa0ae04fa" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc null type:%d @hcc_adapt.c(192),ERROR" ID="0xa0ae0602" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="data invalid index:%u, len:%u @hcc_adapt.c(205),ERROR" ID="0xa0ae066a" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] upg_verify_hash: memcmp hash fail. @upg_verify.c(70),ERROR" ID="0xa06c0232" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="upg_verify_hash: memcmp hash fail. @upg_verify.c(87),ERROR" ID="0xa06c02ba" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="upg_verify_hash image table OK @upg_verify.c(91),ERROR" ID="0xa06c02da" />
@@ -6587,6 +6601,14 @@
 			<MSG STRUCTURE="diag_log_msg1" NAME="[UPG] upg verify: fota info error. ret = 0x%x @upg_verify.c(823),ERROR" ID="0xa06c19ba" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] upg_get_pkg_image_hash_table fail @upg_verify.c(829),ERROR" ID="0xa06c19ea" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[UPG] upg verify: verify hash table failed. ret = 0x%x @upg_verify.c(841),ERROR" ID="0xa06c1a4a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc send msg-%d @hcc_bus.c(152),ERROR" ID="0xa08604c2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bus msg cb-%d @hcc_bus.c(165),ERROR" ID="0xa086052a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc msg not registered, msg -%d @hcc_bus.c(174),ERROR" ID="0xa0860572" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bus malloc:%d err @hcc_bus.c(184),ERROR" ID="0xa08605c2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc bus ops tx proc is null @hcc_bus.c(233),ERROR" ID="0xa086074a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc srv init null @hcc_service.c(61),ERROR" ID="0xa08e01ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc srv add-%d @hcc_service.c(73),ERROR" ID="0xa08e024a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc srv deinit null @hcc_service.c(94),ERROR" ID="0xa08e02f2" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] progress callback regist failed @upg_common_porting.c(205),ERROR" ID="0xa07a066a" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] get package header fail @upg_common_porting.c(403),ERROR" ID="0xa07a0c9a" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[UPG] get msid fail,ret=0x%x @upg_common_porting.c(420),ERROR" ID="0xa07a0d22" />
@@ -6596,6 +6618,16 @@
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] get_pkg_image_header fail @upg_common_porting.c(509),ERROR" ID="0xa07a0fea" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] init failed! @upg_common_porting.c(582),ERROR" ID="0xa07a1232" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="[UPG] init OK! @upg_common_porting.c(589),INFO" ID="0xa07a126d" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="get credit failed @hcc_test_host.c(63),ERROR" ID="0xa0aa01fa" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="read reg failed @hcc_test_host.c(105),ERROR" ID="0xa0aa034a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="write reg failed @hcc_test_host.c(115),ERROR" ID="0xa0aa039a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="opt param err- %d @hcc_test_host.c(123),ERROR" ID="0xa0aa03da" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="cmd len err:%d - arc len: %d @hcc_test_host.c(184),ERROR" ID="0xa0aa05c2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[ERROR] invalid argc @hcc_test_host.c(285),ERROR" ID="0xa0aa08ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="invalid argv:[%d] @hcc_test_host.c(293),ERROR" ID="0xa0aa092a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[ERROR] remote cmd need more arguments @hcc_test_host.c(337),ERROR" ID="0xa0aa0a8a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="malloc user_param ERR @hcc_test_host.c(343),ERROR" ID="0xa0aa0aba" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="para cpy err @hcc_test_host.c(361),ERROR" ID="0xa0aa0b4a" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="vap_id[%d] {hmac_btcoex_encap_preempt_frame:: HAL_DEVICE null} @hmac_btcoex_ps.c(38),WARNING" ID="0x82e60133" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="vap_id[%d] {hmac_btcoex_encap_preempt_frame::sw_preempt_type[%d] error} @hmac_btcoex_ps.c(92),ERROR" ID="0x82e602e2" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="vap_id[%d] {hmac_btcoex_encap_preempt_frame::sw_preempt_type[%d]!} @hmac_btcoex_ps.c(97),WARNING" ID="0x82e6030b" />
@@ -6664,9 +6696,42 @@
 			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_user_clear_defrag_res::hmac_user is null ptr.} @hmac_frag.c(445),ERROR" ID="0x84ca0dea" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="user_idx[%d] hmac_frag_add_user mem already malloc! @hmac_frag.c(485),WARNING" ID="0x84ca0f2b" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="user_idx[%d] hmac_frag_add_user malloc null! @hmac_frag.c(490),ERROR" ID="0x84ca0f52" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc stop xfer q:%d @hcc.c(99),ERROR" ID="0xa094031a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc check header hdr is null @hcc.c(169),ERROR" ID="0xa094054a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc_check_header_vaild S-%d, Q-%d failed @hcc.c(175),ERROR" ID="0xa094057a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc txproc is null @hcc.c(219),ERROR" ID="0xa09406da" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc queue rx srv[%d] null @hcc.c(296),ERROR" ID="0xa0940942" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc thread err qid:%d @hcc.c(361),ERROR" ID="0xa0940b4a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc thread dir err qid:%d @hcc.c(378),ERROR" ID="0xa0940bd2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc_list_free_by_service q:%d @hcc.c(420),ERROR" ID="0xa0940d22" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc thread null @hcc.c(446),ERROR" ID="0xa0940df2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc sched is null @hcc.c(611),ERROR" ID="0xa094131a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc task wait err @hcc.c(672),ERROR" ID="0xa0941502" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc thread create failed! @hcc.c(681),ERROR" ID="0xa094154a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc module init err:%d @hcc.c(747),ERROR" ID="0xa094175a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc module malloc err @hcc.c(761),ERROR" ID="0xa09417ca" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc module malloc err @hcc.c(769),ERROR" ID="0xa094180a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc tx check srv[%d] or bus chanid[%d] null @hcc.c(833),ERROR" ID="0xa0941a0a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc tx check srv t-%d, q-%d @hcc.c(839),ERROR" ID="0xa0941a3a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc tx check fc-%d @hcc.c(844),ERROR" ID="0xa0941a62" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc tx check qid-%d @hcc.c(849),ERROR" ID="0xa0941a8a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc tx check srv[%d] null @hcc.c(854),ERROR" ID="0xa0941ab2" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="hcc tx check err: len[%d] min[%d] max[%d] aligned[%d] @hcc.c(865),ERROR" ID="0xa0941b0a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc init param err @hcc.c(891),ERROR" ID="0xa0941bda" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc init module init err @hcc.c(896),ERROR" ID="0xa0941c02" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc init dfx init, ret %x @hcc.c(902),ERROR" ID="0xa0941c32" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc init bus load fail @hcc.c(909),ERROR" ID="0xa0941c6a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bt tx proc state:%d @hcc.c(979),ERROR" ID="0xa0941e9a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc bt tx params null! @hcc.c(1007),ERROR" ID="0xa0941f7a" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hcc bt tx srv err q-%d, serv-%d @hcc.c(1021),ERROR" ID="0xa0941fea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc bt tx srv-%d alloc or free  null @hcc.c(1026),ERROR" ID="0xa0942012" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc bt tx srv alloc fail @hcc.c(1032),ERROR" ID="0xa0942042" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc tx_data params null! @hcc.c(1058),ERROR" ID="0xa0942112" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc tx_state:%d @hcc.c(1069),ERROR" ID="0xa094216a" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[log_reader][header]length error, len = 0x%x @log_buffer_reader.c(252),ERROR" ID="0xa06207e2" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="[log_reader][data]length error, len1 = 0x%x, len2 = 0x%x @log_buffer_reader.c(272),ERROR" ID="0xa0620882" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="[log_reader][pointer]write_p=0x%x, read_p=0x%x, new_read_p=0x%x @log_buffer_reader.c(293),ERROR" ID="0xa062092a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hcc dfx q:%d @hcc_dfx.c(434),ERROR" ID="0xa08a0d92" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="{hmac_amsdu_prepare_to_send::, amsdu send fails. erro[%d], short_pkt_num=%d.} @hmac_tx_amsdu.c(70),WARNING" ID="0x81da0233" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="{hmac_tx_amsdu_is_overflow::amsdu_size=%d framelen=%d msdu_num=%d .} @hmac_tx_amsdu.c(87),INFO" ID="0x81da02bd" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="vap_id[%d] {hmac_amsdu_send::net_buf null} @hmac_tx_amsdu.c(111),ERROR" ID="0x81da037a" />
@@ -6710,6 +6775,9 @@
 			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_ccpriv_get_auto_freq_info::get arg failed.} @hmac_auto_adjust_freq.c(475),WARNING" ID="0x84720edb" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="{hmac_ccpriv_get_auto_freq_info::auto_freq_enable[%u] curr_freq_level[%u] req_freq_level[%u].} @hmac_auto_adjust_freq.c(484),WARNING" ID="0x84720f23" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="{hmac_ccpriv_get_auto_freq_info::pps_rate[%u] hcc_rxtx_total[%u].} @hmac_auto_adjust_freq.c(490),WARNING" ID="0x84720f53" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test task init failed @hcc_test_service.c(138),ERROR" ID="0xa0900452" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="malloc user_param ERR @hcc_test_service.c(206),ERROR" ID="0xa0900672" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc test service has been initiated @hcc_test_service.c(228),ERROR" ID="0xa0900722" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[INFO]:Change log level failed, message is %d @log.c(327),INFO" ID="0xa0140a3d" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="[INFO]:Change log level to %d @log.c(335),INFO" ID="0xa0140a7d" />
 			<MSG STRUCTURE="diag_log_msg4" NAME="vap_id[%d] {hmac_csa_ap_switch_new_channel::announced_channel=%d,announced_bandwidth=%d csa_cnt=%d} @hmac_csa_ap.c(100),WARNING" ID="0x84960323" />
@@ -6847,6 +6915,44 @@
 			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_ccpriv_btcoex_timer_config::get t2_timer err [%d]!} @hmac_btcoex.c(2172),WARNING" ID="0x81d243e3" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_ccpriv_btcoex_coex_switch_config:vap is null} @hmac_btcoex.c(2194),WARNING" ID="0x81d24493" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_ccpriv_btcoex_coex_switch_config::get coex enable err [%d]!} @hmac_btcoex.c(2200),WARNING" ID="0x81d244c3" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_single_proxysta_user_del:del ipv4 map mac[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(146),INFO" ID="0x850c0495" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_single_proxysta_user_del:not find map[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(174),INFO" ID="0x850c0575" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_find_unknow_mac:: null param} @hmac_single_proxysta.c(190),ERROR" ID="0x850c05f2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_unknow_addr_replace::The length of buf is invalid.} @hmac_single_proxysta.c(230),ERROR" ID="0x850c0732" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_rx_unknow_addr_replace:: can't find mac addr of unknow protocol:0x%x.} @hmac_single_proxysta.c(243),ERROR" ID="0x850c079a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_find_ipv4_mac:: vap_proxysta  null param.} @hmac_single_proxysta.c(264),ERROR" ID="0x850c0842" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_arp_addr_replace::The length of buf is invalid.} @hmac_single_proxysta.c(327),ERROR" ID="0x850c0a3a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process:null param.} @hmac_single_proxysta.c(503),ERROR" ID="0x850c0fba" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_insert_ipv4_mac:: map num exceed max size: %d.} @hmac_single_proxysta.c(606),ERROR" ID="0x850c12f2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: mem alloc null pointer.} @hmac_single_proxysta.c(613),ERROR" ID="0x850c132a" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_bridge_insert_unknow_mac:: insert unknow map protocol:0x%x-mac:%x:%x:%x:**:**:**.} @hmac_single_proxysta.c(631),WARNING" ID="0x850c13bb" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_unknow_mac:: null param.} @hmac_single_proxysta.c(647),ERROR" ID="0x850c143a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_unknow_addr_insert::The length of buf is invalid.} @hmac_single_proxysta.c(691),ERROR" ID="0x850c159a" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_bridge_insert_ipv4_mac:: map num exceed max size: %d.} @hmac_single_proxysta.c(711),ERROR" ID="0x850c163a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: mem alloc null pointer.} @hmac_single_proxysta.c(718),ERROR" ID="0x850c1672" />
+			<MSG STRUCTURE="diag_log_msg3" NAME="{hmac_bridge_insert_ipv4_mac: insert ipv4 map ip[%d:%d:%d:**]} @hmac_single_proxysta.c(739),WARNING" ID="0x850c171b" />
+			<MSG STRUCTURE="diag_log_msg4" NAME="{hmac_bridge_insert_ipv4_mac: insert ipv4 map mac[%x:%x:%x:%x:**:**]} @hmac_single_proxysta.c(741),WARNING" ID="0x850c172b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: vap_bridge  null param.} @hmac_single_proxysta.c(759),ERROR" ID="0x850c17ba" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_insert_ipv4_mac:: ip same, but mac not same!} @hmac_single_proxysta.c(774),INFO" ID="0x850c1835" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_arp_addr_insert::The length of buf is invalid.} @hmac_single_proxysta.c(861),ERROR" ID="0x850c1aea" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="{hmac_bridge_tx_arp_addr_insert::arp hln:%d, arp pro: %d ,not to process.} @hmac_single_proxysta.c(868),ERROR" ID="0x850c1b22" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_tx_arp_addr_insert :: proxysta_mac == src_mac, not need insert map table!} @hmac_single_proxysta.c(880),INFO" ID="0x850c1b85" />
+			<MSG STRUCTURE="diag_log_msg3" NAME="{start delete ipv4 map ip[%d:%d:%d:**]} @hmac_single_proxysta.c(1102),INFO" ID="0x850c2275" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_single_proxysta_vap_add malloc error @hmac_single_proxysta.c(1134),ERROR" ID="0x850c2372" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_ccpriv_single_proxysta_debug type return err_code [%d] @hmac_single_proxysta.c(1304),WARNING" ID="0x850c28c3" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_addif::get net_dev ret NULL @hmac_single_proxysta.c(1350),WARNING" ID="0x850c2a33" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_bridge_control_addif::vap[%d] not legacy vap @hmac_single_proxysta.c(1360),WARNING" ID="0x850c2a83" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::get net_dev ret NULL @hmac_single_proxysta.c(1373),WARNING" ID="0x850c2aeb" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::delete AP from bridge @hmac_single_proxysta.c(1378),WARNING" ID="0x850c2b13" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::delete STA from bridge @hmac_single_proxysta.c(1382),WARNING" ID="0x850c2b33" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_control_delif::can't find vap in bridge @hmac_single_proxysta.c(1387),WARNING" ID="0x850c2b5b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hmac_bridge_rx_copy_data::malloc netbuf fail. @hmac_single_proxysta.c(1459),WARNING" ID="0x850c2d9b" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process:null param.} @hmac_single_proxysta.c(1543),ERROR" ID="0x850c303a" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_bridge_rx_process_sle:lwip_buf NULL.} @hmac_single_proxysta.c(1558),ERROR" ID="0x850c30b2" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="hmac_ccpriv_wifi_sle_repeater_enable ret return err_code [%d] @hmac_single_proxysta.c(1621),WARNING" ID="0x850c32ab" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_get_converted_pbuf::mem safe function err!} @hmac_single_proxysta.c(1655),ERROR" ID="0x850c33ba" />
+			<MSG STRUCTURE="diag_log_msg2" NAME="hmac_get_converted_skb, len = %d, tot_len = %d @hmac_single_proxysta.c(1666),ERROR" ID="0x850c3412" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="[hmac_bridge_forward_to_syschannel] skb_convert_2_pbuf, lwip_buf is null! @hmac_single_proxysta.c(1735),ERROR" ID="0x850c363a" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="[panic]id:%d,code:0x%x,call:0x%x @panic.c(149),ERROR" ID="0xa00e04aa" />
 			<MSG STRUCTURE="diag_log_msg3" NAME="[panic]core:%d,pc:0x%x,lr:0x%x @panic.c(161),ERROR" ID="0xa00e050a" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="vap_id[%d] hmac_m2s_btcoex_need_switch_check::hmac_vap IS NULL. @hmac_btcoex_m2s.c(52),ERROR" ID="0x80d001a2" />
@@ -6877,6 +6983,7 @@
 			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_btcoex_m2s_back_to_mimo:: btcoex apply but is already c1 siso, mode[%d]!} @hmac_btcoex_m2s.c(606),ERROR" ID="0x80d012f2" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="{hmac_m2s_spec_update_hal_device_proc:: need to switch siso c1 because of btcoex!} @hmac_btcoex_m2s.c(621),WARNING" ID="0x80d0136b" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_m2s_spec_update_hal_device_proc:: btcoex apply but is already c1 siso, mode[%d]!} @hmac_btcoex_m2s.c(630),ERROR" ID="0x80d013b2" />
+			<MSG STRUCTURE="diag_log_msg0" NAME="hcc fc init wait err @hcc_flow_ctrl.c(295),ERROR" ID="0xa08c093a" />
 			<MSG STRUCTURE="diag_log_msg2" NAME="vap_id[%d] Could not find WMM IE in assoc req,user_id[%d] @hmac_uapsd.c(178),WARNING" ID="0x81080593" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="{hmac_uapsd_update_user_para_etc::get mac_vap [%d] null.} @hmac_uapsd.c(189),ERROR" ID="0x810805ea" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="vap_id[%d] {hmac_uapsd_update_user_para_etc::param null.} @hmac_uapsd.c(197),ERROR" ID="0x8108062a" />

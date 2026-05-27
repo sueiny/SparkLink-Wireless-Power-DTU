@@ -286,4 +286,3 @@ item[0].mac=A1 A2 A3 A4 A5 A6
 5. `CLEAR_WL` 后 `READ_ROOT_WL_ALL` 返回 `wl_total=0`。
 6. `COMMIT + REBOOT` 后白名单 MAC 仍能读回。
 7. `FACTORY_RESET` 后白名单为空。
-

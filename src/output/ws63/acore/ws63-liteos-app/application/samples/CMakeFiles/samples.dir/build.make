@@ -57,30 +57,195 @@ include application/samples/CMakeFiles/samples.dir/progress.make
 # Include the compile flags for this target's objects.
 include application/samples/CMakeFiles/samples.dir/flags.make
 
-application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
-application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj: ../../../../application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj"
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=SLE_SPEED_CLIENT_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c
+application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj: ../../../../application/samples/Dtu/common/dtu_log.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_LOG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/common/dtu_log.c
 
-application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.i"
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=SLE_SPEED_CLIENT_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c > CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.i
+application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/common/dtu_log.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_LOG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/common/dtu_log.c > CMakeFiles/samples.dir/Dtu/common/dtu_log.c.i
 
-application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.s"
-	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=SLE_SPEED_CLIENT_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/bt/sle/sle_speed_client/src/sle_speed_client.c -o CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.s
+application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/common/dtu_log.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_LOG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/common/dtu_log.c -o CMakeFiles/samples.dir/Dtu/common/dtu_log.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj: ../../../../application/samples/Dtu/manager/dtu_service.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_SERVICE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/manager/dtu_service.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_SERVICE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/manager/dtu_service.c > CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_SERVICE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/manager/dtu_service.c -o CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj: ../../../../application/samples/Dtu/config/dtu_config.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/config/dtu_config.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config.c > CMakeFiles/samples.dir/Dtu/config/dtu_config.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/config/dtu_config.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config.c -o CMakeFiles/samples.dir/Dtu/config/dtu_config.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj: ../../../../application/samples/Dtu/config/dtu_config_protocol.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_PROTOCOL_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_protocol.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_PROTOCOL_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_protocol.c > CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_PROTOCOL_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_protocol.c -o CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj: ../../../../application/samples/Dtu/config/dtu_config_commands.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_COMMANDS_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_commands.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_COMMANDS_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_commands.c > CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CONFIG_COMMANDS_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/config/dtu_config_commands.c -o CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj: ../../../../application/samples/Dtu/run/dtu_run.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_RUN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/run/dtu_run.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/run/dtu_run.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_RUN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/run/dtu_run.c > CMakeFiles/samples.dir/Dtu/run/dtu_run.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/run/dtu_run.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_RUN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/run/dtu_run.c -o CMakeFiles/samples.dir/Dtu/run/dtu_run.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj: ../../../../application/samples/Dtu/storage/dtu_storage.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_STORAGE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/storage/dtu_storage.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_STORAGE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/storage/dtu_storage.c > CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_STORAGE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/storage/dtu_storage.c -o CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../application/samples/Dtu/board/dtu_board.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_BOARD_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_board.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/board/dtu_board.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_BOARD_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_board.c > CMakeFiles/samples.dir/Dtu/board/dtu_board.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/board/dtu_board.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_BOARD_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_board.c -o CMakeFiles/samples.dir/Dtu/board/dtu_board.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj: ../../../../application/samples/Dtu/transport/dtu_channel_uart.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_UART_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_uart.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_UART_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_uart.c > CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_UART_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_uart.c -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj: ../../../../application/samples/Dtu/transport/dtu_channel_ble.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_BLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_ble.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_BLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_ble.c > CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_BLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_ble.c -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj: ../../../../application/samples/Dtu/transport/dtu_channel_sle.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_SLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_sle.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_SLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_sle.c > CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_CHANNEL_SLE_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/transport/dtu_channel_sle.c -o CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.s
+
+application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj: application/samples/CMakeFiles/samples.dir/flags.make
+application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj: ../../../../application/samples/Dtu/dtu_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && ccache /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_MAIN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/samples.dir/Dtu/dtu_main.c.obj   -c /home/sueiny/fbb_ws63/src/application/samples/Dtu/dtu_main.c
+
+application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/samples.dir/Dtu/dtu_main.c.i"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_MAIN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -E /home/sueiny/fbb_ws63/src/application/samples/Dtu/dtu_main.c > CMakeFiles/samples.dir/Dtu/dtu_main.c.i
+
+application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/samples.dir/Dtu/dtu_main.c.s"
+	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && /home/sueiny/fbb_ws63/src/tools/bin/compiler/riscv/cc_riscv32_musl_105/cc_riscv32_musl_fp/bin/riscv32-linux-musl-gcc $(C_DEFINES) -DTHIS_FILE_ID=DTU_MAIN_C -DTHIS_MOD_ID=LOG_PFMODULE $(C_INCLUDES) $(C_FLAGS) -S /home/sueiny/fbb_ws63/src/application/samples/Dtu/dtu_main.c -o CMakeFiles/samples.dir/Dtu/dtu_main.c.s
 
 # Object files for target samples
 samples_OBJECTS = \
-"CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj"
+"CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj" \
+"CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj" \
+"CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj" \
+"CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj" \
+"CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj" \
+"CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj" \
+"CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj" \
+"CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj" \
+"CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj" \
+"CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj" \
+"CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj" \
+"CMakeFiles/samples.dir/Dtu/dtu_main.c.obj"
 
 # External object files for target samples
 samples_EXTERNAL_OBJECTS =
 
-application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/bt/sle/sle_speed_client/src/sle_speed_client.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/common/dtu_log.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/manager/dtu_service.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_protocol.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/config/dtu_config_commands.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/run/dtu_run.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/storage/dtu_storage.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_uart.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_ble.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/transport/dtu_channel_sle.c.obj
+application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/Dtu/dtu_main.c.obj
 application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/build.make
 application/samples/libsamples.a: application/samples/CMakeFiles/samples.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libsamples.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C static library libsamples.a"
 	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && $(CMAKE_COMMAND) -P CMakeFiles/samples.dir/cmake_clean_target.cmake
 	cd /home/sueiny/fbb_ws63/src/output/ws63/acore/ws63-liteos-app/application/samples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/samples.dir/link.txt --verbose=$(VERBOSE)
 
