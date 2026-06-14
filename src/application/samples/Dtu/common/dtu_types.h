@@ -13,8 +13,8 @@
 #include "wifi_device.h"
 
 typedef enum {
-    DTU_MODE_CONFIG = 0x00,
-    DTU_MODE_RUN = 0x01
+    DTU_MODE_CONFIG = 0x01,
+    DTU_MODE_RUN = 0x00
 } dtu_mode_t;
 
 typedef enum {

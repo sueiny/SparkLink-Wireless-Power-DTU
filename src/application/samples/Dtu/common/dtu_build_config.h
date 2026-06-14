@@ -102,6 +102,12 @@
 #define DTU_CFG_MODE_SWITCH_PIN_MODE          PIN_MODE_0
 #define DTU_CFG_MODE_SWITCH_PIN_PULL          PIN_PULL_TYPE_UP
 
+/* 恢复出厂按键：IO14 默认上拉，按下保持低电平 1s 后写入默认配置。 */
+#define DTU_CFG_FACTORY_KEY_PIN               14
+#define DTU_CFG_FACTORY_KEY_PIN_MODE          PIN_MODE_0
+#define DTU_CFG_FACTORY_KEY_PULL              PIN_PULL_TYPE_UP
+#define DTU_CFG_FACTORY_KEY_HOLD_MS           3000
+
 /* 状态灯：CONFIG 红，RUN ROOT 绿，RUN NODE 蓝；活动灯白色闪烁。 */
 #define DTU_CFG_STATE_LED_BLUE_PIN             0
 #define DTU_CFG_STATE_LED_GREEN_PIN            1  

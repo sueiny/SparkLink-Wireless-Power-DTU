@@ -22,7 +22,7 @@ dtu_runtime_cfg_t *dtu_storage_runtime(void);
 /** 返回只读 runtime 配置，普通读取优先使用该接口。 */
 const dtu_runtime_cfg_t *dtu_storage_runtime_const(void);
 
-/** 返回当前模式；模式来自拨码采样，高电平 CONFIG，低电平 RUN。 */
+/** 返回当前模式；模式来自拨码采样，高电平 RUN，低电平 CONFIG。 */
 dtu_mode_t dtu_storage_current_mode(void);
 
 /** REBOOT 待执行时，配置写入会被冻结，真正复位由任务安全点完成。 */

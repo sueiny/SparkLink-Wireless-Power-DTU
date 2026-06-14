@@ -85,7 +85,7 @@ config handler
 | `current_mode` | 由 GPIO13 拨码决定 | 不作为生效依据 | 重启时重新读取拨码 |
 | `modbus / power / whitelist` | 改内存 | 写入 NV | 重启后恢复 |
 
-GPIO13 高电平进入 CONFIG，低电平进入 RUN。`SET_UART_CFG` 不立即重配 UART1/485，必须 `COMMIT` 后重启才生效。
+GPIO13 高电平进入 RUN，低电平进入 CONFIG。`SET_UART_CFG` 不立即重配 UART1/485，必须 `COMMIT` 后重启才生效。
 
 ## 推荐阅读顺序
 

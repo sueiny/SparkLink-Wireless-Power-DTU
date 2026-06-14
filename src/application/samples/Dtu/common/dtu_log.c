@@ -169,7 +169,7 @@ static void dtu_log_runtime_snapshot(const char *prefix)
         prefix,
         dtu_storage_mode_name(dtu_storage_current_mode()),
         (uint32_t)DTU_CFG_MODE_SWITCH_PIN,
-        (dtu_storage_current_mode() == DTU_MODE_CONFIG) ? "HIGH" : "LOW",
+        (dtu_storage_current_mode() == DTU_MODE_RUN) ? "HIGH" : "LOW",
         dtu_storage_rx_profile_name(dtu_storage_rx_profile()));
     osal_printk("%s %s role=%s mac=", DTU_LOG_PREFIX, prefix, dtu_storage_role_name(cfg->role));
     dtu_log_print_mac(mac);

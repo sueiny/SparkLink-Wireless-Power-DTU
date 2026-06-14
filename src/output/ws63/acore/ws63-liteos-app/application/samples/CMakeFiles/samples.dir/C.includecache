@@ -1225,6 +1225,8 @@ dtu_board.h
 /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_board.h
 dtu_storage.h
 /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/dtu_storage.h
+hal_reboot.h
+/home/sueiny/fbb_ws63/src/application/samples/Dtu/board/hal_reboot.h
 osal_debug.h
 /home/sueiny/fbb_ws63/src/application/samples/Dtu/board/osal_debug.h
 osal_timer.h

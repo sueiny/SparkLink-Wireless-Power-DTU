@@ -604,7 +604,7 @@ async def main_async() -> int:
 
     try:
         if args.suite in ("config", "all") and not args.yes:
-            ask_enter("请将 GPIO13 拨到高电平(CONFIG)并重启设备")
+            ask_enter("请将 GPIO13 拨到低电平(CONFIG)并重启设备")
 
         await tester.connect()
 
@@ -614,7 +614,7 @@ async def main_async() -> int:
         if args.suite == "all":
             await tester.disconnect()
             if not args.yes:
-                ask_enter("请将 GPIO13 拨到低电平(RUN)并重启设备")
+                ask_enter("请将 GPIO13 拨到高电平(RUN)并重启设备")
             await tester.connect()
 
         if args.suite in ("run", "all"):

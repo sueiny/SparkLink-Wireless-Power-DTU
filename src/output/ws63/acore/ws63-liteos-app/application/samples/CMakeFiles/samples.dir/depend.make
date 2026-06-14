@@ -16,6 +16,7 @@ application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../.
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../drivers/chips/ws63/rom/drivers/chips/ws63/porting/pinctrl/pinctrl_porting.h
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../drivers/drivers/hal/gpio/hal_gpio.h
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../drivers/drivers/hal/gpio/v150/hal_gpio_v150_comm_def.h
+application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../drivers/drivers/hal/reboot/hal_reboot.h
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../drivers/drivers/hal/uart/hal_uart.h
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../include/common_def.h
 application/samples/CMakeFiles/samples.dir/Dtu/board/dtu_board.c.obj: ../../../../include/driver/gpio.h
